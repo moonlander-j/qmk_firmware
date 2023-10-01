@@ -21,3 +21,17 @@
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
+#ifdef AUDIO_ENABLE
+    // "Uncover Secret" by Koji Kondo (from _The Legend of Zelda_)
+    #define ZELDA      \
+        Q__NOTE(_G5),  \
+        Q__NOTE(_FS5), \
+        Q__NOTE(_DS5), \
+        Q__NOTE(_A4),  \
+        Q__NOTE(_GS4), \
+        Q__NOTE(_E5),  \
+        Q__NOTE(_GS5), \
+        Q__NOTE(_C6)
+
+    #define STARTUP_SONG SONG(ZELDA)
+#endif
