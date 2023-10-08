@@ -89,11 +89,174 @@ enum custom_keycodes {
   ST_MACRO_36,
   ST_MACRO_37,
   ST_MACRO_38,
-  PLAY_ZELDA
+  PLAY_ZELDA,
+  PLAY_SONG_00,
+  PLAY_SONG_01,
+  PLAY_SONG_02,
+  PLAY_SONG_03,
+  PLAY_SONG_04,
+  PLAY_SONG_05,
+  PLAY_SONG_06,
+  PLAY_SONG_07,
+  PLAY_SONG_08,
+  PLAY_SONG_09,
+  PLAY_SONG_10,
+  PLAY_SONG_11,
+  PLAY_SONG_12,
+  PLAY_SONG_13,
+  PLAY_SONG_14,
+  PLAY_SONG_15,
+  PLAY_SONG_16,
+  PLAY_SONG_17,
+  PLAY_SONG_18,
+  PLAY_SONG_19,
+  PLAY_SONG_20,
+  PLAY_SONG_21,
+  PLAY_SONG_22,
+  PLAY_SONG_23,
+  PLAY_SONG_24,
+  PLAY_SONG_25,
+  PLAY_SONG_26,
+  PLAY_SONG_27,
+  PLAY_SONG_28,
+  PLAY_SONG_29,
+  PLAY_SONG_30,
+  PLAY_SONG_31,
+  PLAY_SONG_32,
+  PLAY_SONG_33,
+  PLAY_SONG_34,
+  PLAY_SONG_35,
+  PLAY_SONG_36,
+  PLAY_SONG_37,
+  PLAY_SONG_38,
+  PLAY_SONG_39,
+  PLAY_SONG_40,
+  PLAY_SONG_41,
+  PLAY_SONG_42,
+  PLAY_SONG_43,
+  PLAY_SONG_44,
+  PLAY_SONG_45,
+  PLAY_SONG_46,
+  PLAY_SONG_47,
+  PLAY_SONG_48,
+  PLAY_SONG_49,
+  PLAY_SONG_50,
+  PLAY_SONG_51,
+  PLAY_SONG_52,
+  PLAY_SONG_53,
+  PLAY_SONG_54,
+  PLAY_SONG_55,
+  PLAY_SONG_56,
+  PLAY_SONG_57,
+  PLAY_SONG_58,
+  PLAY_SONG_59,
+  PLAY_SONG_60,
+  PLAY_SONG_61,
+  PLAY_SONG_62,
+  PLAY_SONG_63,
+  PLAY_SONG_64,
+  PLAY_SONG_65,
+  PLAY_SONG_66,
+  PLAY_SONG_67,
+  PLAY_SONG_68,
+  PLAY_SONG_69,
+  PLAY_SONG_70,
+  PLAY_SONG_71,
+  PLAY_SONG_72,
+  PLAY_SONG_73,
+  PLAY_SONG_74,
+  PLAY_SONG_75,
+  PLAY_SONG_76,
+  PLAY_SONG_77,
+  PLAY_SONG_78,
+  PLAY_SONG_79,
+  PLAY_SONG_80,
+  PLAY_SONG_81,
 };
 
 
 static float zelda_uncover_secret[][2] = SONG(ZELDA_UNCOVER_SECRET);
+static float ode_to_joy[][2] = SONG(ODE_TO_JOY);
+static float rock_a_bye_baby[][2] = SONG(ROCK_A_BYE_BABY);
+static float clueboard_sound[][2] = SONG(CLUEBOARD_SOUND);
+static float startup_sound[][2] = SONG(STARTUP_SOUND);
+static float goodbye_sound[][2] = SONG(GOODBYE_SOUND);
+static float planck_sound[][2] = SONG(PLANCK_SOUND);
+static float preonic_sound[][2] = SONG(PREONIC_SOUND);
+static float qwerty_sound[][2] = SONG(QWERTY_SOUND);
+static float colemak_sound[][2] = SONG(COLEMAK_SOUND);
+static float dvorak_sound[][2] = SONG(DVORAK_SOUND);
+static float workman_sound[][2] = SONG(WORKMAN_SOUND);
+static float plover_sound[][2] = SONG(PLOVER_SOUND);
+static float plover_goodbye_sound[][2] = SONG(PLOVER_GOODBYE_SOUND);
+static float music_on_sound[][2] = SONG(MUSIC_ON_SOUND);
+static float audio_on_sound[][2] = SONG(AUDIO_ON_SOUND);
+static float audio_off_sound[][2] = SONG(AUDIO_OFF_SOUND);
+static float music_scale_sound[][2] = SONG(MUSIC_SCALE_SOUND);
+static float music_off_sound[][2] = SONG(MUSIC_OFF_SOUND);
+static float voice_change_sound[][2] = SONG(VOICE_CHANGE_SOUND);
+static float chromatic_sound[][2] = SONG(CHROMATIC_SOUND);
+static float major_sound[][2] = SONG(MAJOR_SOUND);
+static float minor_sound[][2] = SONG(MINOR_SOUND);
+static float guitar_sound[][2] = SONG(GUITAR_SOUND);
+static float violin_sound[][2] = SONG(VIOLIN_SOUND);
+static float caps_lock_on_sound[][2] = SONG(CAPS_LOCK_ON_SOUND);
+static float caps_lock_off_sound[][2] = SONG(CAPS_LOCK_OFF_SOUND);
+static float scroll_lock_on_sound[][2] = SONG(SCROLL_LOCK_ON_SOUND);
+static float scroll_lock_off_sound[][2] = SONG(SCROLL_LOCK_OFF_SOUND);
+static float num_lock_on_sound[][2] = SONG(NUM_LOCK_ON_SOUND);
+static float num_lock_off_sound[][2] = SONG(NUM_LOCK_OFF_SOUND);
+static float ag_norm_sound[][2] = SONG(AG_NORM_SOUND);
+static float ag_swap_sound[][2] = SONG(AG_SWAP_SOUND);
+static float unicode_windows[][2] = SONG(UNICODE_WINDOWS);
+static float unicode_linux[][2] = SONG(UNICODE_LINUX);
+static float terminal_sound[][2] = SONG(TERMINAL_SOUND);
+static float campanella[][2] = SONG(CAMPANELLA);
+static float fantasie_impromptu[][2] = SONG(FANTASIE_IMPROMPTU);
+static float nocturne_op_9_no_1[][2] = SONG(NOCTURNE_OP_9_NO_1);
+static float ussr_anthem[][2] = SONG(USSR_ANTHEM);
+static float tos_hymn_risen[][2] = SONG(TOS_HYMN_RISEN);
+static float close_encounters_5_note[][2] = SONG(CLOSE_ENCOUNTERS_5_NOTE);
+static float doe_a_deer[][2] = SONG(DOE_A_DEER);
+static float in_like_flint[][2] = SONG(IN_LIKE_FLINT);
+static float imperial_march[][2] = SONG(IMPERIAL_MARCH);
+static float basket_case[][2] = SONG(BASKET_CASE);
+static float coin_sound[][2] = SONG(COIN_SOUND);
+static float one_up_sound[][2] = SONG(ONE_UP_SOUND);
+static float sonic_ring[][2] = SONG(SONIC_RING);
+static float zelda_puzzle[][2] = SONG(ZELDA_PUZZLE);
+static float zelda_treasure[][2] = SONG(ZELDA_TREASURE);
+static float overwatch_theme[][2] = SONG(OVERWATCH_THEME);
+static float mario_theme[][2] = SONG(MARIO_THEME);
+static float mario_gameover[][2] = SONG(MARIO_GAMEOVER);
+static float mario_mushroom[][2] = SONG(MARIO_MUSHROOM);
+static float e1m1_doom[][2] = SONG(E1M1_DOOM);
+static float disney_song[][2] = SONG(DISNEY_SONG);
+static float number_one[][2] = SONG(NUMBER_ONE);
+static float cabbage_song[][2] = SONG(CABBAGE_SONG);
+static float old_spice[][2] = SONG(OLD_SPICE);
+static float victory_fanfare_short[][2] = SONG(VICTORY_FANFARE_SHORT);
+static float all_star[][2] = SONG(ALL_STAR);
+static float rick_roll[][2] = SONG(RICK_ROLL);
+static float ff_prelude[][2] = SONG(FF_PRELUDE);
+static float to_boldly_go[][2] = SONG(TO_BOLDLY_GO);
+static float kataware_doki[][2] = SONG(KATAWARE_DOKI);
+static float megalovania[][2] = SONG(MEGALOVANIA);
+static float michishirube[][2] = SONG(MICHISHIRUBE);
+static float liebesleid[][2] = SONG(LIEBESLEID);
+static float melodies_of_life[][2] = SONG(MELODIES_OF_LIFE);
+static float eyes_on_me[][2] = SONG(EYES_ON_ME);
+static float song_of_the_ancients[][2] = SONG(SONG_OF_THE_ANCIENTS);
+static float nier_amusement_park[][2] = SONG(NIER_AMUSEMENT_PARK);
+static float copied_city[][2] = SONG(COPIED_CITY);
+static float vague_hope_cold_rain[][2] = SONG(VAGUE_HOPE_COLD_RAIN);
+static float kaine_salvation[][2] = SONG(KAINE_SALVATION);
+static float weight_of_the_world[][2] = SONG(WEIGHT_OF_THE_WORLD);
+static float isabellas_lullaby[][2] = SONG(ISABELLAS_LULLABY);
+static float terras_theme[][2] = SONG(TERRAS_THEME);
+static float renai_circulation[][2] = SONG(RENAI_CIRCULATION);
+static float platinum_disco[][2] = SONG(PLATINUM_DISCO);
+static float lp_numb[][2] = SONG(LP_NUMB);
 
 
 
@@ -147,7 +310,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RESET,          _______,        _______,        _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUMLOCK,     KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(5),          
     _______,        _______,        _______,   KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,_______,        DT_PRNT,                 _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     _______,        
     _______,        _______,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______,        DT_DOWN,                 _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     _______,        
-    TG(6),    TOGGLE_LAYER_COLOR, RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, _______,                                                 _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    _______,        
+    TG(6),     TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, _______,                                                 _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    _______,        
     AU_TOG,         MU_TOG,         MU_MOD,         _______,        _______,                        _______,                 _______,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    _______,        
                                                                     _______,        _______,        _______,                 _______,        _______,        _______
   ),
@@ -160,12 +323,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                     _______,        _______,        _______,                 _______,        _______,        _______
   ),
   [6] = LAYOUT_moonlander(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    PLAY_SONG_00,   PLAY_SONG_01,   PLAY_SONG_02,   PLAY_SONG_03,   PLAY_SONG_04,   PLAY_SONG_05,   PLAY_SONG_06,            PLAY_SONG_07,   PLAY_SONG_08,   PLAY_SONG_09,   PLAY_SONG_10,   PLAY_SONG_11,   PLAY_SONG_12,   PLAY_SONG_13,
+    PLAY_SONG_14,   PLAY_SONG_15,   PLAY_SONG_16,   PLAY_SONG_17,   PLAY_SONG_18,   PLAY_SONG_19,   PLAY_SONG_20,            PLAY_SONG_21,   PLAY_SONG_22,   PLAY_SONG_23,   PLAY_SONG_24,   PLAY_SONG_25,   PLAY_SONG_26,   PLAY_SONG_27,
+    PLAY_SONG_28,   PLAY_SONG_29,   PLAY_SONG_30,   PLAY_SONG_31,   PLAY_SONG_32,   PLAY_SONG_33,   PLAY_SONG_34,            PLAY_SONG_35,   PLAY_SONG_36,   PLAY_SONG_37,   PLAY_SONG_38,   PLAY_SONG_39,   PLAY_SONG_40,   PLAY_SONG_41,
+    _______,        PLAY_SONG_42,   PLAY_SONG_43,   PLAY_SONG_44,   PLAY_SONG_45,   PLAY_SONG_46,                                            PLAY_SONG_47,   PLAY_SONG_48,   PLAY_SONG_49,   PLAY_SONG_50,   PLAY_SONG_51,   PLAY_SONG_52,
+    PLAY_SONG_53,   PLAY_SONG_54,   PLAY_SONG_55,   PLAY_SONG_56,   PLAY_SONG_57,                   PLAY_SONG_58,            PLAY_SONG_59,                   PLAY_SONG_60,   PLAY_SONG_61,   PLAY_SONG_62,   PLAY_SONG_63,   PLAY_SONG_64,
+                                                                    PLAY_SONG_65,   PLAY_SONG_66,   PLAY_SONG_67,            PLAY_SONG_68,   PLAY_SONG_69,   PLAY_SONG_70
   ),
 };
 
@@ -447,6 +610,493 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case PLAY_ZELDA:
         if (record->event.pressed) {
             PLAY_SONG(zelda_uncover_secret);
+        }
+        return false;
+
+
+    case PLAY_SONG_00:
+        if (record->event.pressed) {
+            PLAY_SONG(ode_to_joy);
+        }
+        return false;
+
+    case PLAY_SONG_01:
+        if (record->event.pressed) {
+            PLAY_SONG(rock_a_bye_baby);
+        }
+        return false;
+
+    case PLAY_SONG_02:
+        if (record->event.pressed) {
+            PLAY_SONG(clueboard_sound);
+        }
+        return false;
+
+    case PLAY_SONG_03:
+        if (record->event.pressed) {
+            PLAY_SONG(startup_sound);
+        }
+        return false;
+
+    case PLAY_SONG_04:
+        if (record->event.pressed) {
+            PLAY_SONG(goodbye_sound);
+        }
+        return false;
+
+    case PLAY_SONG_05:
+        if (record->event.pressed) {
+            PLAY_SONG(planck_sound);
+        }
+        return false;
+
+    case PLAY_SONG_06:
+        if (record->event.pressed) {
+            PLAY_SONG(preonic_sound);
+        }
+        return false;
+
+    case PLAY_SONG_07:
+        if (record->event.pressed) {
+            PLAY_SONG(qwerty_sound);
+        }
+        return false;
+
+    case PLAY_SONG_08:
+        if (record->event.pressed) {
+            PLAY_SONG(colemak_sound);
+        }
+        return false;
+
+    case PLAY_SONG_09:
+        if (record->event.pressed) {
+            PLAY_SONG(dvorak_sound);
+        }
+        return false;
+
+    case PLAY_SONG_10:
+        if (record->event.pressed) {
+            PLAY_SONG(workman_sound);
+        }
+        return false;
+
+    case PLAY_SONG_11:
+        if (record->event.pressed) {
+            PLAY_SONG(plover_sound);
+        }
+        return false;
+
+    case PLAY_SONG_12:
+        if (record->event.pressed) {
+            PLAY_SONG(plover_goodbye_sound);
+        }
+        return false;
+
+    case PLAY_SONG_13:
+        if (record->event.pressed) {
+            PLAY_SONG(music_on_sound);
+        }
+        return false;
+
+    case PLAY_SONG_14:
+        if (record->event.pressed) {
+            PLAY_SONG(audio_on_sound);
+        }
+        return false;
+
+    case PLAY_SONG_15:
+        if (record->event.pressed) {
+            PLAY_SONG(audio_off_sound);
+        }
+        return false;
+
+    case PLAY_SONG_16:
+        if (record->event.pressed) {
+            PLAY_SONG(music_scale_sound);
+        }
+        return false;
+
+    case PLAY_SONG_17:
+        if (record->event.pressed) {
+            PLAY_SONG(music_off_sound);
+        }
+        return false;
+
+    case PLAY_SONG_18:
+        if (record->event.pressed) {
+            PLAY_SONG(voice_change_sound);
+        }
+        return false;
+
+    case PLAY_SONG_19:
+        if (record->event.pressed) {
+            PLAY_SONG(chromatic_sound);
+        }
+        return false;
+
+    case PLAY_SONG_20:
+        if (record->event.pressed) {
+            PLAY_SONG(major_sound);
+        }
+        return false;
+
+    case PLAY_SONG_21:
+        if (record->event.pressed) {
+            PLAY_SONG(minor_sound);
+        }
+        return false;
+
+    case PLAY_SONG_22:
+        if (record->event.pressed) {
+            PLAY_SONG(guitar_sound);
+        }
+        return false;
+
+    case PLAY_SONG_23:
+        if (record->event.pressed) {
+            PLAY_SONG(violin_sound);
+        }
+        return false;
+
+    case PLAY_SONG_24:
+        if (record->event.pressed) {
+            PLAY_SONG(caps_lock_on_sound);
+        }
+        return false;
+
+    case PLAY_SONG_25:
+        if (record->event.pressed) {
+            PLAY_SONG(caps_lock_off_sound);
+        }
+        return false;
+
+    case PLAY_SONG_26:
+        if (record->event.pressed) {
+            PLAY_SONG(scroll_lock_on_sound);
+        }
+        return false;
+
+    case PLAY_SONG_27:
+        if (record->event.pressed) {
+            PLAY_SONG(scroll_lock_off_sound);
+        }
+        return false;
+
+    case PLAY_SONG_28:
+        if (record->event.pressed) {
+            PLAY_SONG(num_lock_on_sound);
+        }
+        return false;
+
+    case PLAY_SONG_29:
+        if (record->event.pressed) {
+            PLAY_SONG(num_lock_off_sound);
+        }
+        return false;
+
+    case PLAY_SONG_30:
+        if (record->event.pressed) {
+            PLAY_SONG(ag_norm_sound);
+        }
+        return false;
+
+    case PLAY_SONG_31:
+        if (record->event.pressed) {
+            PLAY_SONG(ag_swap_sound);
+        }
+        return false;
+
+    case PLAY_SONG_32:
+        if (record->event.pressed) {
+            PLAY_SONG(unicode_windows);
+        }
+        return false;
+
+    case PLAY_SONG_33:
+        if (record->event.pressed) {
+            PLAY_SONG(unicode_linux);
+        }
+        return false;
+
+    case PLAY_SONG_34:
+        if (record->event.pressed) {
+            PLAY_SONG(terminal_sound);
+        }
+        return false;
+
+    case PLAY_SONG_35:
+        if (record->event.pressed) {
+            PLAY_SONG(campanella);
+        }
+        return false;
+
+    case PLAY_SONG_36:
+        if (record->event.pressed) {
+            PLAY_SONG(fantasie_impromptu);
+        }
+        return false;
+
+    case PLAY_SONG_37:
+        if (record->event.pressed) {
+            PLAY_SONG(nocturne_op_9_no_1);
+        }
+        return false;
+
+    case PLAY_SONG_38:
+        if (record->event.pressed) {
+            PLAY_SONG(ussr_anthem);
+        }
+        return false;
+
+    case PLAY_SONG_39:
+        if (record->event.pressed) {
+            PLAY_SONG(tos_hymn_risen);
+        }
+        return false;
+
+    case PLAY_SONG_40:
+        if (record->event.pressed) {
+            PLAY_SONG(close_encounters_5_note);
+        }
+        return false;
+
+    case PLAY_SONG_41:
+        if (record->event.pressed) {
+            PLAY_SONG(doe_a_deer);
+        }
+        return false;
+
+    case PLAY_SONG_42:
+        if (record->event.pressed) {
+            PLAY_SONG(in_like_flint);
+        }
+        return false;
+
+    case PLAY_SONG_43:
+        if (record->event.pressed) {
+            PLAY_SONG(imperial_march);
+        }
+        return false;
+
+    case PLAY_SONG_44:
+        if (record->event.pressed) {
+            PLAY_SONG(basket_case);
+        }
+        return false;
+
+    case PLAY_SONG_45:
+        if (record->event.pressed) {
+            PLAY_SONG(coin_sound);
+        }
+        return false;
+
+    case PLAY_SONG_46:
+        if (record->event.pressed) {
+            PLAY_SONG(one_up_sound);
+        }
+        return false;
+
+    case PLAY_SONG_47:
+        if (record->event.pressed) {
+            PLAY_SONG(sonic_ring);
+        }
+        return false;
+
+    case PLAY_SONG_48:
+        if (record->event.pressed) {
+            PLAY_SONG(zelda_puzzle);
+        }
+        return false;
+
+    case PLAY_SONG_49:
+        if (record->event.pressed) {
+            PLAY_SONG(zelda_treasure);
+        }
+        return false;
+
+    case PLAY_SONG_50:
+        if (record->event.pressed) {
+            PLAY_SONG(overwatch_theme);
+        }
+        return false;
+
+    case PLAY_SONG_51:
+        if (record->event.pressed) {
+            PLAY_SONG(mario_theme);
+        }
+        return false;
+
+    case PLAY_SONG_52:
+        if (record->event.pressed) {
+            PLAY_SONG(mario_gameover);
+        }
+        return false;
+
+    case PLAY_SONG_53:
+        if (record->event.pressed) {
+            PLAY_SONG(mario_mushroom);
+        }
+        return false;
+
+    case PLAY_SONG_54:
+        if (record->event.pressed) {
+            PLAY_SONG(e1m1_doom);
+        }
+        return false;
+
+    case PLAY_SONG_55:
+        if (record->event.pressed) {
+            PLAY_SONG(disney_song);
+        }
+        return false;
+
+    case PLAY_SONG_56:
+        if (record->event.pressed) {
+            PLAY_SONG(number_one);
+        }
+        return false;
+
+    case PLAY_SONG_57:
+        if (record->event.pressed) {
+            PLAY_SONG(cabbage_song);
+        }
+        return false;
+
+    case PLAY_SONG_58:
+        if (record->event.pressed) {
+            PLAY_SONG(old_spice);
+        }
+        return false;
+
+    case PLAY_SONG_59:
+        if (record->event.pressed) {
+            PLAY_SONG(victory_fanfare_short);
+        }
+        return false;
+
+    case PLAY_SONG_60:
+        if (record->event.pressed) {
+            PLAY_SONG(all_star);
+        }
+        return false;
+
+    case PLAY_SONG_61:
+        if (record->event.pressed) {
+            PLAY_SONG(rick_roll);
+        }
+        return false;
+
+    case PLAY_SONG_62:
+        if (record->event.pressed) {
+            PLAY_SONG(ff_prelude);
+        }
+        return false;
+
+    case PLAY_SONG_63:
+        if (record->event.pressed) {
+            PLAY_SONG(to_boldly_go);
+        }
+        return false;
+
+    case PLAY_SONG_64:
+        if (record->event.pressed) {
+            PLAY_SONG(kataware_doki);
+        }
+        return false;
+
+    case PLAY_SONG_65:
+        if (record->event.pressed) {
+            PLAY_SONG(megalovania);
+        }
+        return false;
+
+    case PLAY_SONG_66:
+        if (record->event.pressed) {
+            PLAY_SONG(michishirube);
+        }
+        return false;
+
+    case PLAY_SONG_67:
+        if (record->event.pressed) {
+            PLAY_SONG(liebesleid);
+        }
+        return false;
+
+    case PLAY_SONG_68:
+        if (record->event.pressed) {
+            PLAY_SONG(melodies_of_life);
+        }
+        return false;
+
+    case PLAY_SONG_69:
+        if (record->event.pressed) {
+            PLAY_SONG(eyes_on_me);
+        }
+        return false;
+
+    case PLAY_SONG_70:
+        if (record->event.pressed) {
+            PLAY_SONG(song_of_the_ancients);
+        }
+        return false;
+
+    case PLAY_SONG_71:
+        if (record->event.pressed) {
+            PLAY_SONG(nier_amusement_park);
+        }
+        return false;
+
+    case PLAY_SONG_72:
+        if (record->event.pressed) {
+            PLAY_SONG(copied_city);
+        }
+        return false;
+
+    case PLAY_SONG_73:
+        if (record->event.pressed) {
+            PLAY_SONG(vague_hope_cold_rain);
+        }
+        return false;
+
+    case PLAY_SONG_74:
+        if (record->event.pressed) {
+            PLAY_SONG(kaine_salvation);
+        }
+        return false;
+
+    case PLAY_SONG_75:
+        if (record->event.pressed) {
+            PLAY_SONG(weight_of_the_world);
+        }
+        return false;
+
+    case PLAY_SONG_76:
+        if (record->event.pressed) {
+            PLAY_SONG(isabellas_lullaby);
+        }
+        return false;
+
+    case PLAY_SONG_77:
+        if (record->event.pressed) {
+            PLAY_SONG(terras_theme);
+        }
+        return false;
+
+    case PLAY_SONG_78:
+        if (record->event.pressed) {
+            PLAY_SONG(renai_circulation);
+        }
+        return false;
+
+    case PLAY_SONG_79:
+        if (record->event.pressed) {
+            PLAY_SONG(platinum_disco);
+        }
+        return false;
+
+    case PLAY_SONG_80:
+        if (record->event.pressed) {
+            PLAY_SONG(lp_numb);
         }
         return false;
 
