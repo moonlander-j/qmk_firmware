@@ -525,3 +525,48 @@
   H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS7), H__NOTE(_AS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_DS6), W__NOTE(_FS6), \
   H__NOTE(_CS6), H__NOTE(_DS6), W__NOTE(_FS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), \
   B__NOTE(_FS6),
+
+
+#define JT_SCALING_FACTOR 2.5 // scaled at 1 makes the song go very fast
+#define JT_NOTE(note, duration) M__NOTE(note, (duration) * JT_SCALING_FACTOR)
+#define JT_TRIPLET(extra_note1_duration, note1, note2, note3, complete_duration) JT_NOTE(note1, extra_note1_duration + ((complete_duration)/3)), JT_NOTE(note2, (complete_duration)/3), JT_NOTE(note3, (complete_duration)/3) // TODO how to handle triplet duration?
+#define JT_ET(note1, note2, note3) JT_TRIPLET(0, note1, note2, note3, 16)
+#define JT_QT(extra_note1_duration, note1, note2, note3) JT_TRIPLET(extra_note1_duration, note1, note2, note3, 32)
+
+#define NOTE_ES5 NOTE_F5
+
+#define JT_A \
+  JT_NOTE(_REST, 8), JT_NOTE(_FS5, 16+8), JT_NOTE(_E5, 16), JT_NOTE(_D5, 16), \
+  JT_NOTE(_CS5, 16+8), JT_NOTE(_B4, 8+32), \
+  JT_NOTE(_REST, 8), JT_NOTE(_AS4, 8), JT_NOTE(_B4, 16), JT_NOTE(_D5, 16), JT_NOTE(_FS5, 8), JT_NOTE(_E5, 8+48), \
+\
+  JT_NOTE(_REST, 8), JT_NOTE(_FS5, 8), \
+  JT_NOTE(_REST, 8), JT_NOTE(_FS5, 8+4), JT_NOTE(_E5, 8), JT_NOTE(_EF5, 8), JT_NOTE(_D5, 16), \
+  JT_NOTE(_CS5, 8), JT_NOTE(_F4, 8), JT_NOTE(_CS5, 8), JT_NOTE(_B4, 8+32), \
+\
+  JT_NOTE(_REST, 8), JT_NOTE(_G4, 8+4), JT_NOTE(_B4, 8), JT_NOTE(_D5, 8), JT_NOTE(_FS5, 8), JT_NOTE(_E5, 8+64), \
+  JT_NOTE(_REST, 8), JT_NOTE(_ES5, 8), JT_NOTE(_FS5, 8), JT_NOTE(_A5, 8), JT_ET(_E5, _FS5, _E5), JT_NOTE(_D5, 16), \
+\
+  JT_NOTE(_CS5, 8), JT_NOTE(_A4, 8), JT_NOTE(_B4, 8), JT_NOTE(_C5, 8+24), JT_NOTE(_B4, 8), \
+  JT_NOTE(_REST, 8), JT_NOTE(_G4, 8), JT_NOTE(_REST, 8), JT_NOTE(_AS4, 8), JT_NOTE(_B4, 8), JT_NOTE(_D5, 8), JT_NOTE(_FS5, 8), JT_NOTE(_E5, 8+32), \
+  JT_NOTE(_REST, 8), JT_NOTE(_E5, 24), \
+\
+  JT_NOTE(_D5, 16), JT_NOTE(_B4, 8), JT_NOTE(_FS4, 16), JT_NOTE(_E5, 16+8), \
+  JT_NOTE(_D5, 16), JT_NOTE(_B4, 8), JT_QT(8, _F4, _E5, _F5), \
+  JT_NOTE(_D5, 16), JT_NOTE(_B4, 8), JT_NOTE(_E4, 16), JT_NOTE(_D5, 16+8), \
+\
+  JT_ET(_CS5, _D5, _CS5), JT_NOTE(_A4, 8), JT_NOTE(_B4, 8), JT_NOTE(_CS5, 8), JT_NOTE(_D5, 8), JT_NOTE(_E5, 8), JT_NOTE(_D5, 8+32), \
+  JT_NOTE(_B5, 8), JT_NOTE(_FS5, 8), JT_NOTE(_REST, 8), \
+
+#define JT_B \
+  JT_NOTE(_REST, 16), JT_NOTE(_B5, 8), JT_NOTE(_ES5, 8), JT_NOTE(_REST, 32), \
+
+#define JT_C \
+  JT_NOTE(_REST, 16), JT_NOTE(_B5, 8), JT_NOTE(_ES5, 8), JT_NOTE(_REST, 32), \
+  JT_NOTE(_REST, 8), JT_NOTE(_FS5, 16+8), JT_NOTE(_E5, 16), JT_NOTE(_D5, 16), \
+  JT_NOTE(_CS5, 16+8), JT_NOTE(_B4, 8+32), \
+\
+  JT_NOTE(_D5, 16), JT_ET(_A4, _GS4, _A4), JT_NOTE(_BF4, 16), JT_NOTE(_A4, 16), \
+  JT_NOTE(_REST, 16), JT_NOTE(_CS5, 16), JT_NOTE(_D5, 32),
+
+#define JOHNNYS_THEME JT_A JT_B JT_A JT_C
