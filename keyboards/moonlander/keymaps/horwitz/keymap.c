@@ -1132,18 +1132,30 @@ enum {
 
 static tap dance_state[10];
 
-uint8_t dance_step(qk_tap_dance_state_t *state);
-
 uint8_t dance_step(qk_tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return SINGLE_TAP;
-        else return SINGLE_HOLD;
-    } else if (state->count == 2) {
-        if (state->interrupted) return DOUBLE_SINGLE_TAP;
-        else if (state->pressed) return DOUBLE_HOLD;
-        else return DOUBLE_TAP;
+    uint8_t dance_step;
+    switch (state->count) {
+        case 1:
+            if (state->interrupted || !state->pressed) {
+                dance_step = SINGLE_TAP;
+            } else {
+                dance_step = SINGLE_HOLD;
+            }
+            break;
+        case 2:
+            if (state->interrupted) {
+                dance_step = DOUBLE_SINGLE_TAP;
+            } else if (state->pressed) {
+                dance_step = DOUBLE_HOLD;
+            } else {
+                dance_step = DOUBLE_TAP;
+            }
+            break;
+        default:
+            dance_step = MORE_TAPS;
     }
-    return MORE_TAPS;
+
+    return dance_step;
 }
 
 
