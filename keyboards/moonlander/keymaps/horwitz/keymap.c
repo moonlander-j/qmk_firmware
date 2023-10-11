@@ -277,43 +277,43 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _J1, _J2, 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WIN_BASE] = LAYOUT_moonlander(
-        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                ST_MACRO_0,     TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),          
-        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               ST_MACRO_1,     KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,       
-        KC_TAB,         KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,       
-        KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                    KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,       
-        KC_LCTRL,       CAPS_WORD,    LGUI(KC_PSCREEN), TG(_NUMPAD),    MO(_WIN_SYM),                   KC_LGUI,                 KC_CAPSLOCK,                    LGUI(KC_DOT),   KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,       
+        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                ST_MACRO_0,     TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),
+        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               ST_MACRO_1,     KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,
+        KC_TAB,         KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,
+        KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                    KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
+        KC_LCTRL,       CAPS_WORD,    LGUI(KC_PSCREEN), TG(_NUMPAD),    MO(_WIN_SYM),                   KC_LGUI,                 KC_CAPSLOCK,                    LGUI(KC_DOT),   KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         KC_ENTER,       KC_LALT,        KC_RALT,                 KC_DELETE,      KC_BSPACE,      KC_SPACE
     ),
     [_MAC_BASE] = LAYOUT_moonlander(
-        _______,        _______,        _______,        _______,        _______,        _______,        _______,                 LALT(KC_MINUS), _______,        _______,        _______,        _______,        _______,        _______,        
-        _______,        _______,        _______,        _______,        _______,        _______,        _______,           LALT(LSFT(KC_MINUS)), _______,        _______,        _______,        _______,        _______,        _______,        
-        _______,        _______,        _______,        _______,        _______,        _______,        _______,                 _______,        _______,        _______,        _______,        _______,        _______,        _______,        
-        _______,        _______,        _______,        _______,        _______,        _______,                                                 _______,        _______,        _______,        _______,        _______,        _______,        
-        _______,        _______,      LGUI(LSFT(KC_3)), _______,        MO(_MAC_SYM),                   _______,                 _______,                  LGUI(LCTL(KC_SPACE)), _______,        _______,        _______,        _______,        
+        _______,        _______,        _______,        _______,        _______,        _______,        _______,                 LALT(KC_MINUS), _______,        _______,        _______,        _______,        _______,        _______,
+        _______,        _______,        _______,        _______,        _______,        _______,        _______,           LALT(LSFT(KC_MINUS)), _______,        _______,        _______,        _______,        _______,        _______,
+        _______,        _______,        _______,        _______,        _______,        _______,        _______,                 _______,        _______,        _______,        _______,        _______,        _______,        _______,
+        _______,        _______,        _______,        _______,        _______,        _______,                                                 _______,        _______,        _______,        _______,        _______,        _______,
+        _______,        _______,      LGUI(LSFT(KC_3)), _______,        MO(_MAC_SYM),                   _______,                 _______,                  LGUI(LCTL(KC_SPACE)), _______,        _______,        _______,        _______,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
-        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                 _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,        
-        _______,        ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_11,    _______,        _______,        ST_MACRO_12,    
-        _______,        ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     ST_MACRO_10,    _______,        _______,                 _______,        _______,        ST_MACRO_13,    _______,        ST_MACRO_14,    _______,        _______,        
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_15,    ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    KC_PGUP,        ST_MACRO_19,    
-        _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,         
+        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                 _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        _______,        ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_11,    _______,        _______,        ST_MACRO_12,
+        _______,        ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     ST_MACRO_10,    _______,        _______,                 _______,        _______,        ST_MACRO_13,    _______,        ST_MACRO_14,    _______,        _______,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_15,    ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    KC_PGUP,        ST_MACRO_19,
+        _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
-        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ST_MACRO_20,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,        
-        _______,        ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_30,    _______,        _______,        ST_MACRO_31,    
-        _______,        ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    _______,        _______,                 _______,        _______,        ST_MACRO_32,    _______,        ST_MACRO_33,    _______,        _______,        
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_34,    ST_MACRO_35,    ST_MACRO_36,    ST_MACRO_37,    KC_PGUP,        ST_MACRO_38,    
-        _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,         
+        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ST_MACRO_20,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        _______,        ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_30,    _______,        _______,        ST_MACRO_31,
+        _______,        ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    _______,        _______,                 _______,        _______,        ST_MACRO_32,    _______,        ST_MACRO_33,    _______,        _______,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_34,    ST_MACRO_35,    ST_MACRO_36,    ST_MACRO_37,    KC_PGUP,        ST_MACRO_38,
+        _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_NUMPAD] = LAYOUT_moonlander(
-        RESET,          _______,        _______,        _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUMLOCK,     KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),          
-        _______,        _______,        _______,   KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,_______,        DT_PRNT,                 _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     _______,        
-        TG(_J1),        _______,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______,        DT_DOWN,                 _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     _______,        
-        TG(_J2),   TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, _______,                                                 _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    _______,        
-        AU_TOG,         MU_TOG,         MU_MOD,         _______,        _______,                        _______,                 _______,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    _______,        
+        RESET,          _______,        _______,        _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUMLOCK,     KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
+        _______,        _______,        _______,   KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,_______,        DT_PRNT,                 _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     _______,
+        TG(_J1),        _______,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______,        DT_DOWN,                 _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     _______,
+        TG(_J2),   TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, _______,                                                 _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    _______,
+        AU_TOG,         MU_TOG,         MU_MOD,         _______,        _______,                        _______,                 _______,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    _______,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_J1] = LAYOUT_moonlander(
@@ -326,18 +326,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_J2] = LAYOUT_moonlander(
         PLAY_SONG_62,   PLAY_SONG_63,   PLAY_SONG_64,   PLAY_SONG_65,   PLAY_SONG_66,   PLAY_SONG_67,   PLAY_SONG_68,   PLAY_SONG_69,            PLAY_SONG_70,   PLAY_SONG_71,   PLAY_SONG_72,   PLAY_SONG_73,   PLAY_SONG_74,   PLAY_SONG_75,
-        PLAY_SONG_76,   PLAY_SONG_77,   PLAY_SONG_78,   PLAY_SONG_79,   XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,     
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,     
-        _______,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,     
+        PLAY_SONG_76,   PLAY_SONG_77,   PLAY_SONG_78,   PLAY_SONG_79,   XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        _______,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        PLAY_JT,                 PLAY_ZELDA,                     XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
                                                                         XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX
     ),
     [_QWERTY] = LAYOUT_moonlander(
-        KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                XXXXXXX,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           _______,        
-        KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_BSLASH,               XXXXXXX,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_MINUS,       
-        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,       
-        KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                    KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,       
-        KC_LCTRL,       KC_LGUI,        KC_LALT,        XXXXXXX,        XXXXXXX,                        _______,                 _______,                        XXXXXXX,        KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,       
+        KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                XXXXXXX,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           _______,
+        KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_BSLASH,               XXXXXXX,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_MINUS,
+        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
+        KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                    KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
+        KC_LCTRL,       KC_LGUI,        KC_LALT,        XXXXXXX,        XXXXXXX,                        _______,                 _______,                        XXXXXXX,        KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     )
 };
