@@ -52,45 +52,45 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
-  ST_MACRO_2,
-  ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
-  ST_MACRO_9,
-  ST_MACRO_10,
-  ST_MACRO_11,
-  ST_MACRO_12,
-  ST_MACRO_13,
-  ST_MACRO_14,
-  ST_MACRO_15,
-  ST_MACRO_16,
-  ST_MACRO_17,
-  ST_MACRO_18,
-  ST_MACRO_19,
-  ST_MACRO_20,
-  ST_MACRO_21,
-  ST_MACRO_22,
-  ST_MACRO_23,
-  ST_MACRO_24,
-  ST_MACRO_25,
-  ST_MACRO_26,
-  ST_MACRO_27,
-  ST_MACRO_28,
-  ST_MACRO_29,
-  ST_MACRO_30,
-  ST_MACRO_31,
-  ST_MACRO_32,
-  ST_MACRO_33,
-  ST_MACRO_34,
-  ST_MACRO_35,
-  ST_MACRO_36,
-  ST_MACRO_37,
-  ST_MACRO_38,
+  EN_DASH_W,
+  EM_DASH_W,
+  INV_EXLM_W,
+  SUP_TWO_W,
+  SUP_N_W,
+  DEGREE_SIGN_W,
+  FULL_BLOCK_W,
+  FRAC_1_4_W,
+  FRAC_1_2_W,
+  FRAC_3_4_W,
+  TM_SIGN_W,
+  DAGGER_W,
+  PLUS_MINUS_W,
+  UP_ARROW_W,
+  INFINITY_W,
+  LEFT_ARROW_W,
+  DOWN_ARROW_W,
+  RIGHT_ARROW_W,
+  MIDDLE_DOT_W,
+  INV_QUES_W,
+  NOT_EQUAL_TO_M,
+  INV_EXLM_M,
+  SUP_TWO_M,
+  SUP_N_M,
+  DEGREE_SIGN_M,
+  FULL_BLOCK_M,
+  FRAC_1_4_M,
+  FRAC_1_2_M,
+  FRAC_3_4_M,
+  TM_SIGN_M,
+  DAGGER_M,
+  PLUS_MINUS_M,
+  UP_ARROW_M,
+  INFINITY_M,
+  LEFT_ARROW_M,
+  DOWN_ARROW_M,
+  RIGHT_ARROW_M,
+  MIDDLE_DOT_M,
+  INV_QUES_M,
   PLAY_ZELDA,
   PLAY_JT,
   PLAY_SONG_00,
@@ -283,8 +283,8 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _J1, _J2, 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WIN_BASE] = LAYOUT_moonlander(
-        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                ST_MACRO_0,     TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),
-        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               ST_MACRO_1,     KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,
+        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                EN_DASH_W,     TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),
+        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               EM_DASH_W,     KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,
         KC_TAB,         KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,
         KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                    KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
         KC_LCTRL,       CAPS_WORD,    LGUI(KC_PSCREEN), TG(_NUMPAD),    MO(_WIN_SYM),                   KC_LGUI,                 KC_CAPSLOCK,                    LGUI(KC_DOT),   KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,
@@ -300,17 +300,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
         _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                 _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_11,    BRACE_P,        BRACKET_P,      ST_MACRO_12,
-        _______,        ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     ST_MACRO_10,    _______,        _______,                 _______,        _______,        ST_MACRO_13,    _______,        ST_MACRO_14,    PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_15,    ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    KC_PGUP,        ST_MACRO_19,
+        GRAVE_P,        INV_EXLM_W,     SUP_TWO_W,     SUP_N_W,     DEGREE_SIGN_W,     FULL_BLOCK_W,     _______,                 _______,        KC_F11,         KC_F12,         DAGGER_W,    BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
+        _______,        FRAC_1_4_W,     FRAC_1_2_W,     FRAC_3_4_W,     TM_SIGN_W,    _______,        _______,                 _______,        _______,        UP_ARROW_W,    _______,        INFINITY_W,    PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_W,    DOWN_ARROW_W,    RIGHT_ARROW_W,    MIDDLE_DOT_W,    KC_PGUP,        INV_QUES_W,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
-        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ST_MACRO_20,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_30,    BRACE_P,        BRACKET_P,      ST_MACRO_31,
-        _______,        ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    _______,        _______,                 _______,        _______,        ST_MACRO_32,    _______,        ST_MACRO_33,    PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_34,    ST_MACRO_35,    ST_MACRO_36,    ST_MACRO_37,    KC_PGUP,        ST_MACRO_38,
+        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          NOT_EQUAL_TO_M,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        INV_EXLM_M,    SUP_TWO_M,    SUP_N_M,    DEGREE_SIGN_M,    FULL_BLOCK_M,    _______,                 _______,        KC_F11,         KC_F12,         DAGGER_M,    BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
+        _______,        FRAC_1_4_M,    FRAC_1_2_M,    FRAC_3_4_M,    TM_SIGN_M,    _______,        _______,                 _______,        _______,        UP_ARROW_M,    _______,        INFINITY_M,    PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_M,    DOWN_ARROW_M,    RIGHT_ARROW_M,    MIDDLE_DOT_M,    KC_PGUP,        INV_QUES_M,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
@@ -421,197 +421,197 @@ void rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case ST_MACRO_0:
+        case EN_DASH_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_0)));
             }
             break;
-        case ST_MACRO_1:
+        case EM_DASH_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_1)));
             }
             break;
-        case ST_MACRO_2:
+        case INV_EXLM_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_6) SS_TAP(X_KP_1)));
             }
             break;
-        case ST_MACRO_3:
+        case SUP_TWO_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_3)));
             }
             break;
-        case ST_MACRO_4:
+        case SUP_N_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_2)));
             }
             break;
-        case ST_MACRO_5:
+        case DEGREE_SIGN_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_7) SS_TAP(X_KP_6)));
             }
             break;
-        case ST_MACRO_6:
+        case FULL_BLOCK_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_9)));
             }
             break;
-        case ST_MACRO_7:
+        case FRAC_1_4_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_8)));
             }
             break;
-        case ST_MACRO_8:
+        case FRAC_1_2_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_9)));
             }
             break;
-        case ST_MACRO_9:
+        case FRAC_3_4_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_0)));
             }
             break;
-        case ST_MACRO_10:
+        case TM_SIGN_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_3)));
             }
             break;
-        case ST_MACRO_11:
+        case DAGGER_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_3) SS_TAP(X_KP_4)));
             }
             break;
-        case ST_MACRO_12:
+        case PLUS_MINUS_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_7) SS_TAP(X_KP_7)));
             }
             break;
-        case ST_MACRO_13:
+        case UP_ARROW_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_4)));
             }
             break;
-        case ST_MACRO_14:
+        case INFINITY_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_3) SS_TAP(X_KP_6)));
             }
             break;
-        case ST_MACRO_15:
+        case LEFT_ARROW_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_7)));
             }
             break;
-        case ST_MACRO_16:
+        case DOWN_ARROW_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5)));
             }
             break;
-        case ST_MACRO_17:
+        case RIGHT_ARROW_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_6)));
             }
             break;
-        case ST_MACRO_18:
+        case MIDDLE_DOT_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_3)));
             }
             break;
-        case ST_MACRO_19:
+        case INV_QUES_W:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_1)));
             }
             break;
-        case ST_MACRO_20:
+        case NOT_EQUAL_TO_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_2) SS_TAP(X_6) SS_TAP(X_0)));
             }
             break;
-        case ST_MACRO_21:
+        case INV_EXLM_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_A) SS_TAP(X_1)));
             }
             break;
-        case ST_MACRO_22:
+        case SUP_TWO_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_2)));
             }
             break;
-        case ST_MACRO_23:
+        case SUP_N_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_0) SS_TAP(X_7) SS_TAP(X_F)));
             }
             break;
-        case ST_MACRO_24:
+        case DEGREE_SIGN_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_0)));
             }
             break;
-        case ST_MACRO_25:
+        case FULL_BLOCK_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_5) SS_TAP(X_8) SS_TAP(X_8)));
             }
             break;
-        case ST_MACRO_26:
+        case FRAC_1_4_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_C)));
             }
             break;
-        case ST_MACRO_27:
+        case FRAC_1_2_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_D)));
             }
             break;
-        case ST_MACRO_28:
+        case FRAC_3_4_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_E)));
             }
             break;
-        case ST_MACRO_29:
+        case TM_SIGN_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_2) SS_TAP(X_2)));
             }
             break;
-        case ST_MACRO_30:
+        case DAGGER_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_0) SS_TAP(X_2) SS_TAP(X_0)));
             }
             break;
-        case ST_MACRO_31:
+        case PLUS_MINUS_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_1)));
             }
             break;
-        case ST_MACRO_32:
+        case UP_ARROW_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_1)));
             }
             break;
-        case ST_MACRO_33:
+        case INFINITY_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_E)));
             }
             break;
-        case ST_MACRO_34:
+        case LEFT_ARROW_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_0)));
             }
             break;
-        case ST_MACRO_35:
+        case DOWN_ARROW_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_3)));
             }
             break;
-        case ST_MACRO_36:
+        case RIGHT_ARROW_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_2)));
             }
             break;
-        case ST_MACRO_37:
+        case MIDDLE_DOT_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_7)));
             }
             break;
-        case ST_MACRO_38:
+        case INV_QUES_M:
             if (record->event.pressed) {
                 SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_F)));
             }
