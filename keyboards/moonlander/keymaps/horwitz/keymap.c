@@ -173,11 +173,11 @@ enum custom_keycodes {
   PLAY_SONG_77,
   PLAY_SONG_78,
   PLAY_SONG_79,
-  PAREN_M,
-  BRACKET_M,
-  BRACE_M,
-  QUOTE_M,
-  GRAVE_M
+  PAREN_P,
+  BRACKET_P,
+  BRACE_P,
+  QUOTE_P,
+  GRAVE_P
 };
 
 
@@ -300,16 +300,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
         _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                 _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_M,        ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_11,    BRACE_M,        BRACKET_M,      ST_MACRO_12,
-        _______,        ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     ST_MACRO_10,    _______,        _______,                 _______,        _______,        ST_MACRO_13,    _______,        ST_MACRO_14,    PAREN_M,        QUOTE_M,
+        GRAVE_P,        ST_MACRO_2,     ST_MACRO_3,     ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_11,    BRACE_P,        BRACKET_P,      ST_MACRO_12,
+        _______,        ST_MACRO_7,     ST_MACRO_8,     ST_MACRO_9,     ST_MACRO_10,    _______,        _______,                 _______,        _______,        ST_MACRO_13,    _______,        ST_MACRO_14,    PAREN_P,        QUOTE_P,
         _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_15,    ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    KC_PGUP,        ST_MACRO_19,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
         _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ST_MACRO_20,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_M,        ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_30,    BRACE_M,        BRACKET_M,      ST_MACRO_31,
-        _______,        ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    _______,        _______,                 _______,        _______,        ST_MACRO_32,    _______,        ST_MACRO_33,    PAREN_M,        QUOTE_M,
+        GRAVE_P,        ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    _______,                 _______,        KC_F11,         KC_F12,         ST_MACRO_30,    BRACE_P,        BRACKET_P,      ST_MACRO_31,
+        _______,        ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    _______,        _______,                 _______,        _______,        ST_MACRO_32,    _______,        ST_MACRO_33,    PAREN_P,        QUOTE_P,
         _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                ST_MACRO_34,    ST_MACRO_35,    ST_MACRO_36,    ST_MACRO_37,    KC_PGUP,        ST_MACRO_38,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
@@ -1110,31 +1110,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case PAREN_M:
+        case PAREN_P:
             if (record->event.pressed) {
                 SEND_STRING("()" SS_TAP(X_LEFT));
             }
             return false;
 
-        case BRACKET_M:
+        case BRACKET_P:
             if (record->event.pressed) {
                 SEND_STRING("[]" SS_TAP(X_LEFT));
             }
             return false;
 
-        case BRACE_M:
+        case BRACE_P:
             if (record->event.pressed) {
                 SEND_STRING("{}" SS_TAP(X_LEFT));
             }
             return false;
 
-        case QUOTE_M:
+        case QUOTE_P:
             if (record->event.pressed) {
                 SEND_STRING("\"\"" SS_TAP(X_LEFT));
             }
             return false;
 
-        case GRAVE_M:
+        case GRAVE_P:
             if (record->event.pressed) {
                 SEND_STRING("``" SS_TAP(X_LEFT));
             }
