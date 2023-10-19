@@ -617,540 +617,540 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-    case PLAY_ZELDA:
-        if (record->event.pressed) {
-            PLAY_SONG(zelda_uncover_secret);
-        }
-        return false;
-
-    case PLAY_JT:
-        if (record->event.pressed) {
-            PLAY_SONG(johnnys_theme);
-        }
-        return false;
-
-
-    case PLAY_SONG_00:
-        if (record->event.pressed) {
-            PLAY_SONG(ode_to_joy);
-        }
-        return false;
-
-    case PLAY_SONG_01:
-        if (record->event.pressed) {
-            PLAY_SONG(rock_a_bye_baby);
-        }
-        return false;
-
-    case PLAY_SONG_02:
-        if (record->event.pressed) {
-            PLAY_SONG(clueboard_sound);
-        }
-        return false;
-
-    case PLAY_SONG_03:
-        if (record->event.pressed) {
-            PLAY_SONG(startup_sound);
-        }
-        return false;
-
-    case PLAY_SONG_04:
-        if (record->event.pressed) {
-            PLAY_SONG(goodbye_sound);
-        }
-        return false;
-
-    case PLAY_SONG_05:
-        if (record->event.pressed) {
-            PLAY_SONG(planck_sound);
-        }
-        return false;
-
-    case PLAY_SONG_06:
-        if (record->event.pressed) {
-            PLAY_SONG(preonic_sound);
-        }
-        return false;
-
-    case PLAY_SONG_07:
-        if (record->event.pressed) {
-            PLAY_SONG(qwerty_sound);
-        }
-        return false;
-
-    case PLAY_SONG_08:
-        if (record->event.pressed) {
-            PLAY_SONG(colemak_sound);
-        }
-        return false;
-
-    case PLAY_SONG_09:
-        if (record->event.pressed) {
-            PLAY_SONG(dvorak_sound);
-        }
-        return false;
-
-    case PLAY_SONG_10:
-        if (record->event.pressed) {
-            PLAY_SONG(workman_sound);
-        }
-        return false;
-
-    case PLAY_SONG_11:
-        if (record->event.pressed) {
-            PLAY_SONG(plover_sound);
-        }
-        return false;
-
-    case PLAY_SONG_12:
-        if (record->event.pressed) {
-            PLAY_SONG(plover_goodbye_sound);
-        }
-        return false;
-
-    case PLAY_SONG_13:
-        if (record->event.pressed) {
-            PLAY_SONG(music_on_sound);
-        }
-        return false;
-
-    case PLAY_SONG_14:
-        if (record->event.pressed) {
-            PLAY_SONG(audio_on_sound);
-        }
-        return false;
-
-    case PLAY_SONG_15:
-        if (record->event.pressed) {
-            PLAY_SONG(audio_off_sound);
-        }
-        return false;
-
-    case PLAY_SONG_16:
-        if (record->event.pressed) {
-            PLAY_SONG(music_scale_sound);
-        }
-        return false;
-
-    case PLAY_SONG_17:
-        if (record->event.pressed) {
-            PLAY_SONG(music_off_sound);
-        }
-        return false;
-
-    case PLAY_SONG_18:
-        if (record->event.pressed) {
-            PLAY_SONG(voice_change_sound);
-        }
-        return false;
-
-    case PLAY_SONG_19:
-        if (record->event.pressed) {
-            PLAY_SONG(chromatic_sound);
-        }
-        return false;
-
-    case PLAY_SONG_20:
-        if (record->event.pressed) {
-            PLAY_SONG(major_sound);
-        }
-        return false;
-
-    case PLAY_SONG_21:
-        if (record->event.pressed) {
-            PLAY_SONG(minor_sound);
-        }
-        return false;
-
-    case PLAY_SONG_22:
-        if (record->event.pressed) {
-            PLAY_SONG(guitar_sound);
-        }
-        return false;
-
-    case PLAY_SONG_23:
-        if (record->event.pressed) {
-            PLAY_SONG(violin_sound);
-        }
-        return false;
-
-    case PLAY_SONG_24:
-        if (record->event.pressed) {
-            PLAY_SONG(caps_lock_on_sound);
-        }
-        return false;
-
-    case PLAY_SONG_25:
-        if (record->event.pressed) {
-            PLAY_SONG(caps_lock_off_sound);
-        }
-        return false;
-
-    case PLAY_SONG_26:
-        if (record->event.pressed) {
-            PLAY_SONG(scroll_lock_on_sound);
-        }
-        return false;
-
-    case PLAY_SONG_27:
-        if (record->event.pressed) {
-            PLAY_SONG(scroll_lock_off_sound);
-        }
-        return false;
-
-    case PLAY_SONG_28:
-        if (record->event.pressed) {
-            PLAY_SONG(num_lock_on_sound);
-        }
-        return false;
-
-    case PLAY_SONG_29:
-        if (record->event.pressed) {
-            PLAY_SONG(num_lock_off_sound);
-        }
-        return false;
-
-    case PLAY_SONG_30:
-        if (record->event.pressed) {
-            PLAY_SONG(ag_norm_sound);
-        }
-        return false;
-
-    case PLAY_SONG_31:
-        if (record->event.pressed) {
-            PLAY_SONG(ag_swap_sound);
-        }
-        return false;
-
-    case PLAY_SONG_32:
-        if (record->event.pressed) {
-            PLAY_SONG(unicode_windows);
-        }
-        return false;
-
-    case PLAY_SONG_33:
-        if (record->event.pressed) {
-            PLAY_SONG(unicode_linux);
-        }
-        return false;
-
-    case PLAY_SONG_34:
-        if (record->event.pressed) {
-            PLAY_SONG(terminal_sound);
-        }
-        return false;
-
-    case PLAY_SONG_35:
-        if (record->event.pressed) {
-            PLAY_SONG(campanella);
-        }
-        return false;
-
-    case PLAY_SONG_36:
-        if (record->event.pressed) {
-            PLAY_SONG(fantasie_impromptu);
-        }
-        return false;
-
-    case PLAY_SONG_37:
-        if (record->event.pressed) {
-            PLAY_SONG(nocturne_op_9_no_1);
-        }
-        return false;
-
-    case PLAY_SONG_38:
-        if (record->event.pressed) {
-            PLAY_SONG(ussr_anthem);
-        }
-        return false;
-
-    case PLAY_SONG_39:
-        if (record->event.pressed) {
-            PLAY_SONG(tos_hymn_risen);
-        }
-        return false;
-
-    case PLAY_SONG_40:
-        if (record->event.pressed) {
-            PLAY_SONG(close_encounters_5_note);
-        }
-        return false;
-
-    case PLAY_SONG_41:
-        if (record->event.pressed) {
-            PLAY_SONG(doe_a_deer);
-        }
-        return false;
-
-    case PLAY_SONG_42:
-        if (record->event.pressed) {
-            PLAY_SONG(in_like_flint);
-        }
-        return false;
-
-    case PLAY_SONG_43:
-        if (record->event.pressed) {
-            PLAY_SONG(imperial_march);
-        }
-        return false;
-
-    case PLAY_SONG_44:
-        if (record->event.pressed) {
-            PLAY_SONG(basket_case);
-        }
-        return false;
-
-    case PLAY_SONG_45:
-        if (record->event.pressed) {
-            PLAY_SONG(coin_sound);
-        }
-        return false;
-
-    case PLAY_SONG_46:
-        if (record->event.pressed) {
-            PLAY_SONG(one_up_sound);
-        }
-        return false;
-
-    case PLAY_SONG_47:
-        if (record->event.pressed) {
-            PLAY_SONG(sonic_ring);
-        }
-        return false;
-
-    case PLAY_SONG_48:
-        if (record->event.pressed) {
-            PLAY_SONG(zelda_puzzle);
-        }
-        return false;
-
-    case PLAY_SONG_49:
-        if (record->event.pressed) {
-            PLAY_SONG(zelda_treasure);
-        }
-        return false;
-
-    case PLAY_SONG_50:
-        if (record->event.pressed) {
-            PLAY_SONG(overwatch_theme);
-        }
-        return false;
-
-    case PLAY_SONG_51:
-        if (record->event.pressed) {
-            PLAY_SONG(mario_theme);
-        }
-        return false;
-
-    case PLAY_SONG_52:
-        if (record->event.pressed) {
-            PLAY_SONG(mario_gameover);
-        }
-        return false;
-
-    case PLAY_SONG_53:
-        if (record->event.pressed) {
-            PLAY_SONG(mario_mushroom);
-        }
-        return false;
-
-    case PLAY_SONG_54:
-        if (record->event.pressed) {
-            PLAY_SONG(e1m1_doom);
-        }
-        return false;
-
-    case PLAY_SONG_55:
-        if (record->event.pressed) {
-            PLAY_SONG(disney_song);
-        }
-        return false;
-
-    case PLAY_SONG_56:
-        if (record->event.pressed) {
-            PLAY_SONG(number_one);
-        }
-        return false;
-
-    case PLAY_SONG_57:
-        if (record->event.pressed) {
-            PLAY_SONG(cabbage_song);
-        }
-        return false;
-
-    case PLAY_SONG_58:
-        if (record->event.pressed) {
-            PLAY_SONG(old_spice);
-        }
-        return false;
-
-    case PLAY_SONG_59:
-        if (record->event.pressed) {
-            PLAY_SONG(victory_fanfare_short);
-        }
-        return false;
-
-    case PLAY_SONG_60:
-        if (record->event.pressed) {
-            PLAY_SONG(all_star);
-        }
-        return false;
-
-    case PLAY_SONG_61:
-        if (record->event.pressed) {
-            PLAY_SONG(rick_roll);
-        }
-        return false;
-
-    case PLAY_SONG_62:
-        if (record->event.pressed) {
-            PLAY_SONG(ff_prelude);
-        }
-        return false;
-
-    case PLAY_SONG_63:
-        if (record->event.pressed) {
-            PLAY_SONG(to_boldly_go);
-        }
-        return false;
-
-    case PLAY_SONG_64:
-        if (record->event.pressed) {
-            PLAY_SONG(kataware_doki);
-        }
-        return false;
-
-    case PLAY_SONG_65:
-        if (record->event.pressed) {
-            PLAY_SONG(megalovania);
-        }
-        return false;
-
-    case PLAY_SONG_66:
-        if (record->event.pressed) {
-            PLAY_SONG(michishirube);
-        }
-        return false;
-
-    case PLAY_SONG_67:
-        if (record->event.pressed) {
-            PLAY_SONG(liebesleid);
-        }
-        return false;
-
-    case PLAY_SONG_68:
-        if (record->event.pressed) {
-            PLAY_SONG(melodies_of_life);
-        }
-        return false;
-
-    case PLAY_SONG_69:
-        if (record->event.pressed) {
-            PLAY_SONG(eyes_on_me);
-        }
-        return false;
-
-    case PLAY_SONG_70:
-        if (record->event.pressed) {
-            PLAY_SONG(song_of_the_ancients);
-        }
-        return false;
-
-    case PLAY_SONG_71:
-        if (record->event.pressed) {
-            PLAY_SONG(nier_amusement_park);
-        }
-        return false;
-
-    case PLAY_SONG_72:
-        if (record->event.pressed) {
-            PLAY_SONG(copied_city);
-        }
-        return false;
-
-    case PLAY_SONG_73:
-        if (record->event.pressed) {
-            PLAY_SONG(vague_hope_cold_rain);
-        }
-        return false;
-
-    case PLAY_SONG_74:
-        if (record->event.pressed) {
-            PLAY_SONG(kaine_salvation);
-        }
-        return false;
-
-    case PLAY_SONG_75:
-        if (record->event.pressed) {
-            PLAY_SONG(weight_of_the_world);
-        }
-        return false;
-
-    case PLAY_SONG_76:
-        if (record->event.pressed) {
-            PLAY_SONG(isabellas_lullaby);
-        }
-        return false;
-
-    case PLAY_SONG_77:
-        if (record->event.pressed) {
-            PLAY_SONG(terras_theme);
-        }
-        return false;
-
-    case PLAY_SONG_78:
-        if (record->event.pressed) {
-            PLAY_SONG(renai_circulation);
-        }
-        return false;
-
-    case PLAY_SONG_79:
-        if (record->event.pressed) {
-            PLAY_SONG(platinum_disco);
-        }
-        return false;
-
-    case PAREN_M:
-        if (record->event.pressed) {
-            SEND_STRING("()" SS_TAP(X_LEFT));
-        }
-        return false;
-
-    case BRACKET_M:
-        if (record->event.pressed) {
-            SEND_STRING("[]" SS_TAP(X_LEFT));
-        }
-        return false;
-
-    case BRACE_M:
-        if (record->event.pressed) {
-            SEND_STRING("{}" SS_TAP(X_LEFT));
-        }
-        return false;
-
-    case QUOTE_M:
-        if (record->event.pressed) {
-            SEND_STRING("\"\"" SS_TAP(X_LEFT));
-        }
-        return false;
-
-    case GRAVE_M:
-        if (record->event.pressed) {
-            SEND_STRING("``" SS_TAP(X_LEFT));
-        }
-        return false;
-
-    case RGB_SLD:
-        if (rawhid_state.rgb_control) {
+        case PLAY_ZELDA:
+            if (record->event.pressed) {
+                PLAY_SONG(zelda_uncover_secret);
+            }
             return false;
-        }
-        if (record->event.pressed) {
-            rgblight_mode(1);
-        }
-        return false;
-  }
 
-  return true;
+        case PLAY_JT:
+            if (record->event.pressed) {
+                PLAY_SONG(johnnys_theme);
+            }
+            return false;
+
+
+        case PLAY_SONG_00:
+            if (record->event.pressed) {
+                PLAY_SONG(ode_to_joy);
+            }
+            return false;
+
+        case PLAY_SONG_01:
+            if (record->event.pressed) {
+                PLAY_SONG(rock_a_bye_baby);
+            }
+            return false;
+
+        case PLAY_SONG_02:
+            if (record->event.pressed) {
+                PLAY_SONG(clueboard_sound);
+            }
+            return false;
+
+        case PLAY_SONG_03:
+            if (record->event.pressed) {
+                PLAY_SONG(startup_sound);
+            }
+            return false;
+
+        case PLAY_SONG_04:
+            if (record->event.pressed) {
+                PLAY_SONG(goodbye_sound);
+            }
+            return false;
+
+        case PLAY_SONG_05:
+            if (record->event.pressed) {
+                PLAY_SONG(planck_sound);
+            }
+            return false;
+
+        case PLAY_SONG_06:
+            if (record->event.pressed) {
+                PLAY_SONG(preonic_sound);
+            }
+            return false;
+
+        case PLAY_SONG_07:
+            if (record->event.pressed) {
+                PLAY_SONG(qwerty_sound);
+            }
+            return false;
+
+        case PLAY_SONG_08:
+            if (record->event.pressed) {
+                PLAY_SONG(colemak_sound);
+            }
+            return false;
+
+        case PLAY_SONG_09:
+            if (record->event.pressed) {
+                PLAY_SONG(dvorak_sound);
+            }
+            return false;
+
+        case PLAY_SONG_10:
+            if (record->event.pressed) {
+                PLAY_SONG(workman_sound);
+            }
+            return false;
+
+        case PLAY_SONG_11:
+            if (record->event.pressed) {
+                PLAY_SONG(plover_sound);
+            }
+            return false;
+
+        case PLAY_SONG_12:
+            if (record->event.pressed) {
+                PLAY_SONG(plover_goodbye_sound);
+            }
+            return false;
+
+        case PLAY_SONG_13:
+            if (record->event.pressed) {
+                PLAY_SONG(music_on_sound);
+            }
+            return false;
+
+        case PLAY_SONG_14:
+            if (record->event.pressed) {
+                PLAY_SONG(audio_on_sound);
+            }
+            return false;
+
+        case PLAY_SONG_15:
+            if (record->event.pressed) {
+                PLAY_SONG(audio_off_sound);
+            }
+            return false;
+
+        case PLAY_SONG_16:
+            if (record->event.pressed) {
+                PLAY_SONG(music_scale_sound);
+            }
+            return false;
+
+        case PLAY_SONG_17:
+            if (record->event.pressed) {
+                PLAY_SONG(music_off_sound);
+            }
+            return false;
+
+        case PLAY_SONG_18:
+            if (record->event.pressed) {
+                PLAY_SONG(voice_change_sound);
+            }
+            return false;
+
+        case PLAY_SONG_19:
+            if (record->event.pressed) {
+                PLAY_SONG(chromatic_sound);
+            }
+            return false;
+
+        case PLAY_SONG_20:
+            if (record->event.pressed) {
+                PLAY_SONG(major_sound);
+            }
+            return false;
+
+        case PLAY_SONG_21:
+            if (record->event.pressed) {
+                PLAY_SONG(minor_sound);
+            }
+            return false;
+
+        case PLAY_SONG_22:
+            if (record->event.pressed) {
+                PLAY_SONG(guitar_sound);
+            }
+            return false;
+
+        case PLAY_SONG_23:
+            if (record->event.pressed) {
+                PLAY_SONG(violin_sound);
+            }
+            return false;
+
+        case PLAY_SONG_24:
+            if (record->event.pressed) {
+                PLAY_SONG(caps_lock_on_sound);
+            }
+            return false;
+
+        case PLAY_SONG_25:
+            if (record->event.pressed) {
+                PLAY_SONG(caps_lock_off_sound);
+            }
+            return false;
+
+        case PLAY_SONG_26:
+            if (record->event.pressed) {
+                PLAY_SONG(scroll_lock_on_sound);
+            }
+            return false;
+
+        case PLAY_SONG_27:
+            if (record->event.pressed) {
+                PLAY_SONG(scroll_lock_off_sound);
+            }
+            return false;
+
+        case PLAY_SONG_28:
+            if (record->event.pressed) {
+                PLAY_SONG(num_lock_on_sound);
+            }
+            return false;
+
+        case PLAY_SONG_29:
+            if (record->event.pressed) {
+                PLAY_SONG(num_lock_off_sound);
+            }
+            return false;
+
+        case PLAY_SONG_30:
+            if (record->event.pressed) {
+                PLAY_SONG(ag_norm_sound);
+            }
+            return false;
+
+        case PLAY_SONG_31:
+            if (record->event.pressed) {
+                PLAY_SONG(ag_swap_sound);
+            }
+            return false;
+
+        case PLAY_SONG_32:
+            if (record->event.pressed) {
+                PLAY_SONG(unicode_windows);
+            }
+            return false;
+
+        case PLAY_SONG_33:
+            if (record->event.pressed) {
+                PLAY_SONG(unicode_linux);
+            }
+            return false;
+
+        case PLAY_SONG_34:
+            if (record->event.pressed) {
+                PLAY_SONG(terminal_sound);
+            }
+            return false;
+
+        case PLAY_SONG_35:
+            if (record->event.pressed) {
+                PLAY_SONG(campanella);
+            }
+            return false;
+
+        case PLAY_SONG_36:
+            if (record->event.pressed) {
+                PLAY_SONG(fantasie_impromptu);
+            }
+            return false;
+
+        case PLAY_SONG_37:
+            if (record->event.pressed) {
+                PLAY_SONG(nocturne_op_9_no_1);
+            }
+            return false;
+
+        case PLAY_SONG_38:
+            if (record->event.pressed) {
+                PLAY_SONG(ussr_anthem);
+            }
+            return false;
+
+        case PLAY_SONG_39:
+            if (record->event.pressed) {
+                PLAY_SONG(tos_hymn_risen);
+            }
+            return false;
+
+        case PLAY_SONG_40:
+            if (record->event.pressed) {
+                PLAY_SONG(close_encounters_5_note);
+            }
+            return false;
+
+        case PLAY_SONG_41:
+            if (record->event.pressed) {
+                PLAY_SONG(doe_a_deer);
+            }
+            return false;
+
+        case PLAY_SONG_42:
+            if (record->event.pressed) {
+                PLAY_SONG(in_like_flint);
+            }
+            return false;
+
+        case PLAY_SONG_43:
+            if (record->event.pressed) {
+                PLAY_SONG(imperial_march);
+            }
+            return false;
+
+        case PLAY_SONG_44:
+            if (record->event.pressed) {
+                PLAY_SONG(basket_case);
+            }
+            return false;
+
+        case PLAY_SONG_45:
+            if (record->event.pressed) {
+                PLAY_SONG(coin_sound);
+            }
+            return false;
+
+        case PLAY_SONG_46:
+            if (record->event.pressed) {
+                PLAY_SONG(one_up_sound);
+            }
+            return false;
+
+        case PLAY_SONG_47:
+            if (record->event.pressed) {
+                PLAY_SONG(sonic_ring);
+            }
+            return false;
+
+        case PLAY_SONG_48:
+            if (record->event.pressed) {
+                PLAY_SONG(zelda_puzzle);
+            }
+            return false;
+
+        case PLAY_SONG_49:
+            if (record->event.pressed) {
+                PLAY_SONG(zelda_treasure);
+            }
+            return false;
+
+        case PLAY_SONG_50:
+            if (record->event.pressed) {
+                PLAY_SONG(overwatch_theme);
+            }
+            return false;
+
+        case PLAY_SONG_51:
+            if (record->event.pressed) {
+                PLAY_SONG(mario_theme);
+            }
+            return false;
+
+        case PLAY_SONG_52:
+            if (record->event.pressed) {
+                PLAY_SONG(mario_gameover);
+            }
+            return false;
+
+        case PLAY_SONG_53:
+            if (record->event.pressed) {
+                PLAY_SONG(mario_mushroom);
+            }
+            return false;
+
+        case PLAY_SONG_54:
+            if (record->event.pressed) {
+                PLAY_SONG(e1m1_doom);
+            }
+            return false;
+
+        case PLAY_SONG_55:
+            if (record->event.pressed) {
+                PLAY_SONG(disney_song);
+            }
+            return false;
+
+        case PLAY_SONG_56:
+            if (record->event.pressed) {
+                PLAY_SONG(number_one);
+            }
+            return false;
+
+        case PLAY_SONG_57:
+            if (record->event.pressed) {
+                PLAY_SONG(cabbage_song);
+            }
+            return false;
+
+        case PLAY_SONG_58:
+            if (record->event.pressed) {
+                PLAY_SONG(old_spice);
+            }
+            return false;
+
+        case PLAY_SONG_59:
+            if (record->event.pressed) {
+                PLAY_SONG(victory_fanfare_short);
+            }
+            return false;
+
+        case PLAY_SONG_60:
+            if (record->event.pressed) {
+                PLAY_SONG(all_star);
+            }
+            return false;
+
+        case PLAY_SONG_61:
+            if (record->event.pressed) {
+                PLAY_SONG(rick_roll);
+            }
+            return false;
+
+        case PLAY_SONG_62:
+            if (record->event.pressed) {
+                PLAY_SONG(ff_prelude);
+            }
+            return false;
+
+        case PLAY_SONG_63:
+            if (record->event.pressed) {
+                PLAY_SONG(to_boldly_go);
+            }
+            return false;
+
+        case PLAY_SONG_64:
+            if (record->event.pressed) {
+                PLAY_SONG(kataware_doki);
+            }
+            return false;
+
+        case PLAY_SONG_65:
+            if (record->event.pressed) {
+                PLAY_SONG(megalovania);
+            }
+            return false;
+
+        case PLAY_SONG_66:
+            if (record->event.pressed) {
+                PLAY_SONG(michishirube);
+            }
+            return false;
+
+        case PLAY_SONG_67:
+            if (record->event.pressed) {
+                PLAY_SONG(liebesleid);
+            }
+            return false;
+
+        case PLAY_SONG_68:
+            if (record->event.pressed) {
+                PLAY_SONG(melodies_of_life);
+            }
+            return false;
+
+        case PLAY_SONG_69:
+            if (record->event.pressed) {
+                PLAY_SONG(eyes_on_me);
+            }
+            return false;
+
+        case PLAY_SONG_70:
+            if (record->event.pressed) {
+                PLAY_SONG(song_of_the_ancients);
+            }
+            return false;
+
+        case PLAY_SONG_71:
+            if (record->event.pressed) {
+                PLAY_SONG(nier_amusement_park);
+            }
+            return false;
+
+        case PLAY_SONG_72:
+            if (record->event.pressed) {
+                PLAY_SONG(copied_city);
+            }
+            return false;
+
+        case PLAY_SONG_73:
+            if (record->event.pressed) {
+                PLAY_SONG(vague_hope_cold_rain);
+            }
+            return false;
+
+        case PLAY_SONG_74:
+            if (record->event.pressed) {
+                PLAY_SONG(kaine_salvation);
+            }
+            return false;
+
+        case PLAY_SONG_75:
+            if (record->event.pressed) {
+                PLAY_SONG(weight_of_the_world);
+            }
+            return false;
+
+        case PLAY_SONG_76:
+            if (record->event.pressed) {
+                PLAY_SONG(isabellas_lullaby);
+            }
+            return false;
+
+        case PLAY_SONG_77:
+            if (record->event.pressed) {
+                PLAY_SONG(terras_theme);
+            }
+            return false;
+
+        case PLAY_SONG_78:
+            if (record->event.pressed) {
+                PLAY_SONG(renai_circulation);
+            }
+            return false;
+
+        case PLAY_SONG_79:
+            if (record->event.pressed) {
+                PLAY_SONG(platinum_disco);
+            }
+            return false;
+
+        case PAREN_M:
+            if (record->event.pressed) {
+                SEND_STRING("()" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case BRACKET_M:
+            if (record->event.pressed) {
+                SEND_STRING("[]" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case BRACE_M:
+            if (record->event.pressed) {
+                SEND_STRING("{}" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case QUOTE_M:
+            if (record->event.pressed) {
+                SEND_STRING("\"\"" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case GRAVE_M:
+            if (record->event.pressed) {
+                SEND_STRING("``" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case RGB_SLD:
+            if (rawhid_state.rgb_control) {
+                return false;
+            }
+            if (record->event.pressed) {
+                rgblight_mode(1);
+            }
+            return false;
+    }
+
+    return true;
 }
 
 
