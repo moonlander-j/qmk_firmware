@@ -404,7 +404,7 @@ void set_layer_color(int layer) {
             .v = pgm_read_byte(&ledmap[layer][i][2])
         };
         if (!hsv.h && !hsv.s && !hsv.v) {
-            rgb_matrix_set_color(i, 0, 0, 0);
+            rgb_matrix_set_color(i, RGB_BLACK);
         } else {
             RGB rgb = hsv_to_rgb(hsv);
             float f = (float) rgb_matrix_config.hsv.v / UINT8_MAX;
