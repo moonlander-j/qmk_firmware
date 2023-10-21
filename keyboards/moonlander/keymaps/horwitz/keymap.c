@@ -283,8 +283,8 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _J1, _J2, 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WIN_BASE] = LAYOUT_moonlander(
-        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                EN_DASH_W,     TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),
-        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               EM_DASH_W,     KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,
+        KC_ESCAPE,      TD(DANCE_0),    TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    TD(DANCE_4),    KC_EQUAL,                EN_DASH_W,      TD(DANCE_5),    TD(DANCE_6),    TD(DANCE_7),    TD(DANCE_8),    TD(DANCE_9),    TG(_MAC_BASE),
+        KC_GRAVE,       KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_BSLASH,               EM_DASH_W,      KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_MINUS,
         KC_TAB,         KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LBRACKET,             KC_RBRACKET,    KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,
         KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                    KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
         KC_LCTRL,       CAPS_WORD,    LGUI(KC_PSCREEN), TG(_NUMPAD),    MO(_WIN_SYM),                   KC_LGUI,                 KC_CAPSLOCK,                    LGUI(KC_DOT),   KC_RCTRL,       KC_LEFT,        KC_DOWN,        KC_RIGHT,
@@ -300,17 +300,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
         _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                 _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        INV_EXLM_W,     SUP_TWO_W,     SUP_N_W,     DEGREE_SIGN_W,     FULL_BLOCK_W,     _______,                 _______,        KC_F11,         KC_F12,         DAGGER_W,    BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
-        _______,        FRAC_1_4_W,     FRAC_1_2_W,     FRAC_3_4_W,     TM_SIGN_W,    _______,        _______,                 _______,        _______,        UP_ARROW_W,    _______,        INFINITY_W,    PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_W,    DOWN_ARROW_W,    RIGHT_ARROW_W,    MIDDLE_DOT_W,    KC_PGUP,        INV_QUES_W,
+        GRAVE_P,        INV_EXLM_W,     SUP_TWO_W,      SUP_N_W,        DEGREE_SIGN_W,  FULL_BLOCK_W,   _______,                 _______,        KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
+        _______,        FRAC_1_4_W,     FRAC_1_2_W,     FRAC_3_4_W,     TM_SIGN_W,      _______,        _______,                 _______,        _______,        UP_ARROW_W,     _______,        INFINITY_W,     PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
-        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          NOT_EQUAL_TO_M,             _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        INV_EXLM_M,    SUP_TWO_M,    SUP_N_M,    DEGREE_SIGN_M,    FULL_BLOCK_M,    _______,                 _______,        KC_F11,         KC_F12,         DAGGER_M,    BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
-        _______,        FRAC_1_4_M,    FRAC_1_2_M,    FRAC_3_4_M,    TM_SIGN_M,    _______,        _______,                 _______,        _______,        UP_ARROW_M,    _______,        INFINITY_M,    PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_M,    DOWN_ARROW_M,    RIGHT_ARROW_M,    MIDDLE_DOT_M,    KC_PGUP,        INV_QUES_M,
+        _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          NOT_EQUAL_TO_M,          _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        INV_EXLM_M,     SUP_TWO_M,      SUP_N_M,        DEGREE_SIGN_M,  FULL_BLOCK_M,   _______,                 _______,        KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
+        _______,        FRAC_1_4_M,     FRAC_1_2_M,     FRAC_3_4_M,     TM_SIGN_M,      _______,        _______,                 _______,        _______,        UP_ARROW_M,     _______,        INFINITY_M,     PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       KC_ASTR,        KC_SLASH,       KC_EQUAL,                                                LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
         _______,        _______,        _______,        _______,        _______,                        _______,                 _______,                        _______,        _______,        KC_HOME,        KC_PGDOWN,      KC_END,
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
@@ -327,11 +327,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         PLAY_SONG_14,   PLAY_SONG_15,   PLAY_SONG_16,   PLAY_SONG_17,   PLAY_SONG_18,   PLAY_SONG_19,   PLAY_SONG_20,            PLAY_SONG_21,   PLAY_SONG_22,   PLAY_SONG_23,   PLAY_SONG_24,   PLAY_SONG_25,   PLAY_SONG_26,   PLAY_SONG_27,
         _______,        PLAY_SONG_28,   PLAY_SONG_29,   PLAY_SONG_30,   PLAY_SONG_31,   PLAY_SONG_32,   PLAY_SONG_33,            PLAY_SONG_34,   PLAY_SONG_35,   PLAY_SONG_36,   PLAY_SONG_37,   PLAY_SONG_38,   PLAY_SONG_39,   PLAY_SONG_40,
         XXXXXXX,        PLAY_SONG_41,   PLAY_SONG_42,   PLAY_SONG_43,   PLAY_SONG_44,   PLAY_SONG_45,                                            PLAY_SONG_46,   PLAY_SONG_47,   PLAY_SONG_48,   PLAY_SONG_49,   PLAY_SONG_50,   PLAY_SONG_51,
-    PLAY_SONG_52,    PLAY_SONG_53,   PLAY_SONG_54,   PLAY_SONG_55,   PLAY_SONG_56,                   PLAY_JT,                 PLAY_ZELDA,                     PLAY_SONG_57,   PLAY_SONG_58,   PLAY_SONG_59,   PLAY_SONG_60,   PLAY_SONG_61,
+        PLAY_SONG_52,   PLAY_SONG_53,   PLAY_SONG_54,   PLAY_SONG_55,   PLAY_SONG_56,                   PLAY_JT,                 PLAY_ZELDA,                     PLAY_SONG_57,   PLAY_SONG_58,   PLAY_SONG_59,   PLAY_SONG_60,   PLAY_SONG_61,
                                                                         XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX
     ),
     [_J2] = LAYOUT_moonlander(
-        PLAY_SONG_62,   PLAY_SONG_63,   PLAY_SONG_64,   PLAY_SONG_65,   PLAY_SONG_66,   PLAY_SONG_67,   PLAY_SONG_68,   PLAY_SONG_69,            PLAY_SONG_70,   PLAY_SONG_71,   PLAY_SONG_72,   PLAY_SONG_73,   PLAY_SONG_74,   PLAY_SONG_75,
+        PLAY_SONG_62,   PLAY_SONG_63,   PLAY_SONG_64,   PLAY_SONG_65,   PLAY_SONG_66,   PLAY_SONG_67,   PLAY_SONG_68,            PLAY_SONG_69,   PLAY_SONG_70,   PLAY_SONG_71,   PLAY_SONG_72,   PLAY_SONG_73,   PLAY_SONG_74,   PLAY_SONG_75,
         PLAY_SONG_76,   PLAY_SONG_77,   PLAY_SONG_78,   PLAY_SONG_79,   XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
         _______,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
