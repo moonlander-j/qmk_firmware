@@ -419,6 +419,7 @@ void rgb_matrix_indicators_user(void) {
     }
 }
 
+#define MAC_OPT(a,b,c,d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
 #define WIN_ALT2(a,b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
 #define WIN_ALT3(a,b,c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
 #define WIN_ALT4(a,b,c,d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
@@ -529,97 +530,97 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case NOT_EQUAL_TO_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_2) SS_TAP(X_6) SS_TAP(X_0)));
+                MAC_OPT(X_2,X_2,X_6,X_0);
             }
             break;
         case INV_EXLM_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_A) SS_TAP(X_1)));
+                MAC_OPT(X_0,X_0,X_A,X_1);
             }
             break;
         case SUP_TWO_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_2)));
+                MAC_OPT(X_0,X_0,X_B,X_2);
             }
             break;
         case SUP_N_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_0) SS_TAP(X_7) SS_TAP(X_F)));
+                MAC_OPT(X_2,X_0,X_7,X_F);
             }
             break;
         case DEGREE_SIGN_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_0)));
+                MAC_OPT(X_0,X_0,X_B,X_0);
             }
             break;
         case FULL_BLOCK_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_5) SS_TAP(X_8) SS_TAP(X_8)));
+                MAC_OPT(X_2,X_5,X_8,X_8);
             }
             break;
         case FRAC_1_4_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_C)));
+                MAC_OPT(X_0,X_0,X_B,X_C);
             }
             break;
         case FRAC_1_2_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_D)));
+                MAC_OPT(X_0,X_0,X_B,X_D);
             }
             break;
         case FRAC_3_4_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_E)));
+                MAC_OPT(X_0,X_0,X_B,X_E);
             }
             break;
         case TM_SIGN_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_2) SS_TAP(X_2)));
+                MAC_OPT(X_2,X_1,X_2,X_2);
             }
             break;
         case DAGGER_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_0) SS_TAP(X_2) SS_TAP(X_0)));
+                MAC_OPT(X_2,X_0,X_2,X_0);
             }
             break;
         case PLUS_MINUS_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_1)));
+                MAC_OPT(X_0,X_0,X_B,X_1);
             }
             break;
         case UP_ARROW_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_1)));
+                MAC_OPT(X_2,X_1,X_9,X_1);
             }
             break;
         case INFINITY_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_E)));
+                MAC_OPT(X_2,X_2,X_1,X_E);
             }
             break;
         case LEFT_ARROW_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_0)));
+                MAC_OPT(X_2,X_1,X_9,X_0);
             }
             break;
         case DOWN_ARROW_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_3)));
+                MAC_OPT(X_2,X_1,X_9,X_3);
             }
             break;
         case RIGHT_ARROW_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_2) SS_TAP(X_1) SS_TAP(X_9) SS_TAP(X_2)));
+                MAC_OPT(X_2,X_1,X_9,X_2);
             }
             break;
         case MIDDLE_DOT_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_7)));
+                MAC_OPT(X_0,X_0,X_B,X_7);
             }
             break;
         case INV_QUES_M:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_0) SS_TAP(X_0) SS_TAP(X_B) SS_TAP(X_F)));
+                MAC_OPT(X_0,X_0,X_B,X_F);
             }
             break;
 
