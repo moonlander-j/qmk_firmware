@@ -419,106 +419,112 @@ void rgb_matrix_indicators_user(void) {
     }
 }
 
+#define WIN_ALT2(a,b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
+#define WIN_ALT3(a,b,c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
+#define WIN_ALT4(a,b,c,d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
+#define GET_MACRO(_1,_2,_3,_4,MACRO_NAME,...) MACRO_NAME
+#define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case EN_DASH_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_0)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_0);
             }
             break;
         case EM_DASH_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_1)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_1);
             }
             break;
         case INV_EXLM_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_6) SS_TAP(X_KP_1)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_1);
             }
             break;
         case SUP_TWO_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_3)));
+                WIN_ALT(X_KP_2,X_KP_5,X_KP_3);
             }
             break;
         case SUP_N_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5) SS_TAP(X_KP_2)));
+                WIN_ALT(X_KP_2,X_KP_5,X_KP_2);
             }
             break;
         case DEGREE_SIGN_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_7) SS_TAP(X_KP_6)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_6);
             }
             break;
         case FULL_BLOCK_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_9)));
+                WIN_ALT(X_KP_2,X_KP_1,X_KP_9);
             }
             break;
         case FRAC_1_4_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_8)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_8);
             }
             break;
         case FRAC_1_2_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_9)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_9);
             }
             break;
         case FRAC_3_4_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_0)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_0);
             }
             break;
         case TM_SIGN_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_3)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_3);
             }
             break;
         case DAGGER_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_3) SS_TAP(X_KP_4)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_3,X_KP_4);
             }
             break;
         case PLUS_MINUS_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_7) SS_TAP(X_KP_7)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_7);
             }
             break;
         case UP_ARROW_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_4)));
+                WIN_ALT(X_KP_2,X_KP_4);
             }
             break;
         case INFINITY_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_3) SS_TAP(X_KP_6)));
+                WIN_ALT(X_KP_2,X_KP_3,X_KP_6);
             }
             break;
         case LEFT_ARROW_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_7)));
+                WIN_ALT(X_KP_2,X_KP_7);
             }
             break;
         case DOWN_ARROW_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_5)));
+                WIN_ALT(X_KP_2,X_KP_5);
             }
             break;
         case RIGHT_ARROW_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_6)));
+                WIN_ALT(X_KP_2,X_KP_6);
             }
             break;
         case MIDDLE_DOT_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_3)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_3);
             }
             break;
         case INV_QUES_W:
             if (record->event.pressed) {
-                SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_1)));
+                WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_1);
             }
             break;
         case NOT_EQUAL_TO_M:
