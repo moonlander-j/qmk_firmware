@@ -653,6 +653,15 @@ void rgb_matrix_indicators_user(void) {
 #define GET_MACRO(_1,_2,_3,_4,MACRO_NAME,...) MACRO_NAME
 #define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
 
+// Shift + Backspace = Delete
+const key_override_t shift_backspace_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]) {
+    &shift_backspace_override,
+    NULL // terminate the array
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case EN_DASH_W:
