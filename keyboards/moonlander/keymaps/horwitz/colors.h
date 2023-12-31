@@ -6,6 +6,7 @@
 #define HSV_VERM75        11, 255, 191 // #BF3100 (original: #BF3000 (vermillion, 75% value))
 #define HSV_VERMILLION    11, 255, 255 // #FF4200 (original: #FF4000 (halfway between red and orange))
 #define HSV_SFG_ORANGE    12, 226, 254 // #FE5C1D (original: #FE5A1D)
+#define HSV_MUDDY_WATERS  21, 132, 185 // #B98959 (original: #B98959)
 #define HSV_ALLIGATOR     36, 255, 135 // #877200 (original: #877100)
 #define HSV_ZELDA_CART    43,  90,  87 // #575738 (TODO update color)
 #define HSV_OLIVE         43, 255, 128 // #7E8000 (original: #808000)
