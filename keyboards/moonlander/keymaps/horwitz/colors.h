@@ -12,7 +12,7 @@
 //#define HSV_LIGHT_GREEN   85, 101, 238 // #90EE90
 //#define HSV_MINT_GREEN    85, 101, 251 // #98FB98 (original: #98FB98)
 #define HSV_GREEN50       85, 255, 128 // #008000 (green, 50% value)
-//#define HSV_MONEY_GREEN  106, 224, 140 // #118C4E (original: #118C4F)
+#define HSV_MONEY_GREEN  106, 224, 140 // #118C4E (original: #118C4F)
 //#define HSV_DARK_GREEN   113, 244,  48 // #023020
 #define HSV_LIGHT_BLUE   138,  63, 230 // #ADD8E6
 #define HSV_PACIFIC_BLUE 138, 219, 205 // #1DA2CD (original: #1DA0CD)
