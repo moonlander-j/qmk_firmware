@@ -1367,7 +1367,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case QUOTE_P:
             if (record->event.pressed) {
-                SEND_STRING("\"\"" SS_TAP(X_LEFT));
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    SEND_STRING("\"\"" SS_TAP(X_LEFT));
+                } else {
+                    SEND_STRING("''" SS_TAP(X_LEFT));
+                }
             }
             return false;
 
