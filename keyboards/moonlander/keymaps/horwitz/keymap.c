@@ -73,298 +73,295 @@
  */
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
-  EN_DASH_W,
-  EM_DASH_W,
-  INV_EXLM_W,
-  SUP_2_W,
-  SUP_N_W,
-  DEGREE_SIGN_W,
-  FULL_BLOCK_W,
-  FRAC_1_4_W,
-  FRAC_1_2_W,
-  FRAC_3_4_W,
-  TM_SIGN_W,
-  DAGGER_W,
-  PLUS_MINUS_W,
-  UP_ARROW_W,
-  INFINITY_W,
-  LEFT_ARROW_W,
-  DOWN_ARROW_W,
-  RIGHT_ARROW_W,
-  MIDDLE_DOT_W,
-  INV_QUES_W,
-  NOT_EQUAL_TO_M,
-  INV_EXLM_M,
-  SUP_2_M,
-  SUP_N_M,
-  DEGREE_SIGN_M,
-  FULL_BLOCK_M,
-  FRAC_1_4_M,
-  FRAC_1_2_M,
-  FRAC_3_4_M,
-  TM_SIGN_M,
-  DAGGER_M,
-  PLUS_MINUS_M,
-  UP_ARROW_M,
-  INFINITY_M,
-  LEFT_ARROW_M,
-  DOWN_ARROW_M,
-  RIGHT_ARROW_M,
-  MIDDLE_DOT_M,
-  INV_QUES_M,
-  PLAY_ZELDA,
-  PLAY_JT,
-  PLAY_SONG_00,
-  PLAY_SONG_01,
-  PLAY_SONG_02,
-  PLAY_SONG_03,
-  PLAY_SONG_04,
-  PLAY_SONG_05,
-  PLAY_SONG_06,
-  PLAY_SONG_07,
-  PLAY_SONG_08,
-  PLAY_SONG_09,
-  PLAY_SONG_10,
-  PLAY_SONG_11,
-  PLAY_SONG_12,
-  PLAY_SONG_13,
-  PLAY_SONG_14,
-  PLAY_SONG_15,
-  PLAY_SONG_16,
-  PLAY_SONG_17,
-  PLAY_SONG_18,
-  PLAY_SONG_19,
-  PLAY_SONG_20,
-  PLAY_SONG_21,
-  PLAY_SONG_22,
-  PLAY_SONG_23,
-  PLAY_SONG_24,
-  PLAY_SONG_25,
-  PLAY_SONG_26,
-  PLAY_SONG_27,
-  PLAY_SONG_28,
-  PLAY_SONG_29,
-  PLAY_SONG_30,
-  PLAY_SONG_31,
-  PLAY_SONG_32,
-  PLAY_SONG_33,
-  PLAY_SONG_34,
-  PLAY_SONG_35,
-  PLAY_SONG_36,
-  PLAY_SONG_37,
-  PLAY_SONG_38,
-  PLAY_SONG_39,
-  PLAY_SONG_40,
-  PLAY_SONG_41,
-  PLAY_SONG_42,
-  PLAY_SONG_43,
-  PLAY_SONG_44,
-  PLAY_SONG_45,
-  PLAY_SONG_46,
-  PLAY_SONG_47,
-  PLAY_SONG_48,
-  PLAY_SONG_49,
-  PLAY_SONG_50,
-  PLAY_SONG_51,
-  PLAY_SONG_52,
-  PLAY_SONG_53,
-  PLAY_SONG_54,
-  PLAY_SONG_55,
-  PLAY_SONG_56,
-  PLAY_SONG_57,
-  PLAY_SONG_58,
-  PLAY_SONG_59,
-  PLAY_SONG_60,
-  PLAY_SONG_61,
-  PLAY_SONG_62,
-  PLAY_SONG_63,
-  PLAY_SONG_64,
-  PLAY_SONG_65,
-  PLAY_SONG_66,
-  PLAY_SONG_67,
-  PLAY_SONG_68,
-  PLAY_SONG_69,
-  PLAY_SONG_70,
-  PLAY_SONG_71,
-  PLAY_SONG_72,
-  PLAY_SONG_73,
-  PLAY_SONG_74,
-  PLAY_SONG_75,
-  PLAY_SONG_76,
-  PLAY_SONG_77,
-  PLAY_SONG_78,
-  PLAY_SONG_79,
-  PAREN_P,
-  BRACKET_P,
-  BRACE_P,
-  QUOTE_P,
-  GRAVE_P,
-  ACUTE_A_W,
-  ACUTE_E_W,
-  ACUTE_I_W,
-  ACUTE_O_W,
-  ACUTE_U_W,
-  ACUTE_Y_W,
-  CARON_S_W,
-  CARON_Z_W,
-  CEDILLA_C_W,
-  CIRCUMFLEX_A_W,
-  CIRCUMFLEX_E_W,
-  CIRCUMFLEX_I_W,
-  CIRCUMFLEX_O_W,
-  CIRCUMFLEX_U_W,
-  DIAERESIS_A_W,
-  DIAERESIS_E_W,
-  DIAERESIS_I_W,
-  DIAERESIS_O_W,
-  DIAERESIS_U_W,
-  DIAERESIS_Y_W,
-  GRAVE_A_W,
-  GRAVE_E_W,
-  GRAVE_I_W,
-  GRAVE_O_W,
-  GRAVE_U_W,
-  RING_ABOVE_A_W,
-  STROKE_O_W,
-  TILDE_A_W,
-  TILDE_N_W,
-  TILDE_O_W,
-  C_CIRC_W,
-  R_CIRC_W,
-  MULT_SIGN_W,
-  DIV_SIGN_W,
-  DDAGGER_W,
-  SECTION_SIGN_W,
-  PILCROW_W,
-  SUP_1_W,
-  SUP_3_W,
-  AE_W,
-  OE_W,
-  SHARP_S_W,
-  CENT_SIGN_W,
-  POUND_SIGN_W,
-  YEN_SIGN_W,
-  MICRO_W,
-  NOT_SIGN_W,
-  BULLET_W,
-  C_CIRC_M,
-  R_CIRC_M,
-  MULT_SIGN_M,
-  DIV_SIGN_M,
-  DDAGGER_M,
-  SECTION_SIGN_M,
-  PILCROW_M,
-  SUP_1_M,
-  SUP_3_M,
-  AE_M,
-  OE_M,
-  SHARP_S_M,
-  CENT_SIGN_M,
-  POUND_SIGN_M,
-  YEN_SIGN_M,
-  MICRO_M,
-  NOT_SIGN_M,
-  BULLET_M
+    RGB_SLD = ML_SAFE_RANGE,
+    EN_DASH_W,
+    EM_DASH_W,
+    INV_EXLM_W,
+    SUP_2_W,
+    SUP_N_W,
+    DEGREE_SIGN_W,
+    FULL_BLOCK_W,
+    FRAC_1_4_W,
+    FRAC_1_2_W,
+    FRAC_3_4_W,
+    TM_SIGN_W,
+    DAGGER_W,
+    PLUS_MINUS_W,
+    UP_ARROW_W,
+    INFINITY_W,
+    LEFT_ARROW_W,
+    DOWN_ARROW_W,
+    RIGHT_ARROW_W,
+    MIDDLE_DOT_W,
+    INV_QUES_W,
+    NOT_EQUAL_TO_M,
+    INV_EXLM_M,
+    SUP_2_M,
+    SUP_N_M,
+    DEGREE_SIGN_M,
+    FULL_BLOCK_M,
+    FRAC_1_4_M,
+    FRAC_1_2_M,
+    FRAC_3_4_M,
+    TM_SIGN_M,
+    DAGGER_M,
+    PLUS_MINUS_M,
+    UP_ARROW_M,
+    INFINITY_M,
+    LEFT_ARROW_M,
+    DOWN_ARROW_M,
+    RIGHT_ARROW_M,
+    MIDDLE_DOT_M,
+    INV_QUES_M,
+    PLAY_ZELDA,
+    PLAY_JT,
+    PLAY_SONG_00,
+    PLAY_SONG_01,
+    PLAY_SONG_02,
+    PLAY_SONG_03,
+    PLAY_SONG_04,
+    PLAY_SONG_05,
+    PLAY_SONG_06,
+    PLAY_SONG_07,
+    PLAY_SONG_08,
+    PLAY_SONG_09,
+    PLAY_SONG_10,
+    PLAY_SONG_11,
+    PLAY_SONG_12,
+    PLAY_SONG_13,
+    PLAY_SONG_14,
+    PLAY_SONG_15,
+    PLAY_SONG_16,
+    PLAY_SONG_17,
+    PLAY_SONG_18,
+    PLAY_SONG_19,
+    PLAY_SONG_20,
+    PLAY_SONG_21,
+    PLAY_SONG_22,
+    PLAY_SONG_23,
+    PLAY_SONG_24,
+    PLAY_SONG_25,
+    PLAY_SONG_26,
+    PLAY_SONG_27,
+    PLAY_SONG_28,
+    PLAY_SONG_29,
+    PLAY_SONG_30,
+    PLAY_SONG_31,
+    PLAY_SONG_32,
+    PLAY_SONG_33,
+    PLAY_SONG_34,
+    PLAY_SONG_35,
+    PLAY_SONG_36,
+    PLAY_SONG_37,
+    PLAY_SONG_38,
+    PLAY_SONG_39,
+    PLAY_SONG_40,
+    PLAY_SONG_41,
+    PLAY_SONG_42,
+    PLAY_SONG_43,
+    PLAY_SONG_44,
+    PLAY_SONG_45,
+    PLAY_SONG_46,
+    PLAY_SONG_47,
+    PLAY_SONG_48,
+    PLAY_SONG_49,
+    PLAY_SONG_50,
+    PLAY_SONG_51,
+    PLAY_SONG_52,
+    PLAY_SONG_53,
+    PLAY_SONG_54,
+    PLAY_SONG_55,
+    PLAY_SONG_56,
+    PLAY_SONG_57,
+    PLAY_SONG_58,
+    PLAY_SONG_59,
+    PLAY_SONG_60,
+    PLAY_SONG_61,
+    PLAY_SONG_62,
+    PLAY_SONG_63,
+    PLAY_SONG_64,
+    PLAY_SONG_65,
+    PLAY_SONG_66,
+    PLAY_SONG_67,
+    PLAY_SONG_68,
+    PLAY_SONG_69,
+    PLAY_SONG_70,
+    PLAY_SONG_71,
+    PLAY_SONG_72,
+    PLAY_SONG_73,
+    PLAY_SONG_74,
+    PLAY_SONG_75,
+    PLAY_SONG_76,
+    PLAY_SONG_77,
+    PLAY_SONG_78,
+    PLAY_SONG_79,
+    PAREN_P,
+    BRACKET_P,
+    BRACE_P,
+    QUOTE_P,
+    GRAVE_P,
+    ACUTE_A_W,
+    ACUTE_E_W,
+    ACUTE_I_W,
+    ACUTE_O_W,
+    ACUTE_U_W,
+    ACUTE_Y_W,
+    CARON_S_W,
+    CARON_Z_W,
+    CEDILLA_C_W,
+    CIRCUMFLEX_A_W,
+    CIRCUMFLEX_E_W,
+    CIRCUMFLEX_I_W,
+    CIRCUMFLEX_O_W,
+    CIRCUMFLEX_U_W,
+    DIAERESIS_A_W,
+    DIAERESIS_E_W,
+    DIAERESIS_I_W,
+    DIAERESIS_O_W,
+    DIAERESIS_U_W,
+    DIAERESIS_Y_W,
+    GRAVE_A_W,
+    GRAVE_E_W,
+    GRAVE_I_W,
+    GRAVE_O_W,
+    GRAVE_U_W,
+    RING_ABOVE_A_W,
+    STROKE_O_W,
+    TILDE_A_W,
+    TILDE_N_W,
+    TILDE_O_W,
+    C_CIRC_W,
+    R_CIRC_W,
+    MULT_SIGN_W,
+    DIV_SIGN_W,
+    DDAGGER_W,
+    SECTION_SIGN_W,
+    PILCROW_W,
+    SUP_1_W,
+    SUP_3_W,
+    AE_W,
+    OE_W,
+    SHARP_S_W,
+    CENT_SIGN_W,
+    POUND_SIGN_W,
+    YEN_SIGN_W,
+    MICRO_W,
+    NOT_SIGN_W,
+    BULLET_W,
+    C_CIRC_M,
+    R_CIRC_M,
+    MULT_SIGN_M,
+    DIV_SIGN_M,
+    DDAGGER_M,
+    SECTION_SIGN_M,
+    PILCROW_M,
+    SUP_1_M,
+    SUP_3_M,
+    AE_M,
+    OE_M,
+    SHARP_S_M,
+    CENT_SIGN_M,
+    POUND_SIGN_M,
+    YEN_SIGN_M,
+    MICRO_M,
+    NOT_SIGN_M,
+    BULLET_M
 };
 
-
-static float zelda_uncover_secret[][2] = SONG(ZELDA_UNCOVER_SECRET);
-static float johnnys_theme[][2] = SONG(JOHNNYS_THEME);
-static float ode_to_joy[][2] = SONG(ODE_TO_JOY);
-static float rock_a_bye_baby[][2] = SONG(ROCK_A_BYE_BABY);
-static float clueboard_sound[][2] = SONG(CLUEBOARD_SOUND);
-static float startup_sound[][2] = SONG(STARTUP_SOUND);
-static float goodbye_sound[][2] = SONG(GOODBYE_SOUND);
-static float planck_sound[][2] = SONG(PLANCK_SOUND);
-static float preonic_sound[][2] = SONG(PREONIC_SOUND);
-static float qwerty_sound[][2] = SONG(QWERTY_SOUND);
-static float colemak_sound[][2] = SONG(COLEMAK_SOUND);
-static float dvorak_sound[][2] = SONG(DVORAK_SOUND);
-static float workman_sound[][2] = SONG(WORKMAN_SOUND);
-static float plover_sound[][2] = SONG(PLOVER_SOUND);
-static float plover_goodbye_sound[][2] = SONG(PLOVER_GOODBYE_SOUND);
-static float music_on_sound[][2] = SONG(MUSIC_ON_SOUND);
-static float audio_on_sound[][2] = SONG(AUDIO_ON_SOUND);
-static float audio_off_sound[][2] = SONG(AUDIO_OFF_SOUND);
-static float music_scale_sound[][2] = SONG(MUSIC_SCALE_SOUND);
-static float music_off_sound[][2] = SONG(MUSIC_OFF_SOUND);
-static float voice_change_sound[][2] = SONG(VOICE_CHANGE_SOUND);
-static float chromatic_sound[][2] = SONG(CHROMATIC_SOUND);
-static float major_sound[][2] = SONG(MAJOR_SOUND);
-static float minor_sound[][2] = SONG(MINOR_SOUND);
-static float guitar_sound[][2] = SONG(GUITAR_SOUND);
-static float violin_sound[][2] = SONG(VIOLIN_SOUND);
-static float caps_lock_on_sound[][2] = SONG(CAPS_LOCK_ON_SOUND);
-static float caps_lock_off_sound[][2] = SONG(CAPS_LOCK_OFF_SOUND);
-static float scroll_lock_on_sound[][2] = SONG(SCROLL_LOCK_ON_SOUND);
-static float scroll_lock_off_sound[][2] = SONG(SCROLL_LOCK_OFF_SOUND);
-static float num_lock_on_sound[][2] = SONG(NUM_LOCK_ON_SOUND);
-static float num_lock_off_sound[][2] = SONG(NUM_LOCK_OFF_SOUND);
-static float ag_norm_sound[][2] = SONG(AG_NORM_SOUND);
-static float ag_swap_sound[][2] = SONG(AG_SWAP_SOUND);
-static float unicode_windows[][2] = SONG(UNICODE_WINDOWS);
-static float unicode_linux[][2] = SONG(UNICODE_LINUX);
-static float terminal_sound[][2] = SONG(TERMINAL_SOUND);
-static float campanella[][2] = SONG(CAMPANELLA);
-static float fantasie_impromptu[][2] = SONG(FANTASIE_IMPROMPTU);
-static float nocturne_op_9_no_1[][2] = SONG(NOCTURNE_OP_9_NO_1);
-static float ussr_anthem[][2] = SONG(USSR_ANTHEM);
-static float tos_hymn_risen[][2] = SONG(TOS_HYMN_RISEN);
+static float zelda_uncover_secret[][2]    = SONG(ZELDA_UNCOVER_SECRET);
+static float johnnys_theme[][2]           = SONG(JOHNNYS_THEME);
+static float ode_to_joy[][2]              = SONG(ODE_TO_JOY);
+static float rock_a_bye_baby[][2]         = SONG(ROCK_A_BYE_BABY);
+static float clueboard_sound[][2]         = SONG(CLUEBOARD_SOUND);
+static float startup_sound[][2]           = SONG(STARTUP_SOUND);
+static float goodbye_sound[][2]           = SONG(GOODBYE_SOUND);
+static float planck_sound[][2]            = SONG(PLANCK_SOUND);
+static float preonic_sound[][2]           = SONG(PREONIC_SOUND);
+static float qwerty_sound[][2]            = SONG(QWERTY_SOUND);
+static float colemak_sound[][2]           = SONG(COLEMAK_SOUND);
+static float dvorak_sound[][2]            = SONG(DVORAK_SOUND);
+static float workman_sound[][2]           = SONG(WORKMAN_SOUND);
+static float plover_sound[][2]            = SONG(PLOVER_SOUND);
+static float plover_goodbye_sound[][2]    = SONG(PLOVER_GOODBYE_SOUND);
+static float music_on_sound[][2]          = SONG(MUSIC_ON_SOUND);
+static float audio_on_sound[][2]          = SONG(AUDIO_ON_SOUND);
+static float audio_off_sound[][2]         = SONG(AUDIO_OFF_SOUND);
+static float music_scale_sound[][2]       = SONG(MUSIC_SCALE_SOUND);
+static float music_off_sound[][2]         = SONG(MUSIC_OFF_SOUND);
+static float voice_change_sound[][2]      = SONG(VOICE_CHANGE_SOUND);
+static float chromatic_sound[][2]         = SONG(CHROMATIC_SOUND);
+static float major_sound[][2]             = SONG(MAJOR_SOUND);
+static float minor_sound[][2]             = SONG(MINOR_SOUND);
+static float guitar_sound[][2]            = SONG(GUITAR_SOUND);
+static float violin_sound[][2]            = SONG(VIOLIN_SOUND);
+static float caps_lock_on_sound[][2]      = SONG(CAPS_LOCK_ON_SOUND);
+static float caps_lock_off_sound[][2]     = SONG(CAPS_LOCK_OFF_SOUND);
+static float scroll_lock_on_sound[][2]    = SONG(SCROLL_LOCK_ON_SOUND);
+static float scroll_lock_off_sound[][2]   = SONG(SCROLL_LOCK_OFF_SOUND);
+static float num_lock_on_sound[][2]       = SONG(NUM_LOCK_ON_SOUND);
+static float num_lock_off_sound[][2]      = SONG(NUM_LOCK_OFF_SOUND);
+static float ag_norm_sound[][2]           = SONG(AG_NORM_SOUND);
+static float ag_swap_sound[][2]           = SONG(AG_SWAP_SOUND);
+static float unicode_windows[][2]         = SONG(UNICODE_WINDOWS);
+static float unicode_linux[][2]           = SONG(UNICODE_LINUX);
+static float terminal_sound[][2]          = SONG(TERMINAL_SOUND);
+static float campanella[][2]              = SONG(CAMPANELLA);
+static float fantasie_impromptu[][2]      = SONG(FANTASIE_IMPROMPTU);
+static float nocturne_op_9_no_1[][2]      = SONG(NOCTURNE_OP_9_NO_1);
+static float ussr_anthem[][2]             = SONG(USSR_ANTHEM);
+static float tos_hymn_risen[][2]          = SONG(TOS_HYMN_RISEN);
 static float close_encounters_5_note[][2] = SONG(CLOSE_ENCOUNTERS_5_NOTE);
-static float doe_a_deer[][2] = SONG(DOE_A_DEER);
-static float in_like_flint[][2] = SONG(IN_LIKE_FLINT);
-static float imperial_march[][2] = SONG(IMPERIAL_MARCH);
-static float basket_case[][2] = SONG(BASKET_CASE);
-static float coin_sound[][2] = SONG(COIN_SOUND);
-static float one_up_sound[][2] = SONG(ONE_UP_SOUND);
-static float sonic_ring[][2] = SONG(SONIC_RING);
-static float zelda_puzzle[][2] = SONG(ZELDA_PUZZLE);
-static float zelda_treasure[][2] = SONG(ZELDA_TREASURE);
-static float overwatch_theme[][2] = SONG(OVERWATCH_THEME);
-static float mario_theme[][2] = SONG(MARIO_THEME);
-static float mario_gameover[][2] = SONG(MARIO_GAMEOVER);
-static float mario_mushroom[][2] = SONG(MARIO_MUSHROOM);
-static float e1m1_doom[][2] = SONG(E1M1_DOOM);
-static float disney_song[][2] = SONG(DISNEY_SONG);
-static float number_one[][2] = SONG(NUMBER_ONE);
-static float cabbage_song[][2] = SONG(CABBAGE_SONG);
-static float old_spice[][2] = SONG(OLD_SPICE);
-static float victory_fanfare_short[][2] = SONG(VICTORY_FANFARE_SHORT);
-static float all_star[][2] = SONG(ALL_STAR);
-static float rick_roll[][2] = SONG(RICK_ROLL);
-static float ff_prelude[][2] = SONG(FF_PRELUDE);
-static float to_boldly_go[][2] = SONG(TO_BOLDLY_GO);
-static float kataware_doki[][2] = SONG(KATAWARE_DOKI);
-static float megalovania[][2] = SONG(MEGALOVANIA);
-static float michishirube[][2] = SONG(MICHISHIRUBE);
-static float liebesleid[][2] = SONG(LIEBESLEID);
-static float melodies_of_life[][2] = SONG(MELODIES_OF_LIFE);
-static float eyes_on_me[][2] = SONG(EYES_ON_ME);
-static float song_of_the_ancients[][2] = SONG(SONG_OF_THE_ANCIENTS);
-static float nier_amusement_park[][2] = SONG(NIER_AMUSEMENT_PARK);
-static float copied_city[][2] = SONG(COPIED_CITY);
-static float vague_hope_cold_rain[][2] = SONG(VAGUE_HOPE_COLD_RAIN);
-static float kaine_salvation[][2] = SONG(KAINE_SALVATION);
-static float weight_of_the_world[][2] = SONG(WEIGHT_OF_THE_WORLD);
-static float isabellas_lullaby[][2] = SONG(ISABELLAS_LULLABY);
-static float terras_theme[][2] = SONG(TERRAS_THEME);
-static float renai_circulation[][2] = SONG(RENAI_CIRCULATION);
-static float platinum_disco[][2] = SONG(PLATINUM_DISCO);
-
-
+static float doe_a_deer[][2]              = SONG(DOE_A_DEER);
+static float in_like_flint[][2]           = SONG(IN_LIKE_FLINT);
+static float imperial_march[][2]          = SONG(IMPERIAL_MARCH);
+static float basket_case[][2]             = SONG(BASKET_CASE);
+static float coin_sound[][2]              = SONG(COIN_SOUND);
+static float one_up_sound[][2]            = SONG(ONE_UP_SOUND);
+static float sonic_ring[][2]              = SONG(SONIC_RING);
+static float zelda_puzzle[][2]            = SONG(ZELDA_PUZZLE);
+static float zelda_treasure[][2]          = SONG(ZELDA_TREASURE);
+static float overwatch_theme[][2]         = SONG(OVERWATCH_THEME);
+static float mario_theme[][2]             = SONG(MARIO_THEME);
+static float mario_gameover[][2]          = SONG(MARIO_GAMEOVER);
+static float mario_mushroom[][2]          = SONG(MARIO_MUSHROOM);
+static float e1m1_doom[][2]               = SONG(E1M1_DOOM);
+static float disney_song[][2]             = SONG(DISNEY_SONG);
+static float number_one[][2]              = SONG(NUMBER_ONE);
+static float cabbage_song[][2]            = SONG(CABBAGE_SONG);
+static float old_spice[][2]               = SONG(OLD_SPICE);
+static float victory_fanfare_short[][2]   = SONG(VICTORY_FANFARE_SHORT);
+static float all_star[][2]                = SONG(ALL_STAR);
+static float rick_roll[][2]               = SONG(RICK_ROLL);
+static float ff_prelude[][2]              = SONG(FF_PRELUDE);
+static float to_boldly_go[][2]            = SONG(TO_BOLDLY_GO);
+static float kataware_doki[][2]           = SONG(KATAWARE_DOKI);
+static float megalovania[][2]             = SONG(MEGALOVANIA);
+static float michishirube[][2]            = SONG(MICHISHIRUBE);
+static float liebesleid[][2]              = SONG(LIEBESLEID);
+static float melodies_of_life[][2]        = SONG(MELODIES_OF_LIFE);
+static float eyes_on_me[][2]              = SONG(EYES_ON_ME);
+static float song_of_the_ancients[][2]    = SONG(SONG_OF_THE_ANCIENTS);
+static float nier_amusement_park[][2]     = SONG(NIER_AMUSEMENT_PARK);
+static float copied_city[][2]             = SONG(COPIED_CITY);
+static float vague_hope_cold_rain[][2]    = SONG(VAGUE_HOPE_COLD_RAIN);
+static float kaine_salvation[][2]         = SONG(KAINE_SALVATION);
+static float weight_of_the_world[][2]     = SONG(WEIGHT_OF_THE_WORLD);
+static float isabellas_lullaby[][2]       = SONG(ISABELLAS_LULLABY);
+static float terras_theme[][2]            = SONG(TERRAS_THEME);
+static float renai_circulation[][2]       = SONG(RENAI_CIRCULATION);
+static float platinum_disco[][2]          = SONG(PLATINUM_DISCO);
 
 enum tap_dance_codes {
-  DANCE_0,
-  DANCE_1,
-  DANCE_2,
-  DANCE_3,
-  DANCE_4,
-  DANCE_5,
-  DANCE_6,
-  DANCE_7,
-  DANCE_8,
-  DANCE_9,
+    DANCE_0,
+    DANCE_1,
+    DANCE_2,
+    DANCE_3,
+    DANCE_4,
+    DANCE_5,
+    DANCE_6,
+    DANCE_7,
+    DANCE_8,
+    DANCE_9,
 };
 
 enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _ACCENT, _A_ACUTE, _A_CARON, _A_CEDILLA, _A_CIRCUMFLEX, _A_DIAERESIS, _A_GRAVE, _A_RING_ABOVE, _A_STROKE, _A_TILDE, _J1, _J2, _QWERTY };
@@ -563,7 +560,6 @@ void keyboard_post_init_user(void) {
     rgb_matrix_enable();
 }
 
-
 /*
 ledmap per-layer order (column 1, ..., C7, thumb-key group (of 3 keys) 1, pentagonal key 1, ...)
 C1 (5) 1–5
@@ -625,16 +621,12 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
 void set_layer_color(int layer) {
     for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
-        HSV hsv = {
-            .h = pgm_read_byte(&ledmap[layer][i][0]),
-            .s = pgm_read_byte(&ledmap[layer][i][1]),
-            .v = pgm_read_byte(&ledmap[layer][i][2])
-        };
+        HSV hsv = {.h = pgm_read_byte(&ledmap[layer][i][0]), .s = pgm_read_byte(&ledmap[layer][i][1]), .v = pgm_read_byte(&ledmap[layer][i][2])};
         if (!hsv.h && !hsv.s && !hsv.v) {
             rgb_matrix_set_color(i, RGB_BLACK);
         } else {
-            RGB rgb = hsv_to_rgb(hsv);
-            float f = (float) rgb_matrix_config.hsv.v / UINT8_MAX;
+            RGB   rgb = hsv_to_rgb(hsv);
+            float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
             rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
         }
     }
@@ -649,18 +641,18 @@ bool rgb_matrix_indicators_user(void) {
     return true; // TODO! is this right?
 }
 
-#define MAC_OPT(a,b,c,d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
-#define WIN_ALT2(a,b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
-#define WIN_ALT3(a,b,c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
-#define WIN_ALT4(a,b,c,d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
-#define GET_MACRO(_1,_2,_3,_4,MACRO_NAME,...) MACRO_NAME
+#define MAC_OPT(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
+#define WIN_ALT2(a, b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
+#define WIN_ALT3(a, b, c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
+#define WIN_ALT4(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
+#define GET_MACRO(_1, _2, _3, _4, MACRO_NAME, ...) MACRO_NAME
 #define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
 
 // Shift + Backspace = Delete
 const key_override_t shift_backspace_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]) {
+const key_override_t **key_overrides = (const key_override_t *[]){
     &shift_backspace_override,
     NULL // terminate the array
 };
@@ -669,197 +661,197 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case EN_DASH_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_0);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_0);
             }
             break;
         case EM_DASH_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_1);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_1);
             }
             break;
         case INV_EXLM_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_1);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_1);
             }
             break;
         case SUP_2_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_5,X_KP_3);
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_3);
             }
             break;
         case SUP_N_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_5,X_KP_2);
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_2);
             }
             break;
         case DEGREE_SIGN_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_6);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_6);
             }
             break;
         case FULL_BLOCK_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_1,X_KP_9);
+                WIN_ALT(X_KP_2, X_KP_1, X_KP_9);
             }
             break;
         case FRAC_1_4_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_8);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_8);
             }
             break;
         case FRAC_1_2_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_9);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_9);
             }
             break;
         case FRAC_3_4_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_0);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_0);
             }
             break;
         case TM_SIGN_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_3);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_3);
             }
             break;
         case DAGGER_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_3,X_KP_4);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_4);
             }
             break;
         case PLUS_MINUS_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_7);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_7);
             }
             break;
         case UP_ARROW_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_4);
+                WIN_ALT(X_KP_2, X_KP_4);
             }
             break;
         case INFINITY_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_3,X_KP_6);
+                WIN_ALT(X_KP_2, X_KP_3, X_KP_6);
             }
             break;
         case LEFT_ARROW_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_7);
+                WIN_ALT(X_KP_2, X_KP_7);
             }
             break;
         case DOWN_ARROW_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_5);
+                WIN_ALT(X_KP_2, X_KP_5);
             }
             break;
         case RIGHT_ARROW_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_2,X_KP_6);
+                WIN_ALT(X_KP_2, X_KP_6);
             }
             break;
         case MIDDLE_DOT_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_3);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_3);
             }
             break;
         case INV_QUES_W:
             if (record->event.pressed) {
-                WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_1);
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_1);
             }
             break;
         case NOT_EQUAL_TO_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_2,X_6,X_0);
+                MAC_OPT(X_2, X_2, X_6, X_0);
             }
             break;
         case INV_EXLM_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_A,X_1);
+                MAC_OPT(X_0, X_0, X_A, X_1);
             }
             break;
         case SUP_2_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_2);
+                MAC_OPT(X_0, X_0, X_B, X_2);
             }
             break;
         case SUP_N_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_0,X_7,X_F);
+                MAC_OPT(X_2, X_0, X_7, X_F);
             }
             break;
         case DEGREE_SIGN_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_0);
+                MAC_OPT(X_0, X_0, X_B, X_0);
             }
             break;
         case FULL_BLOCK_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_5,X_8,X_8);
+                MAC_OPT(X_2, X_5, X_8, X_8);
             }
             break;
         case FRAC_1_4_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_C);
+                MAC_OPT(X_0, X_0, X_B, X_C);
             }
             break;
         case FRAC_1_2_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_D);
+                MAC_OPT(X_0, X_0, X_B, X_D);
             }
             break;
         case FRAC_3_4_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_E);
+                MAC_OPT(X_0, X_0, X_B, X_E);
             }
             break;
         case TM_SIGN_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_1,X_2,X_2);
+                MAC_OPT(X_2, X_1, X_2, X_2);
             }
             break;
         case DAGGER_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_0,X_2,X_0);
+                MAC_OPT(X_2, X_0, X_2, X_0);
             }
             break;
         case PLUS_MINUS_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_1);
+                MAC_OPT(X_0, X_0, X_B, X_1);
             }
             break;
         case UP_ARROW_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_1,X_9,X_1);
+                MAC_OPT(X_2, X_1, X_9, X_1);
             }
             break;
         case INFINITY_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_2,X_1,X_E);
+                MAC_OPT(X_2, X_2, X_1, X_E);
             }
             break;
         case LEFT_ARROW_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_1,X_9,X_0);
+                MAC_OPT(X_2, X_1, X_9, X_0);
             }
             break;
         case DOWN_ARROW_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_1,X_9,X_3);
+                MAC_OPT(X_2, X_1, X_9, X_3);
             }
             break;
         case RIGHT_ARROW_M:
             if (record->event.pressed) {
-                MAC_OPT(X_2,X_1,X_9,X_2);
+                MAC_OPT(X_2, X_1, X_9, X_2);
             }
             break;
         case MIDDLE_DOT_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_7);
+                MAC_OPT(X_0, X_0, X_B, X_7);
             }
             break;
         case INV_QUES_M:
             if (record->event.pressed) {
-                MAC_OPT(X_0,X_0,X_B,X_F);
+                MAC_OPT(X_0, X_0, X_B, X_F);
             }
             break;
 
@@ -874,7 +866,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 PLAY_SONG(johnnys_theme);
             }
             return false;
-
 
         case PLAY_SONG_00:
             if (record->event.pressed) {
@@ -1389,9 +1380,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_3);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_5);
                 }
             }
             return false;
@@ -1399,9 +1390,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_1);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_3);
                 }
             }
             return false;
@@ -1409,9 +1400,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_5);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_7);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_7);
                 }
             }
             return false;
@@ -1419,9 +1410,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_1);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_3);
                 }
             }
             return false;
@@ -1429,9 +1420,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_8);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_5,X_KP_0);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_0);
                 }
             }
             return false;
@@ -1439,9 +1430,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_Y_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_1);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_5,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_3);
                 }
             }
             return false;
@@ -1449,9 +1440,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CARON_S_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_3,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_8);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_4);
                 }
             }
             return false;
@@ -1459,9 +1450,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CARON_Z_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_4,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_2);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_8);
                 }
             }
             return false;
@@ -1469,9 +1460,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CEDILLA_C_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_9);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_1);
                 }
             }
             return false;
@@ -1479,9 +1470,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_4);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_6);
                 }
             }
             return false;
@@ -1489,9 +1480,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_2);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_4);
                 }
             }
             return false;
@@ -1499,9 +1490,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_6);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_8);
                 }
             }
             return false;
@@ -1509,9 +1500,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_2);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_4);
                 }
             }
             return false;
@@ -1519,9 +1510,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_9);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_5,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_1);
                 }
             }
             return false;
@@ -1529,9 +1520,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_6);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_8);
                 }
             }
             return false;
@@ -1539,9 +1530,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_3);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_5);
                 }
             }
             return false;
@@ -1549,9 +1540,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_7);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_7);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_9);
                 }
             }
             return false;
@@ -1559,9 +1550,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_4);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_6);
                 }
             }
             return false;
@@ -1569,9 +1560,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_0);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_0);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_5,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_2);
                 }
             }
             return false;
@@ -1579,9 +1570,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_Y_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_9);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_5,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_5);
                 }
             }
             return false;
@@ -1589,9 +1580,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_2);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_4);
                 }
             }
             return false;
@@ -1599,9 +1590,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_0);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_0);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_2);
                 }
             }
             return false;
@@ -1609,9 +1600,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_4);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_4);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_6);
                 }
             }
             return false;
@@ -1619,9 +1610,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_0);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_0);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_2);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_2);
                 }
             }
             return false;
@@ -1629,9 +1620,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_7);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_7);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_9);
                 }
             }
             return false;
@@ -1639,9 +1630,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RING_ABOVE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_7);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_7);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_9);
                 }
             }
             return false;
@@ -1649,9 +1640,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case STROKE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_6);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_6);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_8);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_8);
                 }
             }
             return false;
@@ -1659,9 +1650,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_5);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_7);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_7);
                 }
             }
             return false;
@@ -1669,9 +1660,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_N_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_0,X_KP_9);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_9);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_1);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_1);
                 }
             }
             return false;
@@ -1679,244 +1670,244 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_3);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_3);
                 } else {
-                    WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_5);
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_5);
                 }
             }
             return false;
 
         case C_CIRC_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_9);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_9);
+            }
+            return false;
 
         case R_CIRC_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_4);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_4);
+            }
+            return false;
 
         case MULT_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_2,X_KP_1,X_KP_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_5);
+            }
+            return false;
 
         case DIV_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_2,X_KP_4,X_KP_7);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_7);
+            }
+            return false;
 
         case DDAGGER_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_3,X_KP_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_5);
+            }
+            return false;
 
         case SECTION_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_7);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_7);
+            }
+            return false;
 
         case PILCROW_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_2);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_2);
+            }
+            return false;
 
         case SUP_1_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_5);
+            }
+            return false;
 
         case SUP_3_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_9);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_9);
+            }
+            return false;
 
         case AE_W:
-           if (record->event.pressed) {
-               if (get_mods() & MOD_MASK_SHIFT) {
-                   WIN_ALT(X_KP_0,X_KP_1,X_KP_9,X_KP_8);
-               } else {
-                   WIN_ALT(X_KP_0,X_KP_2,X_KP_3,X_KP_0);
-               }
-           }
-           return false;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_8);
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_0);
+                }
+            }
+            return false;
 
         case OE_W:
-           if (record->event.pressed) {
-               if (get_mods() & MOD_MASK_SHIFT) {
-                   WIN_ALT(X_KP_0,X_KP_1,X_KP_4,X_KP_0);
-               } else {
-                   WIN_ALT(X_KP_0,X_KP_1,X_KP_5,X_KP_6);
-               }
-           }
-           return false;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_0);
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_6);
+                }
+            }
+            return false;
 
         case SHARP_S_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_2,X_KP_2,X_KP_3);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_3);
+            }
+            return false;
 
         case CENT_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_2);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_2);
+            }
+            return false;
 
         case POUND_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_3);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_3);
+            }
+            return false;
 
         case YEN_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_6,X_KP_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_5);
+            }
+            return false;
 
         case MICRO_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_8,X_KP_1);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_1);
+            }
+            return false;
 
         case NOT_SIGN_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_7,X_KP_2);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_2);
+            }
+            return false;
 
         case BULLET_W:
-           if (record->event.pressed) {
-               WIN_ALT(X_KP_0,X_KP_1,X_KP_4,X_KP_9);
-           }
-           return false;
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_9);
+            }
+            return false;
 
         case C_CIRC_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_9);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_9);
+            }
+            return false;
 
         case R_CIRC_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_E);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_E);
+            }
+            return false;
 
         case MULT_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_D,X_7);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_D, X_7);
+            }
+            return false;
 
         case DIV_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_F,X_7);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_F, X_7);
+            }
+            return false;
 
         case DDAGGER_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_2,X_0,X_2,X_1);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_1);
+            }
+            return false;
 
         case SECTION_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_7);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_7);
+            }
+            return false;
 
         case PILCROW_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_B,X_6);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_6);
+            }
+            return false;
 
         case SUP_1_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_B,X_9);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_9);
+            }
+            return false;
 
         case SUP_3_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_B,X_3);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_3);
+            }
+            return false;
 
         case AE_M:
-           if (record->event.pressed) {
-               if (get_mods() & MOD_MASK_SHIFT) {
-                   MAC_OPT(X_0,X_0,X_C,X_6);
-               } else {
-                   MAC_OPT(X_0,X_0,X_E,X_6);
-               }
-           }
-           return false;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    MAC_OPT(X_0, X_0, X_C, X_6);
+                } else {
+                    MAC_OPT(X_0, X_0, X_E, X_6);
+                }
+            }
+            return false;
 
         case OE_M:
-           if (record->event.pressed) {
-               if (get_mods() & MOD_MASK_SHIFT) {
-                   MAC_OPT(X_0,X_1,X_5,X_2);
-               } else {
-                   MAC_OPT(X_0,X_1,X_5,X_3);
-               }
-           }
-           return false;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    MAC_OPT(X_0, X_1, X_5, X_2);
+                } else {
+                    MAC_OPT(X_0, X_1, X_5, X_3);
+                }
+            }
+            return false;
 
         case SHARP_S_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_D,X_F);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_D, X_F);
+            }
+            return false;
 
         case CENT_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_2);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_2);
+            }
+            return false;
 
         case POUND_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_3);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_3);
+            }
+            return false;
 
         case YEN_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_5);
+            }
+            return false;
 
         case MICRO_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_B,X_5);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_5);
+            }
+            return false;
 
         case NOT_SIGN_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_0,X_0,X_A,X_C);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_C);
+            }
+            return false;
 
         case BULLET_M:
-           if (record->event.pressed) {
-               MAC_OPT(X_2,X_0,X_2,X_2);
-           }
-           return false;
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_2);
+            }
+            return false;
 
         case RGB_SLD:
             if (rawhid_state.rgb_control) {
@@ -1931,20 +1922,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-
 typedef struct {
-    bool is_press_action;
+    bool    is_press_action;
     uint8_t step;
 } tap;
 
-enum {
-    SINGLE_TAP = 1,
-    SINGLE_HOLD,
-    DOUBLE_TAP,
-    DOUBLE_HOLD,
-    DOUBLE_SINGLE_TAP,
-    MORE_TAPS
-};
+enum { SINGLE_TAP = 1, SINGLE_HOLD, DOUBLE_TAP, DOUBLE_HOLD, DOUBLE_SINGLE_TAP, MORE_TAPS };
 
 static tap dance_state[10];
 
@@ -1975,19 +1958,18 @@ uint8_t dance_step(tap_dance_state_t *state) {
 }
 
 // left to right, so [0]=1, [1]=2, ..., [9]=0
-const uint8_t num_row[] = { KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0 };
+const uint8_t num_row[] = {KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0};
 
 // left to right, so [0]=F1, [1]=F2, ..., [9]=F10
-const uint8_t f_row[] = { KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10 };
-
+const uint8_t f_row[] = {KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10};
 
 void on_dance_i(tap_dance_state_t *state, void *user_data, int i) {
-    if(state->count == 3) {
+    if (state->count == 3) {
         tap_code16(num_row[i]);
         tap_code16(num_row[i]);
         tap_code16(num_row[i]);
     }
-    if(state->count > 3) {
+    if (state->count > 3) {
         tap_code16(num_row[i]);
     }
 }
@@ -2026,47 +2008,105 @@ void dance_i_reset(tap_dance_state_t *state, void *user_data, int i) {
     dance_state[i].step = 0;
 }
 
+void on_dance_0(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 0);
+}
+void dance_0_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 0);
+}
+void dance_0_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 0);
+}
 
-void on_dance_0(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 0); }
-void dance_0_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 0); }
-void dance_0_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 0); }
+void on_dance_1(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 1);
+}
+void dance_1_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 1);
+}
+void dance_1_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 1);
+}
 
-void on_dance_1(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 1); }
-void dance_1_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 1); }
-void dance_1_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 1); }
+void on_dance_2(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 2);
+}
+void dance_2_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 2);
+}
+void dance_2_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 2);
+}
 
-void on_dance_2(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 2); }
-void dance_2_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 2); }
-void dance_2_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 2); }
+void on_dance_3(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 3);
+}
+void dance_3_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 3);
+}
+void dance_3_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 3);
+}
 
-void on_dance_3(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 3); }
-void dance_3_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 3); }
-void dance_3_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 3); }
+void on_dance_4(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 4);
+}
+void dance_4_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 4);
+}
+void dance_4_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 4);
+}
 
-void on_dance_4(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 4); }
-void dance_4_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 4); }
-void dance_4_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 4); }
+void on_dance_5(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 5);
+}
+void dance_5_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 5);
+}
+void dance_5_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 5);
+}
 
-void on_dance_5(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 5); }
-void dance_5_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 5); }
-void dance_5_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 5); }
+void on_dance_6(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 6);
+}
+void dance_6_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 6);
+}
+void dance_6_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 6);
+}
 
-void on_dance_6(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 6); }
-void dance_6_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 6); }
-void dance_6_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 6); }
+void on_dance_7(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 7);
+}
+void dance_7_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 7);
+}
+void dance_7_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 7);
+}
 
-void on_dance_7(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 7); }
-void dance_7_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 7); }
-void dance_7_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 7); }
+void on_dance_8(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 8);
+}
+void dance_8_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 8);
+}
+void dance_8_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 8);
+}
 
-void on_dance_8(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 8); }
-void dance_8_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 8); }
-void dance_8_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 8); }
-
-void on_dance_9(tap_dance_state_t *state, void *user_data) { return on_dance_i(state, user_data, 9); }
-void dance_9_finished(tap_dance_state_t *state, void *user_data) { return dance_i_finished(state, user_data, 9); }
-void dance_9_reset(tap_dance_state_t *state, void *user_data) { return dance_i_reset(state, user_data, 9); }
-
+void on_dance_9(tap_dance_state_t *state, void *user_data) {
+    return on_dance_i(state, user_data, 9);
+}
+void dance_9_finished(tap_dance_state_t *state, void *user_data) {
+    return dance_i_finished(state, user_data, 9);
+}
+void dance_9_reset(tap_dance_state_t *state, void *user_data) {
+    return dance_i_reset(state, user_data, 9);
+}
 
 tap_dance_action_t tap_dance_actions[] = {
     [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
