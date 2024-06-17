@@ -248,6 +248,14 @@ enum custom_keycodes {
     MICRO_W,
     NOT_SIGN_W,
     BULLET_W,
+    ALMOST_EQ_W,
+    PI_W,
+    NOTE_8TH_W,
+    NOTES_8TH_W,
+    LR_ARROW_W,
+    UD_ARROW_W,
+    LT_OR_EQ_W,
+    GT_OR_EQ_W,
     C_CIRC_M,
     R_CIRC_M,
     MULT_SIGN_M,
@@ -265,7 +273,16 @@ enum custom_keycodes {
     YEN_SIGN_M,
     MICRO_M,
     NOT_SIGN_M,
-    BULLET_M
+    BULLET_M,
+    ALMOST_EQ,
+    ALMOST_EQ_M,
+    PI_M,
+    NOTE_8TH_M,
+    NOTES_8TH_M,
+    LR_ARROW_M,
+    UD_ARROW_M,
+    LT_OR_EQ_M,
+    GT_OR_EQ_M
 };
 
 static float zelda_uncover_secret[][2]    = SONG(ZELDA_UNCOVER_SECRET);
@@ -369,24 +386,22 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _ACCENT, _
 /*
 (WIN|MAC)_SYM layout
 
-¡ F F F F F ≠   ¼ F F F F F 2
-``¹ ² ³ ⁿ █ °   ½ F F † {}[]±
+¡ F F F F F ≈   ¼ F F F F F 2
+``¹ ² ³ ⁿ π °   ½ F F † {}[]±
 ¬ Æ Œ ß ™ © ®   ¾ µ ↑ ‡ ∞ ()''
-• + - × ÷ =       ← ↓ → · ⇞ ¿
-¢ £ ¥ . .           § ¶ ⇱ ⇟ ⇲
-
-(≠ for MAC, but _ for WIN)
-
+. + - × ÷ =       ← ↓ → · ⇞ ¿
+¢ £ ¥ . .   ♪   ♫   § ¶ ⇱ ⇟ ⇲
+. . . . ↔ ↕ •   █ ≤ ≥ . . . .
 
 
 (WIN|MAC)_SYM colors
 
-O R R R R R ?   B R R R R R 2
-c 1 1 1 1 G O   B R R O c c G
+O R R R R R G   B R R R R R 2
+c 1 1 1 1 O O   B R R O c c G
 O 3 3 3 5 5 5   B O y O G c c
-O V V V V V .   . y y y G Y G
-4 4 4 G _ . _   _ . O O Y Y Y
-. . . . _ _ _   _ _ _ . . . .
+_ V V V V V .   . y y y G Y G
+4 4 4 G _ . P   P . O O Y Y Y
+. . . . y y O   G G G . . . .
 
 ? null // GREEN for MAC, OFF for WIN
 _ OFF
@@ -403,6 +418,7 @@ y OLIVE
 3 WHITE
 4 MONEY_GREEN
 5 BLUE
+P PRINCE_PURP
 */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -420,23 +436,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,        _______,        _______,        _______,        _______,        _______,        _______,                 _______,        _______,        _______,        _______,        _______,        _______,        _______,
         _______,        _______,        _______,        _______,        _______,        _______,                                                 _______,        _______,        _______,        _______,        _______,        _______,
         _______,        _______,      LGUI(LSFT(KC_3)), _______,        MO(_MAC_SYM),                   _______,                 _______,                  LGUI(LCTL(KC_SPACE)), _______,        _______,        _______,        _______,
-                                                                        _______,        _______,        KC_RALT,                 _______,        _______,        _______
+                                                                        _______,        _______,        NOT_EQUAL_TO_M,          _______,        _______,        _______
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
-        INV_EXLM_W,     KC_F1,          KC_F2,          KC_F3,          KC_F4,         KC_F5,          _______,                  FRAC_1_4_W,  KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        SUP_1_W,        SUP_2_W,        SUP_3_W,        SUP_N_W,       FULL_BLOCK_W,   DEGREE_SIGN_W,            FRAC_1_2_W,  KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
+        INV_EXLM_W,     KC_F1,          KC_F2,          KC_F3,          KC_F4,         KC_F5,          ALMOST_EQ_W,              FRAC_1_4_W,  KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        SUP_1_W,        SUP_2_W,        SUP_3_W,        SUP_N_W,       PI_W,           DEGREE_SIGN_W,            FRAC_1_2_W,  KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
         NOT_SIGN_W,     AE_W,           OE_W,           SHARP_S_W,      TM_SIGN_W,     C_CIRC_W,       R_CIRC_W,                 FRAC_3_4_W,  MICRO_W,        UP_ARROW_W,     DDAGGER_W,      INFINITY_W,     PAREN_P,        QUOTE_P,
-        BULLET_W,       KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,    KC_EQUAL,                                              LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
-        CENT_SIGN_W,    POUND_SIGN_W,   YEN_SIGN_W,     _______,        _______,                       _______,                  _______,                     SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        _______,       _______,        _______,                  _______,     _______,        _______
+        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,    KC_EQUAL,                                              LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
+        CENT_SIGN_W,    POUND_SIGN_W,   YEN_SIGN_W,     _______,        _______,                       NOTE_8TH_W,               NOTES_8TH_W,                 SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,
+                                                                        LR_ARROW_W,    UD_ARROW_W,     BULLET_W,                FULL_BLOCK_W, LT_OR_EQ_W,     GT_OR_EQ_W
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
-        INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,         KC_F5,          NOT_EQUAL_TO_M,           FRAC_1_4_M,  KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        SUP_1_M,        SUP_2_M,        SUP_3_M,        SUP_N_M,       FULL_BLOCK_M,   DEGREE_SIGN_M,            FRAC_1_2_M,  KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
+        INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,         KC_F5,          ALMOST_EQ_M,              FRAC_1_4_M,  KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        SUP_1_M,        SUP_2_M,        SUP_3_M,        SUP_N_M,       PI_M,           DEGREE_SIGN_M,            FRAC_1_2_M,  KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
         NOT_SIGN_M,     AE_M,           OE_M,           SHARP_S_M,      TM_SIGN_M,     C_CIRC_M,       R_CIRC_M,                 FRAC_3_4_M,  MICRO_M,        UP_ARROW_M,     DDAGGER_M,      INFINITY_M,     PAREN_P,        QUOTE_P,
-        BULLET_M,       KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,    KC_EQUAL,                                              LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
-        CENT_SIGN_M,    POUND_SIGN_M,   YEN_SIGN_M,     _______,        _______,                       _______,                  _______,                     SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        _______,       _______,        _______,                  _______,     _______,        _______
+        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,    KC_EQUAL,                                              LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
+        CENT_SIGN_M,    POUND_SIGN_M,   YEN_SIGN_M,     _______,        _______,                       NOTE_8TH_M,               NOTES_8TH_M,                 SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,
+                                                                        LR_ARROW_M,    UD_ARROW_M,     BULLET_M,                FULL_BLOCK_M, LT_OR_EQ_M,     GT_OR_EQ_M
     ),
     [_NUMPAD] = LAYOUT_moonlander(
         QK_RBT,         QK_BOOT,        _______,        _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUM_LOCK,    KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
@@ -586,9 +602,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_MAC_BASE] = { {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_PACIFIC_BLUE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE} },
 
-    [_WIN_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_BLUE}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_GREEN}, {HSV_BLUE}, {HSV_MAGENTA}, {HSV_BLACK}, {HSV_ORANGE}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_GREEN}, {HSV_OLIVE}, {HSV_MUDDY_WATERS}, {HSV_MUDDY_WATERS}, {HSV_MUDDY_WATERS}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF} },
+    [_WIN_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_OFF}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
 
-    [_MAC_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_BLUE}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_GREEN}, {HSV_BLUE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_GREEN}, {HSV_OLIVE}, {HSV_MUDDY_WATERS}, {HSV_MUDDY_WATERS}, {HSV_MUDDY_WATERS}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF} },
+    // TODO DRY (same as [_WIN_SYM])
+    [_MAC_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_OFF}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
 
     [_NUMPAD] = { {HSV_MAROON}, {HSV_BLACK}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_BLACK}, {HSV_BLACK}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_BLACK}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_BLACK}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_RED}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
@@ -1797,6 +1814,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+        case ALMOST_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_7);
+            }
+            return false;
+
+        case PI_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_2, X_KP_7);
+            }
+            return false;
+
+        case NOTE_8TH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_3);
+            }
+            return false;
+
+        case NOTES_8TH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_4);
+            }
+            return false;
+
+        case LR_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_9);
+            }
+            return false;
+
+        case UD_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_8);
+            }
+            return false;
+
+        case LT_OR_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_3);
+            }
+            return false;
+
+        case GT_OR_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_2);
+            }
+            return false;
+
         case C_CIRC_M:
             if (record->event.pressed) {
                 MAC_OPT(X_0, X_0, X_A, X_9);
@@ -1910,6 +1975,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case BULLET_M:
             if (record->event.pressed) {
                 MAC_OPT(X_2, X_0, X_2, X_2);
+            }
+            return false;
+
+        case ALMOST_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_4, X_8);
+            }
+            return false;
+
+        case PI_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_3, X_C, X_0);
+            }
+            return false;
+
+        case NOTE_8TH_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_6, X_6, X_A);
+            }
+            return false;
+
+        case NOTES_8TH_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_6, X_6, X_B);
+            }
+            return false;
+
+        case LR_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_4);
+            }
+            return false;
+
+        case UD_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_5);
+            }
+            return false;
+
+        case LT_OR_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_4);
+            }
+            return false;
+
+        case GT_OR_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_5);
             }
             return false;
 
