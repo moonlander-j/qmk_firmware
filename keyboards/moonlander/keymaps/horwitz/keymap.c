@@ -665,12 +665,12 @@ bool rgb_matrix_indicators_user(void) {
 #define GET_MACRO(_1, _2, _3, _4, MACRO_NAME, ...) MACRO_NAME
 #define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
 
-#define WITHOUT_MODS(...) \
-    do { \
+#define WITHOUT_MODS(...)                      \
+    do {                                       \
         const uint8_t saved_mods = get_mods(); \
-        clear_mods(); \
-        { __VA_ARGS__ } \
-        set_mods(saved_mods); \
+        clear_mods();                          \
+        {__VA_ARGS__}                          \
+        set_mods(saved_mods);                  \
     } while (0)
 
 // Shift + Backspace = Delete
