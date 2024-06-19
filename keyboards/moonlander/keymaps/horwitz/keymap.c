@@ -602,32 +602,32 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_MAC_BASE] = { {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_PACIFIC_BLUE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE} },
 
-    [_WIN_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_OFF}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
+    [_WIN_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_BLUE}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
 
     // TODO DRY (same as [_WIN_SYM])
-    [_MAC_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_OFF}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
+    [_MAC_SYM] = { {HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_RED}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_MONEY_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_CYAN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_GREEN}, {HSV_GREEN}, {HSV_PRINCE_PURP} },
 
     [_NUMPAD] = { {HSV_MAROON}, {HSV_BLACK}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_BLACK}, {HSV_BLACK}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_BLACK}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_BLACK}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_RED}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
     [_ACCENT] = { {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_ACUTE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_ACUTE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_CARON] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_CARON] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_CEDILLA] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_CEDILLA] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_CIRCUMFLEX] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_CIRCUMFLEX] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_DIAERESIS] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_DIAERESIS] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_GRAVE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_GRAVE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_RING_ABOVE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_RING_ABOVE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_STROKE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_STROKE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
-    [_A_TILDE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
+    [_A_TILDE] = { {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLUE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_WHITE}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK} },
 
     [_J1] = { {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_GREEN}, {HSV_BLACK}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLACK}, {HSV_BLACK}, {HSV_BLACK}, {HSV_PRINCE_PURP} },
 
@@ -664,6 +664,14 @@ bool rgb_matrix_indicators_user(void) {
 #define WIN_ALT4(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
 #define GET_MACRO(_1, _2, _3, _4, MACRO_NAME, ...) MACRO_NAME
 #define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
+
+#define WITHOUT_MODS(...) \
+    do { \
+        const uint8_t saved_mods = get_mods(); \
+        clear_mods(); \
+        { __VA_ARGS__ } \
+        set_mods(saved_mods); \
+    } while (0)
 
 // Shift + Backspace = Delete
 const key_override_t shift_backspace_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -1398,10 +1406,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+        /*
+         * Generated code: this comment and the 299 lines following it were generated by
+         * AccentedLetter.getProcessRecordUserCasesString in qmk-tools
+         */
         case ACUTE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_3);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_5);
                 }
@@ -1411,7 +1423,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_1);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_3);
                 }
@@ -1421,7 +1433,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_5);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_5););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_7);
                 }
@@ -1431,7 +1443,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_1);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_3);
                 }
@@ -1441,7 +1453,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_8);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_0);
                 }
@@ -1451,7 +1463,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ACUTE_Y_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_1);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_3);
                 }
@@ -1461,7 +1473,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CARON_S_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_8);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_4);
                 }
@@ -1471,7 +1483,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CARON_Z_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_2);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_8);
                 }
@@ -1481,7 +1493,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CEDILLA_C_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_9);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_1);
                 }
@@ -1491,7 +1503,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_4);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_6);
                 }
@@ -1501,7 +1513,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_2);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_4);
                 }
@@ -1511,7 +1523,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_6);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_8);
                 }
@@ -1521,7 +1533,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_2);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_4);
                 }
@@ -1531,7 +1543,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CIRCUMFLEX_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_9);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_1);
                 }
@@ -1541,7 +1553,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_6);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_8);
                 }
@@ -1551,7 +1563,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_3);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_5);
                 }
@@ -1561,7 +1573,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_7);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_9);
                 }
@@ -1571,7 +1583,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_4);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_6);
                 }
@@ -1581,7 +1593,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_0);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_2);
                 }
@@ -1591,7 +1603,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DIAERESIS_Y_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_9);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_5);
                 }
@@ -1601,7 +1613,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_2);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_4);
                 }
@@ -1611,7 +1623,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_E_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_0);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_2);
                 }
@@ -1621,7 +1633,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_I_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_4);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_6);
                 }
@@ -1631,7 +1643,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_0);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_2);
                 }
@@ -1641,7 +1653,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRAVE_U_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_7);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_9);
                 }
@@ -1651,7 +1663,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RING_ABOVE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_7);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_9);
                 }
@@ -1661,7 +1673,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case STROKE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_6);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_8);
                 }
@@ -1671,7 +1683,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_A_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_5);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_5););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_7);
                 }
@@ -1681,7 +1693,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_N_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_9);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_1);
                 }
@@ -1691,7 +1703,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TILDE_O_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_3);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_5);
                 }
@@ -1759,7 +1771,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case AE_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_8);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_0);
                 }
@@ -1769,7 +1781,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OE_W:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_0);
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_6);
                 }
@@ -1923,7 +1935,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case AE_M:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    MAC_OPT(X_0, X_0, X_C, X_6);
+                    WITHOUT_MODS(MAC_OPT(X_0, X_0, X_C, X_6););
                 } else {
                     MAC_OPT(X_0, X_0, X_E, X_6);
                 }
@@ -1933,7 +1945,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case OE_M:
             if (record->event.pressed) {
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    MAC_OPT(X_0, X_1, X_5, X_2);
+                    WITHOUT_MODS(MAC_OPT(X_0, X_1, X_5, X_2););
                 } else {
                     MAC_OPT(X_0, X_1, X_5, X_3);
                 }
