@@ -1,0 +1,11 @@
+https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/PC/CP437.TXT
+https://public.dhe.ibm.com/software/globalization/gcoc/attachments/CP00437.txt
+https://public.dhe.ibm.com/software/globalization/gcoc/attachments/CP00437.pdf
+https://github.com/unicode-org/icu/blob/main/icu4c/source/data/mappings/ibm-437_P100-1995.ucm
+https://en.wikipedia.org/wiki/Code_page_437
+
+https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP1252.TXT
+https://public.dhe.ibm.com/software/globalization/gcoc/attachments/CP01252.txt
+https://public.dhe.ibm.com/software/globalization/gcoc/attachments/CP01252.pdf
+https://github.com/unicode-org/icu/blob/main/icu4c/source/data/mappings/ibm-1252_P100-2000.ucm
+https://en.wikipedia.org/wiki/Windows-1252
