@@ -392,33 +392,6 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _ACCENT, _
 . + - × ÷ =       ← ↓ → · ⇞ ¿
 ¢ £ ¥ . .   ♪   ♫   § ¶ ⇱ ⇟ ⇲
 . . . . ↔ ↕ •   █ ≤ ≥ . . . .
-
-
-(WIN|MAC)_SYM colors
-
-O R R R R R G   B R R R R R 2
-c 1 1 1 1 O O   B R R O c c G
-O 3 3 3 5 5 5   B O y O G c c
-_ V V V V V .   . y y y G Y G
-4 4 4 G _ . P   P . O O Y Y Y
-. . . . y y O   G G G . . . .
-
-? null // GREEN for MAC, OFF for WIN
-_ OFF
-R RED
-O ORANGE
-Y YELLOW
-G GREEN
-B BLUE
-V MAGENTA
-c CYAN
-y OLIVE
-1 PINK
-2 ZELDA_CART
-3 WHITE
-4 MONEY_GREEN
-5 BLUE
-P PRINCE_PURP
 */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
