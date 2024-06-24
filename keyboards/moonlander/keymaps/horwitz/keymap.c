@@ -510,7 +510,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        XXXXXXX,        XXXXXXX,        PHI_W,          PI_W,           XXXXXXX,        TG(_GREEK_W),            XXXXXXX,        XXXXXXX,        XXXXXXX,        THETA_W,        XXXXXXX,        XXXXXXX,        XXXXXXX,
         XXXXXXX,        ALPHA_W,        XXXXXXX,        SIGMA_W,        TAU_W,          GAMMA_W,        XXXXXXX,                 XXXXXXX,        MU_W,           XXXXXXX,        EPSILON_W,      XXXXXXX,        XXXXXXX,        XXXXXXX,
         KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        DELTA_W,        OMEGA_W,                                                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_UP,          XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 XXXXXXX,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
+        XXXXXXX,        CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         KC_ENTER,       XXXXXXX,        XXXXXXX,                 KC_DELETE,      KC_BSPC,        KC_SPACE
     ),
     [_GREEK_M] = LAYOUT_moonlander(
@@ -518,7 +518,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        XXXXXXX,        FINAL_SIGMA_M,  PHI_M,          PI_M,           BETA_M,         TG(_GREEK_M),            XXXXXXX,        XI_M,           LAMBDA_M,       THETA_M,        UPSILON_M,      XXXXXXX,        XXXXXXX,
         XXXXXXX,        ALPHA_M,        RHO_M,          SIGMA_M,        TAU_M,          GAMMA_M,        XXXXXXX,                 XXXXXXX,        MU_M,           NU_M,           EPSILON_M,      IOTA_M,         OMICRON_M,      XXXXXXX,
         KC_LSFT,        ZETA_M,         CHI_M,          PSI_M,          DELTA_M,        OMEGA_M,                                                 KAPPA_M,        ETA_M,          XXXXXXX,        XXXXXXX,        KC_UP,          XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 XXXXXXX,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
+        XXXXXXX,        CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         KC_ENTER,       XXXXXXX,        XXXXXXX,                 KC_DELETE,      KC_BSPC,        KC_SPACE
     ),
     [_ACCENT] = LAYOUT_moonlander(
@@ -671,9 +671,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_NUMPAD] = {{HSV_MAROON}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_OFF}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
 
-    [_GREEK_W] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}},
+    [_GREEK_W] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
 
-    [_GREEK_M] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_OFF}},
+    [_GREEK_M] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_OFF}},
 
     [_ACCENT] = {{HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
 
@@ -747,6 +747,21 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &shift_backspace_override,
     NULL // terminate the array
 };
+
+// #define USB_LED_CAPS_LOCK 1
+
+bool is_caps_lock_on(void) {
+    // return host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK);
+    return host_keyboard_led_state().caps_lock;
+}
+
+bool is_shift_pressed(void) {
+    return get_mods() & MOD_MASK_SHIFT;
+}
+
+bool should_capitalize(void) {
+    return is_caps_lock_on() || is_caps_word_on() || is_shift_pressed();
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -1458,7 +1473,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case QUOTE_P:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (is_shift_pressed()) {
                     SEND_STRING("\"\"" SS_TAP(X_LEFT));
                 } else {
                     SEND_STRING("''" SS_TAP(X_LEFT));
@@ -1478,7 +1493,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          */
         case ACUTE_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_5);
@@ -1488,7 +1503,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ACUTE_E_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_3);
@@ -1498,7 +1513,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ACUTE_I_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_5););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_7);
@@ -1508,7 +1523,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ACUTE_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_3);
@@ -1518,7 +1533,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ACUTE_U_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_0);
@@ -1528,7 +1543,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ACUTE_Y_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_1););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_3);
@@ -1538,7 +1553,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CARON_S_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_4);
@@ -1548,7 +1563,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CARON_Z_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_8);
@@ -1558,7 +1573,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CEDILLA_C_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_1);
@@ -1568,7 +1583,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CIRCUMFLEX_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_6);
@@ -1578,7 +1593,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CIRCUMFLEX_E_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_4);
@@ -1588,7 +1603,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CIRCUMFLEX_I_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_8);
@@ -1598,7 +1613,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CIRCUMFLEX_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_4);
@@ -1608,7 +1623,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CIRCUMFLEX_U_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_1);
@@ -1618,7 +1633,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_8);
@@ -1628,7 +1643,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_E_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_5);
@@ -1638,7 +1653,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_I_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_9);
@@ -1648,7 +1663,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_6);
@@ -1658,7 +1673,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_U_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_2);
@@ -1668,7 +1683,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DIAERESIS_Y_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_5);
@@ -1678,7 +1693,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GRAVE_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_4);
@@ -1688,7 +1703,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GRAVE_E_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_2);
@@ -1698,7 +1713,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GRAVE_I_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_4););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_6);
@@ -1708,7 +1723,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GRAVE_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_2);
@@ -1718,7 +1733,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GRAVE_U_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_9);
@@ -1728,7 +1743,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case RING_ABOVE_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_7););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_9);
@@ -1738,7 +1753,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case STROKE_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_6););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_8);
@@ -1748,7 +1763,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TILDE_A_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_5););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_7);
@@ -1758,7 +1773,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TILDE_N_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_9););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_1);
@@ -1768,7 +1783,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TILDE_O_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_3););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_5);
@@ -1836,7 +1851,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case AE_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_0);
@@ -1846,7 +1861,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OE_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_0););
                 } else {
                     WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_6);
@@ -2001,7 +2016,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case AE_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_0, X_C, X_6););
                 } else {
                     MAC_OPT(X_0, X_0, X_E, X_6);
@@ -2011,7 +2026,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OE_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_1, X_5, X_2););
                 } else {
                     MAC_OPT(X_0, X_1, X_5, X_3);
@@ -2125,7 +2140,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          */
         case ALPHA_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_2, X_KP_4);
                 }
             }
@@ -2133,7 +2148,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GAMMA_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_2, X_KP_6););
                 }
             }
@@ -2141,7 +2156,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DELTA_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_3, X_KP_5);
                 }
             }
@@ -2149,7 +2164,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case EPSILON_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_3, X_KP_8);
                 }
             }
@@ -2157,7 +2172,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case THETA_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_3););
                 }
             }
@@ -2165,7 +2180,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case MU_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_3, X_KP_0);
                 }
             }
@@ -2173,7 +2188,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case PI_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_2, X_KP_7);
                 }
             }
@@ -2181,7 +2196,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case SIGMA_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_2, X_KP_8););
                 } else {
                     WIN_ALT(X_KP_2, X_KP_2, X_KP_9);
@@ -2191,7 +2206,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TAU_W:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     WIN_ALT(X_KP_2, X_KP_3, X_KP_1);
                 }
             }
@@ -2199,7 +2214,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case PHI_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_2););
                 } else {
                     WIN_ALT(X_KP_2, X_KP_3, X_KP_7);
@@ -2209,7 +2224,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OMEGA_W:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_4););
                 }
             }
@@ -2217,7 +2232,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ALPHA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_1););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_1);
@@ -2227,7 +2242,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case BETA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_2););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_2);
@@ -2237,7 +2252,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GAMMA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_3););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_3);
@@ -2247,7 +2262,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case DELTA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_4););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_4);
@@ -2257,7 +2272,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case EPSILON_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_5););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_5);
@@ -2267,7 +2282,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ZETA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_6););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_6);
@@ -2277,7 +2292,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ETA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_7););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_7);
@@ -2287,7 +2302,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case THETA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_8););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_8);
@@ -2297,7 +2312,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case IOTA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_9););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_9);
@@ -2307,7 +2322,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case KAPPA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_A););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_A);
@@ -2317,7 +2332,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case LAMBDA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_B););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_B);
@@ -2327,7 +2342,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case MU_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_C););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_C);
@@ -2337,7 +2352,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case NU_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_D););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_D);
@@ -2347,7 +2362,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case XI_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_E););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_E);
@@ -2357,7 +2372,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OMICRON_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_F););
                 } else {
                     MAC_OPT(X_0, X_3, X_B, X_F);
@@ -2367,7 +2382,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case PI_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_0););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_0);
@@ -2377,7 +2392,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case RHO_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_1););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_1);
@@ -2387,7 +2402,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case SIGMA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_3););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_3);
@@ -2397,7 +2412,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TAU_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_4););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_4);
@@ -2407,7 +2422,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case UPSILON_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_5););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_5);
@@ -2417,7 +2432,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case PHI_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_6););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_6);
@@ -2427,7 +2442,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CHI_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_7););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_7);
@@ -2437,7 +2452,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case PSI_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_8););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_8);
@@ -2447,7 +2462,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OMEGA_M:
             if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
+                if (should_capitalize()) {
                     WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_9););
                 } else {
                     MAC_OPT(X_0, X_3, X_C, X_9);
@@ -2457,7 +2472,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case FINAL_SIGMA_M:
             if (record->event.pressed) {
-                if (!(get_mods() & MOD_MASK_SHIFT)) {
+                if (!should_capitalize()) {
                     MAC_OPT(X_0, X_3, X_C, X_2);
                 }
             }
