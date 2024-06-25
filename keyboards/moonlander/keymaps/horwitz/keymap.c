@@ -430,7 +430,7 @@ enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _GREEK_W, 
         ¢ £ ¥   █ ≤ ≥
 
 
-_GREEK_W layout
+_GREEK_W layout (ignoring keys matching _WIN_BASE)
 
 . . . . . . .   . . . . . . .
 . . . Φ . . .   . . . Θ . . .
@@ -447,7 +447,7 @@ _GREEK_W layout
         . . .   . . .
 
 
-_GREEK_M layout
+_GREEK_M layout (ignoring keys matching _MAC_BASE)
 
 . . . . . . .   . . . . . . .
 . . Φ Π Β . .   . Ξ Λ Θ Υ . .
@@ -506,19 +506,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         _______,        _______,        _______,                 _______,        _______,        _______
     ),
     [_GREEK_W] = LAYOUT_moonlander(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        PHI_W,          PI_W,           XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        THETA_W,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        ALPHA_W,        XXXXXXX,        SIGMA_W,        TAU_W,          GAMMA_W,        XXXXXXX,                 XXXXXXX,        MU_W,           XXXXXXX,        EPSILON_W,      XXXXXXX,        XXXXXXX,        XXXXXXX,
-        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        DELTA_W,        OMEGA_W,                                                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_UP,          XXXXXXX,
-        TG(_GREEK_W),   CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
+        KC_ESCAPE,      KC_0,           KC_1,           KC_2,           KC_3,           KC_4,           KC_EQUAL,                EN_DASH_W,      KC_5,           KC_6,           KC_7,           KC_8,           KC_9,           XXXXXXX,
+        KC_GRAVE,       XXXXXXX,        XXXXXXX,        PHI_W,          PI_W,           XXXXXXX,        KC_BSLS,                 EM_DASH_W,      XXXXXXX,        XXXXXXX,        THETA_W,        XXXXXXX,        KC_SCLN,        KC_MINUS,
+        KC_TAB,         ALPHA_W,        XXXXXXX,        SIGMA_W,        TAU_W,          GAMMA_W,        KC_LBRC,                 XXXXXXX,        MU_W,           XXXXXXX,        EPSILON_W,      XXXXXXX,        XXXXXXX,        KC_QUOTE,
+        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        DELTA_W,        OMEGA_W,                                                 XXXXXXX,        XXXXXXX,        KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
+        TG(_GREEK_W),   CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                        LGUI(KC_DOT),   XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         KC_ENTER,       XXXXXXX,        XXXXXXX,                 KC_DELETE,      KC_BSPC,        KC_SPACE
     ),
     [_GREEK_M] = LAYOUT_moonlander(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                 XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        FINAL_SIGMA_M,  PHI_M,          PI_M,           BETA_M,         XXXXXXX,                 XXXXXXX,        XI_M,           LAMBDA_M,       THETA_M,        UPSILON_M,      XXXXXXX,        XXXXXXX,
-        XXXXXXX,        ALPHA_M,        RHO_M,          SIGMA_M,        TAU_M,          GAMMA_M,        XXXXXXX,                 XXXXXXX,        MU_M,           NU_M,           EPSILON_M,      IOTA_M,         OMICRON_M,      XXXXXXX,
-        KC_LSFT,        ZETA_M,         CHI_M,          PSI_M,          DELTA_M,        OMEGA_M,                                                 KAPPA_M,        ETA_M,          XXXXXXX,        XXXXXXX,        KC_UP,          XXXXXXX,
-        TG(_GREEK_M),   CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                        XXXXXXX,        XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
+        KC_ESCAPE,      KC_0,           KC_1,           KC_2,           KC_3,           KC_4,           KC_EQUAL,                LALT(KC_MINUS), KC_5,           KC_6,           KC_7,           KC_8,           KC_9,           XXXXXXX,
+        KC_GRAVE,       XXXXXXX,        FINAL_SIGMA_M,  PHI_M,          PI_M,           BETA_M,         KC_BSLS,           LALT(LSFT(KC_MINUS)), XI_M,           LAMBDA_M,       THETA_M,        UPSILON_M,      KC_SCLN,        KC_MINUS,
+        KC_TAB,         ALPHA_M,        RHO_M,          SIGMA_M,        TAU_M,          GAMMA_M,        KC_LBRC,                 XXXXXXX,        MU_M,           NU_M,           EPSILON_M,      IOTA_M,         OMICRON_M,      KC_QUOTE,
+        KC_LSFT,        ZETA_M,         CHI_M,          PSI_M,          DELTA_M,        OMEGA_M,                                                 KAPPA_M,        ETA_M,          KC_COMMA,       KC_DOT,         KC_UP,          KC_SLASH,
+        TG(_GREEK_M),   CW_TOGG,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 KC_CAPS,                  LGUI(LCTL(KC_SPACE)), XXXXXXX,        KC_LEFT,        KC_DOWN,        KC_RIGHT,
                                                                         KC_ENTER,       XXXXXXX,        XXXXXXX,                 KC_DELETE,      KC_BSPC,        KC_SPACE
     ),
     [_ACCENT] = LAYOUT_moonlander(
@@ -671,9 +671,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_NUMPAD] = {{HSV_MAROON}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_OFF}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
 
-    [_GREEK_W] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
+    [_GREEK_W] = {{HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_GREEN}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
 
-    [_GREEK_M] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_OFF}},
+    [_GREEK_M] = {{HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}},
 
     [_ACCENT] = {{HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
 
