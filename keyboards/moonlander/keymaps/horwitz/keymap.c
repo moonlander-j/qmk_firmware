@@ -318,7 +318,8 @@ enum custom_keycodes {
     CHI_M,
     PSI_M,
     OMEGA_M,
-    FINAL_SIGMA_M
+    FINAL_SIGMA_M,
+    PRINT_VER
 };
 
 static float zelda_uncover_secret[][2]    = SONG(ZELDA_UNCOVER_SECRET);
@@ -498,7 +499,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                         CENT_SIGN_M,   POUND_SIGN_M,   YEN_SIGN_M,               FULL_BLOCK_M, LT_OR_EQ_M,     GT_OR_EQ_M
     ),
     [_NUMPAD] = LAYOUT_moonlander(
-        QK_RBT,         QK_BOOT,        _______,        _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUM_LOCK,    KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
+        QK_RBT,         QK_BOOT,        PRINT_VER,      _______,        _______,        _______,        DT_UP,                   _______,        _______,        KC_NUM_LOCK,    KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
         _______,        _______,        _______,   KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,_______,        DT_PRNT,                 _______,        _______,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     _______,
         TG(_J1),        _______,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, _______,        DT_DOWN,                 _______,        _______,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     _______,
         TG(_J2),   TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, _______,                                                 _______,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    _______,
@@ -669,7 +670,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_MAC_SYM] = {{HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_RED}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_ORANGE}, {HSV_GRAY40}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GRAY40}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_PRINCE_PURP}},
 
-    [_NUMPAD] = {{HSV_MAROON}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_OFF}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+    [_NUMPAD] = {{HSV_MAROON}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_WHITE}, {HSV_OFF}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_OFF}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_VERMILLION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
 
     [_GREEK_W] = {{HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_GREEN}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
 
@@ -2477,6 +2478,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
+
+        case PRINT_VER:
+            if (record->event.pressed) {
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+                return false;
+            }
     }
 
     return true;
