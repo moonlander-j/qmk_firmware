@@ -632,9 +632,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 extern rgb_config_t rgb_matrix_config;
 
-#define NUM_LEDS  6
+#define NUM_LEDS 6
 // period for LED_BLINK_FAST blinking (smaller value implies faster)
-#define LED_BLINK_FAST_PERIOD_MS  300
+#define LED_BLINK_FAST_PERIOD_MS 300
 
 enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
 static uint8_t led_blink_state[NUM_LEDS] = {0};
@@ -645,10 +645,10 @@ void keyboard_post_init_user(void) {
     // to take control of the Moonlander's LEDs
     keyboard_config.led_level = false;
 
-    uint32_t led_blink_callback(uint32_t trigger_time, void* cb_arg) {
+    uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
         static const uint8_t pattern[4] = {0x00, 0xff, 0x0f, 0xaa};
-        static uint8_t phase = 0;
-        phase = (phase + 1) % 8;
+        static uint8_t       phase      = 0;
+        phase                           = (phase + 1) % 8;
 
         uint8_t bit = 1 << phase;
         ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
