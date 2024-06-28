@@ -632,8 +632,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 extern rgb_config_t rgb_matrix_config;
 
+#define NUM_LEDS  6
+// period for LED_BLINK_FAST blinking (smaller value implies faster)
+#define LED_BLINK_FAST_PERIOD_MS  300
+
+enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
+static uint8_t led_blink_state[NUM_LEDS] = {0};
+
 void keyboard_post_init_user(void) {
     rgb_matrix_enable();
+
+    // to take control of the Moonlander's LEDs
+    keyboard_config.led_level = false;
+
+    uint32_t led_blink_callback(uint32_t trigger_time, void* cb_arg) {
+        static const uint8_t pattern[4] = {0x00, 0xff, 0x0f, 0xaa};
+        static uint8_t phase = 0;
+        phase = (phase + 1) % 8;
+
+        uint8_t bit = 1 << phase;
+        ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
+        ML_LED_2((pattern[led_blink_state[1]] & bit) != 0);
+        ML_LED_3((pattern[led_blink_state[2]] & bit) != 0);
+        ML_LED_4((pattern[led_blink_state[3]] & bit) != 0);
+        ML_LED_5((pattern[led_blink_state[4]] & bit) != 0);
+        ML_LED_6((pattern[led_blink_state[5]] & bit) != 0);
+
+        return LED_BLINK_FAST_PERIOD_MS / 2;
+    }
+
+    defer_exec(1, led_blink_callback, NULL);
 }
 
 /*
@@ -762,6 +790,39 @@ bool is_shift_pressed(void) {
 
 bool should_capitalize(void) {
     return is_caps_lock_on() || is_caps_word_on() || is_shift_pressed();
+}
+
+static void update_caps_indicator(void) {
+    if (is_caps_lock_on()) {
+        led_blink_state[0] = LED_ON;
+    } else if (is_caps_word_on()) {
+        led_blink_state[0] = LED_BLINK_FAST;
+    } else {
+        led_blink_state[0] = LED_OFF;
+    }
+}
+
+bool led_update_user(led_t led_state) {
+    update_caps_indicator();
+
+    return true;
+}
+
+void caps_word_set_user(bool active) {
+    update_caps_indicator();
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    uint8_t current_layer = get_highest_layer(layer_state);
+    for (int iLed = 5; iLed >= 1; --iLed) {
+        if ((current_layer & (1 << (5 - iLed))) == 0) {
+            led_blink_state[iLed] = LED_OFF;
+        } else {
+            led_blink_state[iLed] = LED_ON;
+        }
+    }
+
+    return state;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
