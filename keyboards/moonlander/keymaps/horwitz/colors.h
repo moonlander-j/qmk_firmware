@@ -6,9 +6,9 @@
 #define HSV_GRAY40         0,   0, 102 // #666666 (white, 40% value)
 #define HSV_DARK_GRAY      0,   0, 170 // #AAAAAA (white, 2/3 value)
 #define HSV_MAROON         0, 255, 128 // #800000
-#define HSV_VERM50        11, 255, 128 // #802100 (original: #802000 (vermillion, 50% value))
-#define HSV_VERM75        11, 255, 191 // #BF3100 (original: #BF3000 (vermillion, 75% value))
-#define HSV_VERMILLION    11, 255, 255 // #FF4200 (original: #FF4000 (halfway between red and orange))
+#define HSV_VERM50        11, 255, 128 // #802100 (original: #802000 (vermilion, 50% value))
+#define HSV_VERM75        11, 255, 191 // #BF3100 (original: #BF3000 (vermilion, 75% value))
+#define HSV_VERMILION     11, 255, 255 // #FF4200 (original: #FF4000 (halfway between red and orange))
 #define HSV_SFG_ORANGE    12, 226, 254 // #FE5C1D (original: #FE5A1D)
 #define HSV_MUDDY_WATERS  21, 132, 185 // #B98959 (original: #B98959)
 #define HSV_ALLIGATOR     36, 255, 135 // #877200 (original: #877100)
