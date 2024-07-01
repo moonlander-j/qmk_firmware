@@ -21,5 +21,8 @@
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #ifdef AUDIO_ENABLE
-    #define STARTUP_SONG SONG(ZELDA_UNCOVER_SECRET)
+#    define STARTUP_SONG SONG(T__NOTE(_REST)) // SONG(ZELDA_UNCOVER_SECRET) // (essentially) disabled (1/32-note rest)--superseded by START_UP_SONGS_BY_LAYER // TODO is this the best way to do this (i.e., a 1/32-note rest)?
 #endif
+
+#define START_UP_SONGS_BY_LAYER \
+    { SONG(MARIO_THEME), SONG(ZELDA_UNCOVER_SECRET) }

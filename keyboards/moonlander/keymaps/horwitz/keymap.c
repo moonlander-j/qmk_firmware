@@ -1,4 +1,5 @@
 #include "action_layer.h"
+#include "os_detection.h"
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "colors.h"
@@ -639,6 +640,19 @@ extern rgb_config_t rgb_matrix_config;
 enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
 static uint8_t led_blink_state[NUM_LEDS] = {0};
 
+#ifdef START_UP_SONGS_BY_LAYER
+float start_up_songs_by_layer_array[][16][2] = START_UP_SONGS_BY_LAYER;
+#endif
+
+void set_single_active_layer_with_sound(uint8_t layer_num) {
+#if defined(AUDIO_ENABLE) && defined(START_UP_SONGS_BY_LAYER)
+    PLAY_SONG(start_up_songs_by_layer_array[layer_num]);
+#endif
+    layer_state_t layer_state = (layer_state_t)(1 << layer_num);
+    // default_layer_set(layer_state);
+    layer_state_set(layer_state);
+}
+
 void keyboard_post_init_user(void) {
     rgb_matrix_enable();
 
@@ -662,6 +676,26 @@ void keyboard_post_init_user(void) {
     }
 
     defer_exec(1, led_blink_callback, NULL);
+
+    // if _default_ layer is changed and we want it changed (back) to _WIN_BASE (i.e., lowest level), run:
+    // set_single_persistent_default_layer(_WIN_BASE);
+
+    uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
+        switch (detected_host_os()) {
+            case OS_UNSURE:
+                break;
+            case OS_MACOS:
+            case OS_IOS:
+                set_single_active_layer_with_sound(_MAC_BASE);
+                break;
+            default: // OS_WINDOWS, OS_LINUX
+                set_single_active_layer_with_sound(_WIN_BASE);
+                break;
+        }
+        return 0;
+    }
+
+    defer_exec(500, get_host_os, NULL);
 }
 
 /*
