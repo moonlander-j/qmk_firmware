@@ -504,7 +504,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        XXXXXXX,        XXXXXXX,   KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,XXXXXXX,        DT_PRNT,                 XXXXXXX,        XXXXXXX,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     XXXXXXX,
         TG(_J1),        XXXXXXX,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, XXXXXXX,        DT_DOWN,                 XXXXXXX,        XXXXXXX,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     XXXXXXX,
         TG(_J2),   TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, XXXXXXX,                                                 XXXXXXX,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    XXXXXXX,
-        AU_TOGG,        MU_TOGG,        MU_NEXT,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                 XXXXXXX,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    XXXXXXX,
+        AU_TOGG,        MU_TOGG,        MU_NEXT,        _______,        XXXXXXX,                        XXXXXXX,                 XXXXXXX,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    XXXXXXX,
                                                                         _______,        XXXXXXX,        XXXXXXX,                 _______,        _______,        _______
     ),
     [_GREEK_W] = LAYOUT_moonlander(
