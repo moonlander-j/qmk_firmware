@@ -489,7 +489,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NOT_SIGN_W,     AE_W,           OE_W,           SHARP_S_W,      TM_SIGN_W,     C_CIRC_W,       R_CIRC_W,                 FRAC_3_4_W,  MICRO_W,        UP_ARROW_W,     DDAGGER_W,      INFINITY_W,     PAREN_P,        QUOTE_P,
         _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,    DEGREE_SIGN_W,                                         LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
         TG(_GREEK_W),   LR_ARROW_W,     UD_ARROW_W,     _______,        _______,                       NOTE_8TH_W,               NOTES_8TH_W,                 SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        CENT_SIGN_W,   POUND_SIGN_W,   YEN_SIGN_W,               FULL_BLOCK_W, LT_OR_EQ_W,     GT_OR_EQ_W
+                                                                        CENT_SIGN_W,   POUND_SIGN_W,   YEN_SIGN_W,               FULL_BLOCK_W, LT_OR_EQ_W,    GT_OR_EQ_W
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
         INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,         KC_F5,          ALMOST_EQ_M,              FRAC_1_4_M,  KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
@@ -497,7 +497,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NOT_SIGN_M,     AE_M,           OE_M,           SHARP_S_M,      TM_SIGN_M,     C_CIRC_M,       R_CIRC_M,                 FRAC_3_4_M,  MICRO_M,        UP_ARROW_M,     DDAGGER_M,      INFINITY_M,     PAREN_P,        QUOTE_P,
         _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,    DEGREE_SIGN_M,                                         LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
         TG(_GREEK_M),   LR_ARROW_M,     UD_ARROW_M,     _______,        _______,                       NOTE_8TH_M,               NOTES_8TH_M,                 SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        CENT_SIGN_M,   POUND_SIGN_M,   YEN_SIGN_M,               FULL_BLOCK_M, LT_OR_EQ_M,     GT_OR_EQ_M
+                                                                        CENT_SIGN_M,   POUND_SIGN_M,   YEN_SIGN_M,               FULL_BLOCK_M, LT_OR_EQ_M,    GT_OR_EQ_M
     ),
     [_NUMPAD] = LAYOUT_moonlander(
         QK_RBT,         QK_BOOT,        PRINT_VER,      XXXXXXX,        XXXXXXX,        XXXXXXX,        DT_UP,                   XXXXXXX,        XXXXXXX,        KC_NUM_LOCK,    KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
