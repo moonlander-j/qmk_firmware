@@ -502,7 +502,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUMPAD] = LAYOUT_moonlander(
         QK_RBT,         QK_BOOT,        PRINT_VER,      XXXXXXX,        XXXXXXX,        XXXXXXX,        DT_UP,                   XXXXXXX,        XXXXXXX,        KC_NUM_LOCK,    KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_MINUS,    TG(_QWERTY),
         XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_BRID,        KC_BRIU,        XXXXXXX,        DT_PRNT,                 XXXXXXX,        XXXXXXX,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     XXXXXXX,
-        TG(_J1),        XXXXXXX,     KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, XXXXXXX,        DT_DOWN,                 XXXXXXX,        XXXXXXX,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     XXXXXXX,
+        TG(_J1),        XXXXXXX,        KC_MUTE,        KC_VOLD,        KC_VOLU,        XXXXXXX,        DT_DOWN,                 XXXXXXX,        XXXXXXX,        KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     XXXXXXX,
         TG(_J2),   TOGGLE_LAYER_COLOR,  RGB_TOG,        RGB_MOD,        MOON_LED_LEVEL, XXXXXXX,                                                 XXXXXXX,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    XXXXXXX,
         AU_TOGG,        MU_TOGG,        MU_NEXT,        _______,        XXXXXXX,                        XXXXXXX,                 XXXXXXX,                        KC_KP_0,        KC_KP_0,        KC_KP_DOT,      KC_KP_ENTER,    XXXXXXX,
                                                                         _______,        XXXXXXX,        XXXXXXX,                 _______,        _______,        _______
