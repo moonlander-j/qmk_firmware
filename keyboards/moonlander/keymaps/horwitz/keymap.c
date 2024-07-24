@@ -824,202 +824,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case EN_DASH_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_0);
-            }
-            break;
-        case EM_DASH_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_1);
-            }
-            break;
-        case INV_EXLM_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_1);
-            }
-            break;
-        case SUP_2_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_5, X_KP_3);
-            }
-            break;
-        case SUP_N_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_5, X_KP_2);
-            }
-            break;
-        case DEGREE_SIGN_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_6);
-            }
-            break;
-        case FULL_BLOCK_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_1, X_KP_9);
-            }
-            break;
-        case FRAC_1_4_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_8);
-            }
-            break;
-        case FRAC_1_2_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_9);
-            }
-            break;
-        case FRAC_3_4_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_0);
-            }
-            break;
-        case TM_SIGN_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_3);
-            }
-            break;
-        case DAGGER_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_4);
-            }
-            break;
-        case PLUS_MINUS_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_7);
-            }
-            break;
-        case UP_ARROW_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_4);
-            }
-            break;
-        case INFINITY_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_3, X_KP_6);
-            }
-            break;
-        case LEFT_ARROW_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_7);
-            }
-            break;
-        case DOWN_ARROW_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_5);
-            }
-            break;
-        case RIGHT_ARROW_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_2, X_KP_6);
-            }
-            break;
-        case MIDDLE_DOT_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_3);
-            }
-            break;
-        case INV_QUES_W:
-            if (record->event.pressed) {
-                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_1);
-            }
-            break;
-        case NOT_EQUAL_TO_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_2, X_6, X_0);
-            }
-            break;
-        case INV_EXLM_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_A, X_1);
-            }
-            break;
-        case SUP_2_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_2);
-            }
-            break;
-        case SUP_N_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_0, X_7, X_F);
-            }
-            break;
-        case DEGREE_SIGN_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_0);
-            }
-            break;
-        case FULL_BLOCK_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_5, X_8, X_8);
-            }
-            break;
-        case FRAC_1_4_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_C);
-            }
-            break;
-        case FRAC_1_2_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_D);
-            }
-            break;
-        case FRAC_3_4_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_E);
-            }
-            break;
-        case TM_SIGN_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_1, X_2, X_2);
-            }
-            break;
-        case DAGGER_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_0, X_2, X_0);
-            }
-            break;
-        case PLUS_MINUS_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_1);
-            }
-            break;
-        case UP_ARROW_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_1, X_9, X_1);
-            }
-            break;
-        case INFINITY_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_2, X_1, X_E);
-            }
-            break;
-        case LEFT_ARROW_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_1, X_9, X_0);
-            }
-            break;
-        case DOWN_ARROW_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_1, X_9, X_3);
-            }
-            break;
-        case RIGHT_ARROW_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_2, X_1, X_9, X_2);
-            }
-            break;
-        case MIDDLE_DOT_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_7);
-            }
-            break;
-        case INV_QUES_M:
-            if (record->event.pressed) {
-                MAC_OPT(X_0, X_0, X_B, X_F);
-            }
-            break;
-
         case PLAY_ZELDA:
             if (record->event.pressed) {
                 PLAY_SONG(zelda_uncover_secret);
@@ -1562,7 +1366,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         /*
-         * Generated code: this comment and the 955 lines following it were generated by
+         * Generated code: this comment and the 1189 lines following it were generated by
          * ProcessRecordUserUnicodeCases.getWithHeader in qmk-tools
          */
         case ACUTE_A_W:
@@ -2115,6 +1919,126 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
+        case EM_DASH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_1);
+            }
+            return false;
+
+        case EN_DASH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_0);
+            }
+            return false;
+
+        case DAGGER_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_4);
+            }
+            return false;
+
+        case DEGREE_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_6);
+            }
+            return false;
+
+        case DOWN_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5);
+            }
+            return false;
+
+        case FRAC_1_2_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_9);
+            }
+            return false;
+
+        case FRAC_1_4_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_8);
+            }
+            return false;
+
+        case FRAC_3_4_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_0);
+            }
+            return false;
+
+        case FULL_BLOCK_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_1, X_KP_9);
+            }
+            return false;
+
+        case INFINITY_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_3, X_KP_6);
+            }
+            return false;
+
+        case INV_EXLM_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_1);
+            }
+            return false;
+
+        case INV_QUES_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_1);
+            }
+            return false;
+
+        case LEFT_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_7);
+            }
+            return false;
+
+        case MIDDLE_DOT_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_3);
+            }
+            return false;
+
+        case PLUS_MINUS_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_7);
+            }
+            return false;
+
+        case RIGHT_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_6);
+            }
+            return false;
+
+        case SUP_2_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_3);
+            }
+            return false;
+
+        case SUP_N_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_2);
+            }
+            return false;
+
+        case TM_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_3);
+            }
+            return false;
+
+        case UP_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4);
+            }
+            return false;
+
         case ALPHA_M:
             if (record->event.pressed) {
                 if (should_capitalize()) {
@@ -2518,6 +2442,120 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GT_OR_EQ_M:
             if (record->event.pressed) {
                 MAC_OPT(X_2, X_2, X_6, X_5);
+            }
+            return false;
+
+        case NOT_EQUAL_TO_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_0);
+            }
+            return false;
+
+        case DAGGER_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_0);
+            }
+            return false;
+
+        case DEGREE_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_0);
+            }
+            return false;
+
+        case DOWN_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_3);
+            }
+            return false;
+
+        case FRAC_1_2_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_D);
+            }
+            return false;
+
+        case FRAC_1_4_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_C);
+            }
+            return false;
+
+        case FRAC_3_4_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_E);
+            }
+            return false;
+
+        case FULL_BLOCK_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_5, X_8, X_8);
+            }
+            return false;
+
+        case INFINITY_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_1, X_E);
+            }
+            return false;
+
+        case INV_EXLM_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_1);
+            }
+            return false;
+
+        case INV_QUES_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_F);
+            }
+            return false;
+
+        case LEFT_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_0);
+            }
+            return false;
+
+        case MIDDLE_DOT_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_7);
+            }
+            return false;
+
+        case PLUS_MINUS_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_1);
+            }
+            return false;
+
+        case RIGHT_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_2);
+            }
+            return false;
+
+        case SUP_2_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_2);
+            }
+            return false;
+
+        case SUP_N_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_7, X_F);
+            }
+            return false;
+
+        case TM_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_2, X_2);
+            }
+            return false;
+
+        case UP_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_1);
             }
             return false;
     }
