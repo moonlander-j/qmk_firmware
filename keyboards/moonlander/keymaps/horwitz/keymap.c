@@ -438,6 +438,7 @@ enum tap_dance_codes {
     TD_L18,
     TD_L19,
     TD_L20,
+    TD_LLIST
 };
 
 enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _GREEK_W, _GREEK_M, _ACCENT, _A_ACUTE, _A_CARON, _A_CEDILLA, _A_CIRCUMFLEX, _A_DIAERESIS, _A_GRAVE, _A_RING_ABOVE, _A_STROKE, _A_TILDE, _J1, _J2, _QWERTY, _LMAPS };
@@ -609,12 +610,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_ENTER,  KC_LALT,   XXXXXXX,              KC_DELETE, KC_BSPC,   KC_SPACE
     ),
     [_LMAPS] = LAYOUT_moonlander(
-        TD(TD_L00), TD(TD_L01), TD(TD_L02), TD(TD_L03), TD(TD_L04), TD(TD_L05), XXXXXXX,                TD(TD_L06), TD(TD_L07), TD(TD_L08), TD(TD_L09), XXXXXXX,    XXXXXXX,    XXXXXXX,
-        TD(TD_L10), TD(TD_L11), TD(TD_L12), TD(TD_L13), TD(TD_L14), TD(TD_L15), XXXXXXX,                TD(TD_L16), TD(TD_L17), TD(TD_L18), TD(TD_L19), XXXXXXX,    XXXXXXX,    XXXXXXX,
-        TD(TD_L20), XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,                                        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_UP,      XXXXXXX,
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,                XXXXXXX,                XXXXXXX,    XXXXXXX,    KC_LEFT,    KC_DOWN,    KC_RIGHT,
-                                                        KC_ENTER,   XXXXXXX,    XXXXXXX,                KC_DELETE,  KC_BSPC,    KC_SPACE
+        TD(TD_L00),   TD(TD_L01),   TD(TD_L02),   TD(TD_L03),   TD(TD_L04),   TD(TD_L05),   XXXXXXX,                    XXXXXXX,      TD(TD_L06),   TD(TD_L07),   TD(TD_L08),   TD(TD_L09),   XXXXXXX,      XXXXXXX,
+        TD(TD_L10),   TD(TD_L11),   TD(TD_L12),   TD(TD_L13),   TD(TD_L14),   TD(TD_L15),   XXXXXXX,                    XXXXXXX,      TD(TD_L16),   TD(TD_L17),   TD(TD_L18),   TD(TD_L19),   XXXXXXX,      XXXXXXX,
+        TD(TD_L20),   XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      _______,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_UP,        XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    TD(TD_LLIST),               XXXXXXX,                    XXXXXXX,      XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,
+                                                                KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE
     )
     // clang-format on
 };
@@ -753,7 +754,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_QWERTY] = {{HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_CARDINAL}, {HSV_CARDINAL}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_CARDINAL}, {HSV_OFF}, {HSV_CARDINAL}, {HSV_GREEN}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_CARDINAL}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}},
 
-    [_LMAPS] = {{HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_OFF}}
+    [_LMAPS] = {{HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_OFF}}
     // clang-format on
 };
 
@@ -2781,7 +2782,7 @@ void dance_9_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 /*
- * Generated code: this comment and the 209 lines following it were generated by
+ * Generated code: this comment and the 219 lines following it were generated by
  * LmapTapDances.getLmapTapDances in qmk-tools
  */
 void dance_l00(tap_dance_state_t *state, void *user_data) {
@@ -2987,10 +2988,19 @@ void dance_l19(tap_dance_state_t *state, void *user_data) {
 void dance_l20(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
-            "TD(TD_L00), TD(TD_L01), TD(TD_L02), TD(TD_L03), TD(TD_L04), TD(TD_L05), XXXXXXX,                TD(TD_L06), TD(TD_L07), TD(TD_L08), TD(TD_L09), XXXXXXX,    XXXXXXX,    XXXXXXX,\nTD(TD_L10), TD(TD_L11), TD(TD_L12), TD(TD_L13), TD(TD_L14), TD(TD_L15), XXXXXXX,                TD(TD_L16), TD(TD_L17), TD(TD_L18), TD(TD_L19), XXXXXXX,    XXXXXXX,    XXXXXXX,\nTD(TD_L20), XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,\nXXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,                                        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_UP,      XXXXXXX,\nXXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,                XXXXXXX,                XXXXXXX,    XXXXXXX,    KC_LEFT,    KC_DOWN,    KC_RIGHT,\n                                                KC_ENTER,   XXXXXXX,    XXXXXXX,                KC_DELETE,  KC_BSPC,    KC_SPACE\n"
-        );
+            "TD(TD_L00),   TD(TD_L01),   TD(TD_L02),   TD(TD_L03),   TD(TD_L04),   TD(TD_L05),   XXXXXXX,                    XXXXXXX,      TD(TD_L06),   TD(TD_L07),   TD(TD_L08),   TD(TD_L09),   XXXXXXX,      XXXXXXX,\nTD(TD_L10),   TD(TD_L11),   TD(TD_L12),   TD(TD_L13),   TD(TD_L14),   TD(TD_L15),   XXXXXXX,                    XXXXXXX,      TD(TD_L16),   TD(TD_L17),   TD(TD_L18),   TD(TD_L19),   XXXXXXX,      XXXXXXX,\nTD(TD_L20),   XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      _______,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_UP,        XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    TD(TD_LLIST),               XXXXXXX,                    XXXXXXX,      XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,\n                                                        KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE\n"        );
     } else {
         SEND_STRING("_LMAPS");
+    }
+}
+
+void dance_llist(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "0 _WIN_BASE\n1 _MAC_BASE\n2 _WIN_SYM\n3 _MAC_SYM\n4 _NUMPAD\n5 _GREEK_W\n6 _GREEK_M\n7 _ACCENT\n8 _A_ACUTE\n9 _A_CARON\n10 _A_CEDILLA\n11 _A_CIRCUMFLEX\n12 _A_DIAERESIS\n13 _A_GRAVE\n14 _A_RING_ABOVE\n15 _A_STROKE\n16 _A_TILDE\n17 _J1\n18 _J2\n19 _QWERTY\n20 _LMAPS"
+        );
+    } else {
+        SEND_STRING("21");
     }
 }
 
@@ -3026,6 +3036,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_L17] = ACTION_TAP_DANCE_FN(dance_l17),
     [TD_L18] = ACTION_TAP_DANCE_FN(dance_l18),
     [TD_L19] = ACTION_TAP_DANCE_FN(dance_l19),
-    [TD_L20] = ACTION_TAP_DANCE_FN(dance_l20)
+    [TD_L20] = ACTION_TAP_DANCE_FN(dance_l20),
+    [TD_LLIST] = ACTION_TAP_DANCE_FN(dance_llist)
     // clang-format on
 };
