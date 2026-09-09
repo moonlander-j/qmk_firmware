@@ -2630,10 +2630,10 @@ uint8_t dance_step(tap_dance_state_t *state) {
 }
 
 // left to right, so [0]=1, [1]=2, ..., [9]=0
-const uint8_t num_row[] = {KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0};
+const uint16_t num_row[] = {KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0};
 
 // left to right, so [0]=F1, [1]=F2, ..., [9]=F10
-const uint8_t f_row[] = {KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10};
+const uint16_t f_row[] = {KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10};
 
 void on_dance_i(tap_dance_state_t *state, void *user_data, int i) {
     if (state->count == 3) {
