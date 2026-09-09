@@ -747,12 +747,12 @@ static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
     phase                           = (phase + 1) % 8;
 
     uint8_t bit = (uint8_t)(1u << phase);
-    ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
-    ML_LED_2((pattern[led_blink_state[1]] & bit) != 0);
-    ML_LED_3((pattern[led_blink_state[2]] & bit) != 0);
-    ML_LED_4((pattern[led_blink_state[3]] & bit) != 0);
-    ML_LED_5((pattern[led_blink_state[4]] & bit) != 0);
-    ML_LED_6((pattern[led_blink_state[5]] & bit) != 0);
+    STATUS_LED_1((pattern[led_blink_state[0]] & bit) != 0);
+    STATUS_LED_2((pattern[led_blink_state[1]] & bit) != 0);
+    STATUS_LED_3((pattern[led_blink_state[2]] & bit) != 0);
+    STATUS_LED_4((pattern[led_blink_state[3]] & bit) != 0);
+    STATUS_LED_5((pattern[led_blink_state[4]] & bit) != 0);
+    STATUS_LED_6((pattern[led_blink_state[5]] & bit) != 0);
 
     return LED_BLINK_FAST_PERIOD_MS / 2;
 }
