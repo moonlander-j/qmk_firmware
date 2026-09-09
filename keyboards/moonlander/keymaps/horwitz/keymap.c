@@ -275,7 +275,6 @@ enum custom_keycodes {
     MICRO_M,
     NOT_SIGN_M,
     BULLET_M,
-    ALMOST_EQ,
     ALMOST_EQ_M,
     // PI_M,
     NOTE_8TH_M,
