@@ -1,3 +1,5 @@
+#pragma once
+
 // "Uncover Secret" by Koji Kondo (from _The Legend of Zelda_)
 #define ZELDA_UNCOVER_SECRET \
     Q__NOTE(_G5),            \
