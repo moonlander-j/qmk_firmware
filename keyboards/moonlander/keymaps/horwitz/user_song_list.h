@@ -1,5 +1,6 @@
 #pragma once
 
+// clang-format off
 // "Uncover Secret" by Koji Kondo (from _The Legend of Zelda_)
 #define ZELDA_UNCOVER_SECRET \
     Q__NOTE(_G5),            \
@@ -572,3 +573,4 @@
   JT_NOTE(_REST, 16), JT_NOTE(_CS5, 16), JT_NOTE(_D5, 32),
 
 #define JOHNNYS_THEME JT_A JT_B JT_A JT_C
+// clang-format on
