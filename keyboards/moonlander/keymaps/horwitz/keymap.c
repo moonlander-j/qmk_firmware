@@ -842,7 +842,7 @@ void caps_word_set_user(bool active) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    uint8_t current_layer = get_highest_layer(layer_state);
+    uint8_t current_layer = get_highest_layer(state);
     for (int iLed = 5; iLed >= 1; --iLed) {
         if ((current_layer & (1 << (5 - iLed))) == 0) {
             led_blink_state[iLed] = LED_OFF;
