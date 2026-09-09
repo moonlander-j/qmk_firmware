@@ -648,7 +648,7 @@ static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
     static uint8_t       phase      = 0;
     phase                           = (phase + 1) % 8;
 
-    uint8_t bit = 1 << phase;
+    uint8_t bit = (uint8_t)(1u << phase);
     ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
     ML_LED_2((pattern[led_blink_state[1]] & bit) != 0);
     ML_LED_3((pattern[led_blink_state[2]] & bit) != 0);
@@ -767,7 +767,7 @@ void set_layer_color(int layer) {
         } else {
             RGB   rgb = hsv_to_rgb(hsv);
             float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
+            rgb_matrix_set_color(i, (uint8_t)(f * rgb.r), (uint8_t)(f * rgb.g), (uint8_t)(f * rgb.b));
         }
     }
 }
