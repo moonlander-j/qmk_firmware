@@ -774,10 +774,10 @@ void set_layer_color(int layer) {
 bool rgb_matrix_indicators_user(void) {
     if (!rawhid_state.rgb_control && !keyboard_config.disable_layer_led) {
         set_layer_color(get_highest_layer(layer_state));
-        return false; // TODO! is this right?
+        return false; // prevent further processing from overriding our colors
     }
 
-    return true; // TODO! is this right?
+    return true; // let rawhid/disable_layer_led path continue normally
 }
 
 #define MAC_OPT(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
