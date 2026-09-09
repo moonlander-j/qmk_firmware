@@ -11,16 +11,6 @@ static const uint16_t num_row[] = {KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_
 static const uint16_t f_row[]   = {KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10};
 // clang-format on
 
-static uint8_t dance_step(uint8_t count, bool interrupted, bool pressed) {
-    switch (count) {
-        case 1: return (interrupted || !pressed) ? SINGLE_TAP : SINGLE_HOLD;
-        case 2:
-            if (interrupted) return DOUBLE_SINGLE_TAP;
-            return pressed ? DOUBLE_HOLD : DOUBLE_TAP;
-        default: return MORE_TAPS;
-    }
-}
-
 static void on_dance_i(const tap_dance_state_t *state, const void *user_data, int i) {
     if (state->count == 3) {
         tap_code16(num_row[i]);

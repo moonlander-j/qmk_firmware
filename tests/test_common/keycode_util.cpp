@@ -6,6 +6,7 @@ extern "C" {
 #include "quantum_keycodes.h"
 #include "util.h"
 }
+#include <sstream>
 #include <string>
 #include <iomanip>
 #include <map>

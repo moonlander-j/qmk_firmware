@@ -35,6 +35,11 @@ $(GTEST_OUTPUT)_INC := $(GTEST_INC) $(GTEST_INTERNAL_INC)
 LDFLAGS += -lstdc++ -lpthread -shared-libgcc
 CREATE_MAP := no
 
+# clang on macOS treats #include_next in a file found by absolute path as a
+# warning (promoted to error by -Werror). Suppress it so test builds work.
+CFLAGS += -Wno-include-next-absolute-path
+CXXFLAGS += -Wno-include-next-absolute-path
+
 VPATH += \
 	$(LIB_PATH)/googletest \
 	$(LIB_PATH)/googlemock \
@@ -70,6 +75,10 @@ include $(PLATFORM_PATH)/test/rules.mk
 ifneq ($(filter $(FULL_TESTS),$(TEST)),)
 include $(BUILDDEFS_PATH)/build_full_test.mk
 endif
+
+# Allow test.mk to add VPATH entries that need to come AFTER tests/test_common
+# (e.g. so a keymap header dir doesn't shadow tests/test_common/keymap.c).
+VPATH += $($(TEST)_VPATH)
 
 $(TEST)_SRC += \
 	tests/test_common/main.cpp \
