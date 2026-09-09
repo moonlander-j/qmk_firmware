@@ -641,47 +641,47 @@ void set_single_active_layer_with_sound(uint8_t layer_num) {
     layer_state_set(layer_state);
 }
 
+static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
+    static const uint8_t pattern[4] = {0x00, 0xff, 0x0f, 0xaa};
+    static uint8_t       phase      = 0;
+    phase                           = (phase + 1) % 8;
+
+    uint8_t bit = 1 << phase;
+    ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
+    ML_LED_2((pattern[led_blink_state[1]] & bit) != 0);
+    ML_LED_3((pattern[led_blink_state[2]] & bit) != 0);
+    ML_LED_4((pattern[led_blink_state[3]] & bit) != 0);
+    ML_LED_5((pattern[led_blink_state[4]] & bit) != 0);
+    ML_LED_6((pattern[led_blink_state[5]] & bit) != 0);
+
+    return LED_BLINK_FAST_PERIOD_MS / 2;
+}
+
+static uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
+    switch (detected_host_os()) {
+        case OS_UNSURE:
+            break;
+        case OS_MACOS:
+        case OS_IOS:
+            set_single_active_layer_with_sound(_MAC_BASE);
+            break;
+        default: // OS_WINDOWS, OS_LINUX
+            set_single_active_layer_with_sound(_WIN_BASE);
+            break;
+    }
+    return 0;
+}
+
 void keyboard_post_init_user(void) {
     rgb_matrix_enable();
 
     // to take control of the Moonlander's LEDs
     keyboard_config.led_level = false;
 
-    uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
-        static const uint8_t pattern[4] = {0x00, 0xff, 0x0f, 0xaa};
-        static uint8_t       phase      = 0;
-        phase                           = (phase + 1) % 8;
-
-        uint8_t bit = 1 << phase;
-        ML_LED_1((pattern[led_blink_state[0]] & bit) != 0);
-        ML_LED_2((pattern[led_blink_state[1]] & bit) != 0);
-        ML_LED_3((pattern[led_blink_state[2]] & bit) != 0);
-        ML_LED_4((pattern[led_blink_state[3]] & bit) != 0);
-        ML_LED_5((pattern[led_blink_state[4]] & bit) != 0);
-        ML_LED_6((pattern[led_blink_state[5]] & bit) != 0);
-
-        return LED_BLINK_FAST_PERIOD_MS / 2;
-    }
-
     defer_exec(1, led_blink_callback, NULL);
 
     // if _default_ layer is changed and we want it changed (back) to _WIN_BASE (i.e., lowest level), run:
     // set_single_persistent_default_layer(_WIN_BASE);
-
-    uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
-        switch (detected_host_os()) {
-            case OS_UNSURE:
-                break;
-            case OS_MACOS:
-            case OS_IOS:
-                set_single_active_layer_with_sound(_MAC_BASE);
-                break;
-            default: // OS_WINDOWS, OS_LINUX
-                set_single_active_layer_with_sound(_WIN_BASE);
-                break;
-        }
-        return 0;
-    }
 
     defer_exec(500, get_host_os, NULL);
 }
