@@ -1,0 +1,49 @@
+name: horwitz keymap
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - horwitz23
+    paths:
+      - 'keyboards/moonlander/keymaps/horwitz/**'
+      - 'tests/horwitz/**'
+      - 'tests/test_common/**'
+      - 'builddefs/**'
+      - 'quantum/**'
+      - 'platforms/**'
+      - 'tmk_core/**'
+      - '*.mk'
+      - 'Makefile'
+      - '.github/workflows/horwitz.yml'
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: pip3 install -r requirements-dev.txt
+      - name: Run horwitz unit tests
+        run: make test:horwitz
+
+  build:
+    name: Firmware build
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: pip3 install -r requirements-dev.txt
+      - name: Build horwitz keymap
+        run: make moonlander:horwitz
