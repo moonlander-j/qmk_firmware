@@ -1,6 +1,9 @@
 #include "action_layer.h"
 #include "os_detection.h"
 #include QMK_KEYBOARD_H
+#ifdef COMMUNITY_MODULE_DEFAULTS_ENABLE
+#    include "defaults.h"
+#endif
 #include "version.h"
 #include "colors.h"
 #include "dance.h"

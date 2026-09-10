@@ -43,16 +43,15 @@ code /path/to/qmk_firmware_zsa
 
 ### 6. Generate the compilation database
 
-`qmk generate-compilation-database` does not work with this ZSA fork (its Makefile
-output format is too old for the QMK parser). Use `bear` instead, which intercepts
-compiler calls directly:
-
 ```sh
-make zsa/moonlander/reva:horwitz:clean && bear -- make zsa/moonlander/reva:horwitz
+keyboards/zsa/moonlander/keymaps/horwitz/gen-compile-db.sh
 ```
 
-The clean is required so that `bear` sees every compile invocation; a cached build
-produces an incomplete `compile_commands.json`.
+This script runs `bear -- make` (intercepting every compiler invocation) and then
+adds an entry for `keymap.c`.  A dedicated entry is necessary because QMK's build
+system `#include`s `keymap.c` from a generated wrapper rather than compiling it
+directly, so `bear` does not capture it automatically.  `qmk generate-compilation-database`
+handles this in mainline QMK, but that command does not work with this ZSA fork.
 
 Then in VS Code: `⌘⇧P` -> **clangd: Restart language server**
 
@@ -64,7 +63,7 @@ symbol navigation (F12 / Go to Definition, hover tooltips) will be fully functio
 Regenerate the compilation database and restart clangd:
 
 ```sh
-make zsa/moonlander/reva:horwitz:clean && bear -- make zsa/moonlander/reva:horwitz
+keyboards/zsa/moonlander/keymaps/horwitz/gen-compile-db.sh
 ```
 
 `⌘⇧P` -> **clangd: Restart language server**

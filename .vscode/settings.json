@@ -1,0 +1,6 @@
+{
+    "makefile.configureOnOpen": false,
+    "clangd.arguments": [
+        "--query-driver=/usr/local/bin/arm-none-eabi-gcc"
+    ]
+}
