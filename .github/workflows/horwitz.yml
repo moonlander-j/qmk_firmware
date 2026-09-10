@@ -26,9 +26,11 @@ jobs:
     container: ghcr.io/qmk/qmk_cli
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
-          submodules: recursive
+          submodules: false
+      - name: Init submodules (skip dead drashna/ChibiOS-Contrib URL)
+        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
       - name: Run horwitz unit tests
@@ -40,9 +42,11 @@ jobs:
     container: qmkfm/qmk_cli
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
-          submodules: recursive
+          submodules: false
+      - name: Init submodules (skip dead drashna/ChibiOS-Contrib URL)
+        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
       - name: Build horwitz keymap
