@@ -1,0 +1,67 @@
+name: horwitz keymap
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - 'horwitz*'
+    paths:
+      - 'keyboards/zsa/moonlander/**'
+      - 'modules/zsa/defaults/**'
+      - 'tests/horwitz/**'
+      - '.github/workflows/horwitz.yml'
+  pull_request:
+    paths:
+      - 'keyboards/zsa/moonlander/**'
+      - 'modules/zsa/defaults/**'
+      - 'tests/horwitz/**'
+      - '.github/workflows/horwitz.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build firmware
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+
+    steps:
+      - name: Disable safe.directory check
+        run: git config --global --add safe.directory '*'
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      # lib/chibios-contrib points to a deleted GitHub repo (drashna/ChibiOS-Contrib).
+      # The Moonlander (STM32) does not use it, so skip it.
+      - name: Initialize submodules
+        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
+
+      - name: Install Python dependencies
+        run: pip3 install -r requirements.txt
+
+      - name: Build
+        run: make zsa/moonlander/reva:horwitz
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+
+    steps:
+      - name: Disable safe.directory check
+        run: git config --global --add safe.directory '*'
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Initialize submodules
+        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
+
+      - name: Run unit tests
+        run: make test:horwitz
