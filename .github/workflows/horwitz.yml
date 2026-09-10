@@ -30,7 +30,9 @@ jobs:
         with:
           submodules: false
       - name: Init submodules (skip dead drashna/ChibiOS-Contrib URL)
-        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
       - name: Run horwitz unit tests
@@ -46,7 +48,9 @@ jobs:
         with:
           submodules: false
       - name: Init submodules (skip dead drashna/ChibiOS-Contrib URL)
-        run: git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git -c submodule."lib/chibios-contrib".update=none submodule update --init --recursive
       - name: Install dependencies
         run: pip3 install -r requirements-dev.txt
       - name: Build horwitz keymap
