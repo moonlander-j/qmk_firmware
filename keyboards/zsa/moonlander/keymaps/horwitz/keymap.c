@@ -751,6 +751,9 @@ extern rgb_config_t rgb_matrix_config;
 // period for LED_BLINK_FAST blinking (smaller value implies faster)
 #define LED_BLINK_FAST_PERIOD_MS 300
 
+#define LED_IDX_CAPS       0  // led_blink_state index for caps lock / caps word
+#define LED_IDX_LAYER_BASE 1  // led_blink_state indices 1–5 encode current layer in binary
+
 // LED mode values defined in led_logic.h: LED_OFF, LED_ON, LED_BLINK_SLOW, LED_BLINK_FAST
 static uint8_t led_blink_state[NUM_LEDS] = {0};
 
@@ -945,11 +948,11 @@ bool should_capitalize(void) {
 
 static void update_caps_indicator(void) {
     if (is_caps_lock_on()) {
-        led_blink_state[0] = LED_ON;
+        led_blink_state[LED_IDX_CAPS] = LED_ON;
     } else if (is_caps_word_on()) {
-        led_blink_state[0] = LED_BLINK_FAST;
+        led_blink_state[LED_IDX_CAPS] = LED_BLINK_FAST;
     } else {
-        led_blink_state[0] = LED_OFF;
+        led_blink_state[LED_IDX_CAPS] = LED_OFF;
     }
 }
 
@@ -965,12 +968,9 @@ void caps_word_set_user(bool active) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t current_layer = get_highest_layer(state);
-    for (int iLed = 5; iLed >= 1; --iLed) {
-        if ((current_layer & (1 << (5 - iLed))) == 0) {
-            led_blink_state[iLed] = LED_OFF;
-        } else {
-            led_blink_state[iLed] = LED_ON;
-        }
+    for (int i_led = LED_IDX_LAYER_BASE; i_led < NUM_LEDS; ++i_led) {
+        int bit = i_led - LED_IDX_LAYER_BASE;
+        led_blink_state[i_led] = (current_layer & (1 << bit)) ? LED_ON : LED_OFF;
     }
 
     return state;
