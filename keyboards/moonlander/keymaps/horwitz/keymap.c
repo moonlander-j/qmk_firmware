@@ -4,6 +4,7 @@
 #include "version.h"
 #include "colors.h"
 #include "dance.h"
+#include "led_logic.h"
 // #include "keymap_german.h"
 // #include "keymap_nordic.h"
 // #include "keymap_french.h"
@@ -725,7 +726,7 @@ extern rgb_config_t rgb_matrix_config;
 // period for LED_BLINK_FAST blinking (smaller value implies faster)
 #define LED_BLINK_FAST_PERIOD_MS 300
 
-enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
+// LED mode values defined in led_logic.h: LED_OFF, LED_ON, LED_BLINK_SLOW, LED_BLINK_FAST
 static uint8_t led_blink_state[NUM_LEDS] = {0};
 
 #ifdef START_UP_SONGS_BY_LAYER
@@ -742,17 +743,15 @@ void set_single_active_layer_with_sound(uint8_t layer_num) {
 }
 
 static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
-    static const uint8_t pattern[4] = {0x00, 0xff, 0x0f, 0xaa};
-    static uint8_t       phase      = 0;
-    phase                           = (phase + 1) % 8;
+    static uint8_t phase = 0;
+    phase                = (phase + 1) % 8;
 
-    uint8_t bit = (uint8_t)(1u << phase);
-    STATUS_LED_1((pattern[led_blink_state[0]] & bit) != 0);
-    STATUS_LED_2((pattern[led_blink_state[1]] & bit) != 0);
-    STATUS_LED_3((pattern[led_blink_state[2]] & bit) != 0);
-    STATUS_LED_4((pattern[led_blink_state[3]] & bit) != 0);
-    STATUS_LED_5((pattern[led_blink_state[4]] & bit) != 0);
-    STATUS_LED_6((pattern[led_blink_state[5]] & bit) != 0);
+    STATUS_LED_1(led_on_at_phase_inner(led_blink_state[0], phase));
+    STATUS_LED_2(led_on_at_phase_inner(led_blink_state[1], phase));
+    STATUS_LED_3(led_on_at_phase_inner(led_blink_state[2], phase));
+    STATUS_LED_4(led_on_at_phase_inner(led_blink_state[3], phase));
+    STATUS_LED_5(led_on_at_phase_inner(led_blink_state[4], phase));
+    STATUS_LED_6(led_on_at_phase_inner(led_blink_state[5], phase));
 
     return LED_BLINK_FAST_PERIOD_MS / 2;
 }

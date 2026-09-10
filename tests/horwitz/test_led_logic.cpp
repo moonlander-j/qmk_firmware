@@ -85,3 +85,41 @@ TEST(LayerLedMode, Layer31_AllOn) {
         EXPECT_EQ(LED_ON, layer_led_mode(31, i)) << "led_index=" << i;
     }
 }
+
+// ---------------------------------------------------------------------------
+// led_on_at_phase_inner
+// pattern[LED_OFF]=0x00, [LED_ON]=0xff, [LED_BLINK_SLOW]=0x0f, [LED_BLINK_FAST]=0xaa
+// ---------------------------------------------------------------------------
+
+TEST(LedOnAtPhase, Off_NeverOn) {
+    for (uint8_t phase = 0; phase < 8; ++phase) {
+        EXPECT_FALSE(led_on_at_phase_inner(LED_OFF, phase)) << "phase=" << (int)phase;
+    }
+}
+
+TEST(LedOnAtPhase, On_AlwaysOn) {
+    for (uint8_t phase = 0; phase < 8; ++phase) {
+        EXPECT_TRUE(led_on_at_phase_inner(LED_ON, phase)) << "phase=" << (int)phase;
+    }
+}
+
+TEST(LedOnAtPhase, BlinkSlow_OnFirstHalfOffSecondHalf) {
+    // 0x0f = 0b00001111: bits 0-3 set -> phases 0-3 on, phases 4-7 off
+    for (uint8_t phase = 0; phase < 4; ++phase) {
+        EXPECT_TRUE(led_on_at_phase_inner(LED_BLINK_SLOW, phase)) << "phase=" << (int)phase;
+    }
+    for (uint8_t phase = 4; phase < 8; ++phase) {
+        EXPECT_FALSE(led_on_at_phase_inner(LED_BLINK_SLOW, phase)) << "phase=" << (int)phase;
+    }
+}
+
+TEST(LedOnAtPhase, BlinkFast_AlternatingOffOn) {
+    // 0xaa = 0b10101010: odd bits set -> even phases off, odd phases on
+    for (uint8_t phase = 0; phase < 8; ++phase) {
+        if (phase % 2 == 0) {
+            EXPECT_FALSE(led_on_at_phase_inner(LED_BLINK_FAST, phase)) << "phase=" << (int)phase;
+        } else {
+            EXPECT_TRUE(led_on_at_phase_inner(LED_BLINK_FAST, phase)) << "phase=" << (int)phase;
+        }
+    }
+}
