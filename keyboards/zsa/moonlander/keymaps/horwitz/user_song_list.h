@@ -532,7 +532,8 @@
 
 #define JT_SCALING_FACTOR 2.5 // scaled at 1 makes the song go very fast
 #define JT_NOTE(note, duration) M__NOTE(note, (duration) * JT_SCALING_FACTOR)
-#define JT_TRIPLET(extra_note1_duration, note1, note2, note3, complete_duration) JT_NOTE(note1, extra_note1_duration + ((complete_duration)/3)), JT_NOTE(note2, (complete_duration)/3), JT_NOTE(note3, (complete_duration)/3) // TODO how to handle triplet duration?
+#define JT_TRIPLET_PARTS 3
+#define JT_TRIPLET(extra_note1_duration, note1, note2, note3, complete_duration) JT_NOTE(note1, (extra_note1_duration) + (complete_duration) / (float)JT_TRIPLET_PARTS), JT_NOTE(note2, (complete_duration) / (float)JT_TRIPLET_PARTS), JT_NOTE(note3, (complete_duration) / (float)JT_TRIPLET_PARTS) // float div defers truncation past JT_NOTE; loses ≤1 tick vs ideal (inaudible)
 #define JT_ET(note1, note2, note3) JT_TRIPLET(0, note1, note2, note3, 16)
 #define JT_QT(extra_note1_duration, note1, note2, note3) JT_TRIPLET(extra_note1_duration, note1, note2, note3, 32)
 
