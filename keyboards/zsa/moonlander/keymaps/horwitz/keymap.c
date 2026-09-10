@@ -958,17 +958,11 @@ bool is_shift_pressed(void) {
 }
 
 bool should_capitalize(void) {
-    return is_caps_lock_on() || is_caps_word_on() || is_shift_pressed();
+    return should_capitalize_inner(is_caps_lock_on(), is_caps_word_on(), is_shift_pressed());
 }
 
 static void update_caps_indicator(void) {
-    if (is_caps_lock_on()) {
-        led_blink_state[LED_IDX_CAPS] = LED_ON;
-    } else if (is_caps_word_on()) {
-        led_blink_state[LED_IDX_CAPS] = LED_BLINK_FAST;
-    } else {
-        led_blink_state[LED_IDX_CAPS] = LED_OFF;
-    }
+    led_blink_state[LED_IDX_CAPS] = caps_led_mode(is_caps_lock_on(), is_caps_word_on());
 }
 
 bool led_update_user(led_t led_state) {
