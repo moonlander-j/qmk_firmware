@@ -34,6 +34,8 @@ $(GTEST_OUTPUT)_DEFS :=
 $(GTEST_OUTPUT)_INC := $(GTEST_INC) $(GTEST_INTERNAL_INC)
 
 LDFLAGS += -lstdc++ -lpthread -shared-libgcc
+CFLAGS += -Wno-include-next-absolute-path
+CXXFLAGS += -Wno-include-next-absolute-path
 CREATE_MAP := no
 
 VPATH += \
@@ -80,6 +82,9 @@ $(TEST_OUTPUT)_SRC += \
 ifneq ($(strip $(INTROSPECTION_KEYMAP_C)),)
 $(TEST_OUTPUT)_DEFS += -DINTROSPECTION_KEYMAP_C=\"$(strip $(INTROSPECTION_KEYMAP_C))\"
 endif
+
+# Allow test.mk to add VPATH entries that need to come AFTER tests/test_common
+VPATH += $($(TEST)_VPATH)
 
 $(TEST_OBJ)/$(TEST_OUTPUT)_SRC := $($(TEST_OUTPUT)_SRC)
 $(TEST_OBJ)/$(TEST_OUTPUT)_INC := $($(TEST_OUTPUT)_INC) $(VPATH) $(GTEST_INC)

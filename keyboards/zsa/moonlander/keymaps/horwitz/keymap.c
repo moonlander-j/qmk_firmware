@@ -1,0 +1,2502 @@
+#include "action_layer.h"
+#include "os_detection.h"
+#include QMK_KEYBOARD_H
+#include "version.h"
+#include "colors.h"
+#include "dance.h"
+#include "led_logic.h"
+// #include "keymap_german.h"
+// #include "keymap_nordic.h"
+// #include "keymap_french.h"
+// #include "keymap_spanish.h"
+// #include "keymap_hungarian.h"
+// #include "keymap_swedish.h"
+// #include "keymap_br_abnt2.h"
+// #include "keymap_canadian_multilingual.h"
+// #include "keymap_german_ch.h"
+// #include "keymap_jp.h"
+// #include "keymap_korean.h"
+// #include "keymap_bepo.h"
+// #include "keymap_italian.h"
+// #include "keymap_slovenian.h"
+// #include "keymap_lithuanian_azerty.h"
+// #include "keymap_danish.h"
+// #include "keymap_norwegian.h"
+// #include "keymap_portuguese.h"
+// #include "keymap_contributions.h"
+// #include "keymap_czech.h"
+// #include "keymap_romanian.h"
+// #include "keymap_russian.h"
+// #include "keymap_uk.h"
+// #include "keymap_estonian.h"
+// #include "keymap_belgian.h"
+// #include "keymap_us_international.h"
+// #include "keymap_croatian.h"
+// #include "keymap_turkish_q.h"
+// #include "keymap_slovak.h"
+
+// #define KC_MAC_UNDO LGUI(KC_Z)
+// #define KC_MAC_CUT LGUI(KC_X)
+// #define KC_MAC_COPY LGUI(KC_C)
+// #define KC_MAC_PASTE LGUI(KC_V)
+// #define KC_PC_UNDO LCTL(KC_Z)
+// #define KC_PC_CUT LCTL(KC_X)
+// #define KC_PC_COPY LCTL(KC_C)
+// #define KC_PC_PASTE LCTL(KC_V)
+// #define ES_LESS_MAC KC_GRAVE
+// #define ES_GRTR_MAC LSFT(KC_GRAVE)
+// #define ES_BSLS_MAC ALGR(KC_6)
+// #define NO_PIPE_ALT KC_GRAVE
+// #define NO_BSLS_ALT KC_EQUAL
+// #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
+// #define BP_NDSH_MAC ALGR(KC_8)
+// #define SE_SECT_MAC ALGR(KC_6)
+#define MOON_LED_LEVEL LED_LEVEL
+
+/**
+ * Windows-accents layers:
+ *
+ * get to _ACCENT layer by pressing rightmost left thumb key; from accent layer, press one of the following keys
+ * to get to its layer (e.g., press '`' to get to the GRAVE layer (named _A_GRAVE)):
+ *
+ * ' ACUTE (AEIOUY)
+ * v CARON (SZ)
+ * , CEDILLA (C)
+ * ^/6 CIRCUMFLEX (AEIOU)
+ * :/; DIAERESIS (AEIOUY)
+ * ` GRAVE (AEIOU)
+ * o RING RING_ABOVE (A)
+ * / STROKE (O)
+ * TAB TILDE (ANO)
+ *
+ * then press one of the keys in the parenthesized list on the relevant row above (e.g., one of A,E,I,O,U for
+ * _A_GRAVE) to get an version of that key, using the accent chosen
+ *
+ * (union of all available keys (each only available for _some_ accents): AEIOUYCNSZ)
+ */
+
+enum custom_keycodes {
+    RGB_SLD = ZSA_SAFE_RANGE,
+    EN_DASH_W,
+    EM_DASH_W,
+    INV_EXLM_W,
+    SUP_2_W,
+    SUP_N_W,
+    DEGREE_SIGN_W,
+    FULL_BLOCK_W,
+    FRAC_1_4_W,
+    FRAC_1_2_W,
+    FRAC_3_4_W,
+    TM_SIGN_W,
+    DAGGER_W,
+    PLUS_MINUS_W,
+    UP_ARROW_W,
+    INFINITY_W,
+    LEFT_ARROW_W,
+    DOWN_ARROW_W,
+    RIGHT_ARROW_W,
+    MIDDLE_DOT_W,
+    INV_QUES_W,
+    NOT_EQUAL_TO_M,
+    INV_EXLM_M,
+    SUP_2_M,
+    SUP_N_M,
+    DEGREE_SIGN_M,
+    FULL_BLOCK_M,
+    FRAC_1_4_M,
+    FRAC_1_2_M,
+    FRAC_3_4_M,
+    TM_SIGN_M,
+    DAGGER_M,
+    PLUS_MINUS_M,
+    UP_ARROW_M,
+    INFINITY_M,
+    LEFT_ARROW_M,
+    DOWN_ARROW_M,
+    RIGHT_ARROW_M,
+    MIDDLE_DOT_M,
+    INV_QUES_M,
+    PLAY_ZELDA,
+    PLAY_JT,
+    PLAY_SONG_00,
+    PLAY_SONG_01,
+    PLAY_SONG_02,
+    PLAY_SONG_03,
+    PLAY_SONG_04,
+    PLAY_SONG_05,
+    PLAY_SONG_06,
+    PLAY_SONG_07,
+    PLAY_SONG_08,
+    PLAY_SONG_09,
+    PLAY_SONG_10,
+    PLAY_SONG_11,
+    PLAY_SONG_12,
+    PLAY_SONG_13,
+    PLAY_SONG_14,
+    PLAY_SONG_15,
+    PLAY_SONG_16,
+    PLAY_SONG_17,
+    PLAY_SONG_18,
+    PLAY_SONG_19,
+    PLAY_SONG_20,
+    PLAY_SONG_21,
+    PLAY_SONG_22,
+    PLAY_SONG_23,
+    PLAY_SONG_24,
+    PLAY_SONG_25,
+    PLAY_SONG_26,
+    PLAY_SONG_27,
+    PLAY_SONG_28,
+    PLAY_SONG_29,
+    PLAY_SONG_30,
+    PLAY_SONG_31,
+    PLAY_SONG_32,
+    PLAY_SONG_33,
+    PLAY_SONG_34,
+    PLAY_SONG_35,
+    PLAY_SONG_36,
+    PLAY_SONG_37,
+    PLAY_SONG_38,
+    PLAY_SONG_39,
+    PLAY_SONG_40,
+    PLAY_SONG_41,
+    PLAY_SONG_42,
+    PLAY_SONG_43,
+    PLAY_SONG_44,
+    PLAY_SONG_45,
+    PLAY_SONG_46,
+    PLAY_SONG_47,
+    PLAY_SONG_48,
+    PLAY_SONG_49,
+    PLAY_SONG_50,
+    PLAY_SONG_51,
+    PLAY_SONG_52,
+    PLAY_SONG_53,
+    PLAY_SONG_54,
+    PLAY_SONG_55,
+    PLAY_SONG_56,
+    PLAY_SONG_57,
+    PLAY_SONG_58,
+    PLAY_SONG_59,
+    PLAY_SONG_60,
+    PLAY_SONG_61,
+    PLAY_SONG_62,
+    PLAY_SONG_63,
+    PLAY_SONG_64,
+    PLAY_SONG_65,
+    PLAY_SONG_66,
+    PLAY_SONG_67,
+    PLAY_SONG_68,
+    PLAY_SONG_69,
+    PLAY_SONG_70,
+    PLAY_SONG_71,
+    PLAY_SONG_72,
+    PLAY_SONG_73,
+    PLAY_SONG_74,
+    PLAY_SONG_75,
+    PLAY_SONG_76,
+    PLAY_SONG_77,
+    PLAY_SONG_78,
+    PLAY_SONG_79,
+    PLAY_SONG_SENTINEL_,  // must be the enum value immediately after the last PLAY_SONG_xx; see song_table
+    PAREN_P,
+    BRACKET_P,
+    BRACE_P,
+    QUOTE_P,
+    GRAVE_P,
+    ACUTE_A_W,
+    ACUTE_E_W,
+    ACUTE_I_W,
+    ACUTE_O_W,
+    ACUTE_U_W,
+    ACUTE_Y_W,
+    CARON_S_W,
+    CARON_Z_W,
+    CEDILLA_C_W,
+    CIRCUMFLEX_A_W,
+    CIRCUMFLEX_E_W,
+    CIRCUMFLEX_I_W,
+    CIRCUMFLEX_O_W,
+    CIRCUMFLEX_U_W,
+    DIAERESIS_A_W,
+    DIAERESIS_E_W,
+    DIAERESIS_I_W,
+    DIAERESIS_O_W,
+    DIAERESIS_U_W,
+    DIAERESIS_Y_W,
+    GRAVE_A_W,
+    GRAVE_E_W,
+    GRAVE_I_W,
+    GRAVE_O_W,
+    GRAVE_U_W,
+    RING_ABOVE_A_W,
+    STROKE_O_W,
+    TILDE_A_W,
+    TILDE_N_W,
+    TILDE_O_W,
+    C_CIRC_W,
+    R_CIRC_W,
+    MULT_SIGN_W,
+    DIV_SIGN_W,
+    DDAGGER_W,
+    SECTION_SIGN_W,
+    PILCROW_W,
+    SUP_1_W,
+    SUP_3_W,
+    AE_W,
+    OE_W,
+    SHARP_S_W,
+    CENT_SIGN_W,
+    POUND_SIGN_W,
+    YEN_SIGN_W,
+    MICRO_W,
+    NOT_SIGN_W,
+    BULLET_W,
+    ALMOST_EQ_W,
+    // PI_W,
+    NOTE_8TH_W,
+    NOTES_8TH_W,
+    LR_ARROW_W,
+    UD_ARROW_W,
+    LT_OR_EQ_W,
+    GT_OR_EQ_W,
+    C_CIRC_M,
+    R_CIRC_M,
+    MULT_SIGN_M,
+    DIV_SIGN_M,
+    DDAGGER_M,
+    SECTION_SIGN_M,
+    PILCROW_M,
+    SUP_1_M,
+    SUP_3_M,
+    AE_M,
+    OE_M,
+    SHARP_S_M,
+    CENT_SIGN_M,
+    POUND_SIGN_M,
+    YEN_SIGN_M,
+    MICRO_M,
+    NOT_SIGN_M,
+    BULLET_M,
+    ALMOST_EQ_M,
+    // PI_M,
+    NOTE_8TH_M,
+    NOTES_8TH_M,
+    LR_ARROW_M,
+    UD_ARROW_M,
+    LT_OR_EQ_M,
+    GT_OR_EQ_M,
+    ALPHA_W,
+    GAMMA_W,
+    DELTA_W,
+    EPSILON_W,
+    THETA_W,
+    MU_W,
+    PI_W,
+    SIGMA_W,
+    TAU_W,
+    PHI_W,
+    OMEGA_W,
+    ALPHA_M,
+    BETA_M,
+    GAMMA_M,
+    DELTA_M,
+    EPSILON_M,
+    ZETA_M,
+    ETA_M,
+    THETA_M,
+    IOTA_M,
+    KAPPA_M,
+    LAMBDA_M,
+    MU_M,
+    NU_M,
+    XI_M,
+    OMICRON_M,
+    PI_M,
+    RHO_M,
+    SIGMA_M,
+    TAU_M,
+    UPSILON_M,
+    PHI_M,
+    CHI_M,
+    PSI_M,
+    OMEGA_M,
+    FINAL_SIGMA_M,
+    PRINT_VER
+};
+
+static float zelda_uncover_secret[][2]    = SONG(ZELDA_UNCOVER_SECRET);
+static float johnnys_theme[][2]           = SONG(JOHNNYS_THEME);
+static float ode_to_joy[][2]              = SONG(ODE_TO_JOY);
+static float rock_a_bye_baby[][2]         = SONG(ROCK_A_BYE_BABY);
+static float clueboard_sound[][2]         = SONG(CLUEBOARD_SOUND);
+static float startup_sound[][2]           = SONG(STARTUP_SOUND);
+static float goodbye_sound[][2]           = SONG(GOODBYE_SOUND);
+static float planck_sound[][2]            = SONG(PLANCK_SOUND);
+static float preonic_sound[][2]           = SONG(PREONIC_SOUND);
+static float qwerty_sound[][2]            = SONG(QWERTY_SOUND);
+static float colemak_sound[][2]           = SONG(COLEMAK_SOUND);
+static float dvorak_sound[][2]            = SONG(DVORAK_SOUND);
+static float workman_sound[][2]           = SONG(WORKMAN_SOUND);
+static float plover_sound[][2]            = SONG(PLOVER_SOUND);
+static float plover_goodbye_sound[][2]    = SONG(PLOVER_GOODBYE_SOUND);
+static float music_on_sound[][2]          = SONG(MUSIC_ON_SOUND);
+static float audio_on_sound[][2]          = SONG(AUDIO_ON_SOUND);
+static float audio_off_sound[][2]         = SONG(AUDIO_OFF_SOUND);
+static float music_scale_sound[][2]       = SONG(MUSIC_SCALE_SOUND);
+static float music_off_sound[][2]         = SONG(MUSIC_OFF_SOUND);
+static float voice_change_sound[][2]      = SONG(VOICE_CHANGE_SOUND);
+static float chromatic_sound[][2]         = SONG(CHROMATIC_SOUND);
+static float major_sound[][2]             = SONG(MAJOR_SOUND);
+static float minor_sound[][2]             = SONG(MINOR_SOUND);
+static float guitar_sound[][2]            = SONG(GUITAR_SOUND);
+static float violin_sound[][2]            = SONG(VIOLIN_SOUND);
+static float caps_lock_on_sound[][2]      = SONG(CAPS_LOCK_ON_SOUND);
+static float caps_lock_off_sound[][2]     = SONG(CAPS_LOCK_OFF_SOUND);
+static float scroll_lock_on_sound[][2]    = SONG(SCROLL_LOCK_ON_SOUND);
+static float scroll_lock_off_sound[][2]   = SONG(SCROLL_LOCK_OFF_SOUND);
+static float num_lock_on_sound[][2]       = SONG(NUM_LOCK_ON_SOUND);
+static float num_lock_off_sound[][2]      = SONG(NUM_LOCK_OFF_SOUND);
+static float ag_norm_sound[][2]           = SONG(AG_NORM_SOUND);
+static float ag_swap_sound[][2]           = SONG(AG_SWAP_SOUND);
+static float unicode_windows[][2]         = SONG(UNICODE_WINDOWS);
+static float unicode_linux[][2]           = SONG(UNICODE_LINUX);
+static float terminal_sound[][2]          = SONG(TERMINAL_SOUND);
+static float campanella[][2]              = SONG(CAMPANELLA);
+static float fantasie_impromptu[][2]      = SONG(FANTASIE_IMPROMPTU);
+static float nocturne_op_9_no_1[][2]      = SONG(NOCTURNE_OP_9_NO_1);
+static float ussr_anthem[][2]             = SONG(USSR_ANTHEM);
+static float tos_hymn_risen[][2]          = SONG(TOS_HYMN_RISEN);
+static float close_encounters_5_note[][2] = SONG(CLOSE_ENCOUNTERS_5_NOTE);
+static float doe_a_deer[][2]              = SONG(DOE_A_DEER);
+static float in_like_flint[][2]           = SONG(IN_LIKE_FLINT);
+static float imperial_march[][2]          = SONG(IMPERIAL_MARCH);
+static float basket_case[][2]             = SONG(BASKET_CASE);
+static float coin_sound[][2]              = SONG(COIN_SOUND);
+static float one_up_sound[][2]            = SONG(ONE_UP_SOUND);
+static float sonic_ring[][2]              = SONG(SONIC_RING);
+static float zelda_puzzle[][2]            = SONG(ZELDA_PUZZLE);
+static float zelda_treasure[][2]          = SONG(ZELDA_TREASURE);
+static float overwatch_theme[][2]         = SONG(OVERWATCH_THEME);
+static float mario_theme[][2]             = SONG(MARIO_THEME);
+static float mario_gameover[][2]          = SONG(MARIO_GAMEOVER);
+static float mario_mushroom[][2]          = SONG(MARIO_MUSHROOM);
+static float e1m1_doom[][2]               = SONG(E1M1_DOOM);
+static float disney_song[][2]             = SONG(DISNEY_SONG);
+static float number_one[][2]              = SONG(NUMBER_ONE);
+static float cabbage_song[][2]            = SONG(CABBAGE_SONG);
+static float old_spice[][2]               = SONG(OLD_SPICE);
+static float victory_fanfare_short[][2]   = SONG(VICTORY_FANFARE_SHORT);
+static float all_star[][2]                = SONG(ALL_STAR);
+static float rick_roll[][2]               = SONG(RICK_ROLL);
+static float ff_prelude[][2]              = SONG(FF_PRELUDE);
+static float to_boldly_go[][2]            = SONG(TO_BOLDLY_GO);
+static float kataware_doki[][2]           = SONG(KATAWARE_DOKI);
+static float megalovania[][2]             = SONG(MEGALOVANIA);
+static float michishirube[][2]            = SONG(MICHISHIRUBE);
+static float liebesleid[][2]              = SONG(LIEBESLEID);
+static float melodies_of_life[][2]        = SONG(MELODIES_OF_LIFE);
+static float eyes_on_me[][2]              = SONG(EYES_ON_ME);
+static float song_of_the_ancients[][2]    = SONG(SONG_OF_THE_ANCIENTS);
+static float nier_amusement_park[][2]     = SONG(NIER_AMUSEMENT_PARK);
+static float copied_city[][2]             = SONG(COPIED_CITY);
+static float vague_hope_cold_rain[][2]    = SONG(VAGUE_HOPE_COLD_RAIN);
+static float kaine_salvation[][2]         = SONG(KAINE_SALVATION);
+static float weight_of_the_world[][2]     = SONG(WEIGHT_OF_THE_WORLD);
+static float isabellas_lullaby[][2]       = SONG(ISABELLAS_LULLABY);
+static float terras_theme[][2]            = SONG(TERRAS_THEME);
+static float renai_circulation[][2]       = SONG(RENAI_CIRCULATION);
+static float platinum_disco[][2]          = SONG(PLATINUM_DISCO);
+
+typedef struct {
+    float    (*notes)[][2];
+    uint16_t note_count;
+} song_entry_t;
+
+#define SONG_ENTRY(arr) { .notes = (float (*)[][2])&(arr), .note_count = (uint16_t)NOTE_ARRAY_SIZE(arr) }
+
+// clang-format off
+static const song_entry_t song_table[] = {
+    SONG_ENTRY(ode_to_joy),             // PLAY_SONG_00
+    SONG_ENTRY(rock_a_bye_baby),        // PLAY_SONG_01
+    SONG_ENTRY(clueboard_sound),        // PLAY_SONG_02
+    SONG_ENTRY(startup_sound),          // PLAY_SONG_03
+    SONG_ENTRY(goodbye_sound),          // PLAY_SONG_04
+    SONG_ENTRY(planck_sound),           // PLAY_SONG_05
+    SONG_ENTRY(preonic_sound),          // PLAY_SONG_06
+    SONG_ENTRY(qwerty_sound),           // PLAY_SONG_07
+    SONG_ENTRY(colemak_sound),          // PLAY_SONG_08
+    SONG_ENTRY(dvorak_sound),           // PLAY_SONG_09
+    SONG_ENTRY(workman_sound),          // PLAY_SONG_10
+    SONG_ENTRY(plover_sound),           // PLAY_SONG_11
+    SONG_ENTRY(plover_goodbye_sound),   // PLAY_SONG_12
+    SONG_ENTRY(music_on_sound),         // PLAY_SONG_13
+    SONG_ENTRY(audio_on_sound),         // PLAY_SONG_14
+    SONG_ENTRY(audio_off_sound),        // PLAY_SONG_15
+    SONG_ENTRY(music_scale_sound),      // PLAY_SONG_16
+    SONG_ENTRY(music_off_sound),        // PLAY_SONG_17
+    SONG_ENTRY(voice_change_sound),     // PLAY_SONG_18
+    SONG_ENTRY(chromatic_sound),        // PLAY_SONG_19
+    SONG_ENTRY(major_sound),            // PLAY_SONG_20
+    SONG_ENTRY(minor_sound),            // PLAY_SONG_21
+    SONG_ENTRY(guitar_sound),           // PLAY_SONG_22
+    SONG_ENTRY(violin_sound),           // PLAY_SONG_23
+    SONG_ENTRY(caps_lock_on_sound),     // PLAY_SONG_24
+    SONG_ENTRY(caps_lock_off_sound),    // PLAY_SONG_25
+    SONG_ENTRY(scroll_lock_on_sound),   // PLAY_SONG_26
+    SONG_ENTRY(scroll_lock_off_sound),  // PLAY_SONG_27
+    SONG_ENTRY(num_lock_on_sound),      // PLAY_SONG_28
+    SONG_ENTRY(num_lock_off_sound),     // PLAY_SONG_29
+    SONG_ENTRY(ag_norm_sound),          // PLAY_SONG_30
+    SONG_ENTRY(ag_swap_sound),          // PLAY_SONG_31
+    SONG_ENTRY(unicode_windows),        // PLAY_SONG_32
+    SONG_ENTRY(unicode_linux),          // PLAY_SONG_33
+    SONG_ENTRY(terminal_sound),         // PLAY_SONG_34
+    SONG_ENTRY(campanella),             // PLAY_SONG_35
+    SONG_ENTRY(fantasie_impromptu),     // PLAY_SONG_36
+    SONG_ENTRY(nocturne_op_9_no_1),     // PLAY_SONG_37
+    SONG_ENTRY(ussr_anthem),            // PLAY_SONG_38
+    SONG_ENTRY(tos_hymn_risen),         // PLAY_SONG_39
+    SONG_ENTRY(close_encounters_5_note),// PLAY_SONG_40
+    SONG_ENTRY(doe_a_deer),             // PLAY_SONG_41
+    SONG_ENTRY(in_like_flint),          // PLAY_SONG_42
+    SONG_ENTRY(imperial_march),         // PLAY_SONG_43
+    SONG_ENTRY(basket_case),            // PLAY_SONG_44
+    SONG_ENTRY(coin_sound),             // PLAY_SONG_45
+    SONG_ENTRY(one_up_sound),           // PLAY_SONG_46
+    SONG_ENTRY(sonic_ring),             // PLAY_SONG_47
+    SONG_ENTRY(zelda_puzzle),           // PLAY_SONG_48
+    SONG_ENTRY(zelda_treasure),         // PLAY_SONG_49
+    SONG_ENTRY(overwatch_theme),        // PLAY_SONG_50
+    SONG_ENTRY(mario_theme),            // PLAY_SONG_51
+    SONG_ENTRY(mario_gameover),         // PLAY_SONG_52
+    SONG_ENTRY(mario_mushroom),         // PLAY_SONG_53
+    SONG_ENTRY(e1m1_doom),              // PLAY_SONG_54
+    SONG_ENTRY(disney_song),            // PLAY_SONG_55
+    SONG_ENTRY(number_one),             // PLAY_SONG_56
+    SONG_ENTRY(cabbage_song),           // PLAY_SONG_57
+    SONG_ENTRY(old_spice),              // PLAY_SONG_58
+    SONG_ENTRY(victory_fanfare_short),  // PLAY_SONG_59
+    SONG_ENTRY(all_star),               // PLAY_SONG_60
+    SONG_ENTRY(rick_roll),              // PLAY_SONG_61
+    SONG_ENTRY(ff_prelude),             // PLAY_SONG_62
+    SONG_ENTRY(to_boldly_go),           // PLAY_SONG_63
+    SONG_ENTRY(kataware_doki),          // PLAY_SONG_64
+    SONG_ENTRY(megalovania),            // PLAY_SONG_65
+    SONG_ENTRY(michishirube),           // PLAY_SONG_66
+    SONG_ENTRY(liebesleid),             // PLAY_SONG_67
+    SONG_ENTRY(melodies_of_life),       // PLAY_SONG_68
+    SONG_ENTRY(eyes_on_me),             // PLAY_SONG_69
+    SONG_ENTRY(song_of_the_ancients),   // PLAY_SONG_70
+    SONG_ENTRY(nier_amusement_park),    // PLAY_SONG_71
+    SONG_ENTRY(copied_city),            // PLAY_SONG_72
+    SONG_ENTRY(vague_hope_cold_rain),   // PLAY_SONG_73
+    SONG_ENTRY(kaine_salvation),        // PLAY_SONG_74
+    SONG_ENTRY(weight_of_the_world),    // PLAY_SONG_75
+    SONG_ENTRY(isabellas_lullaby),      // PLAY_SONG_76
+    SONG_ENTRY(terras_theme),           // PLAY_SONG_77
+    SONG_ENTRY(renai_circulation),      // PLAY_SONG_78
+    SONG_ENTRY(platinum_disco),         // PLAY_SONG_79
+};
+// clang-format on
+
+_Static_assert(
+    PLAY_SONG_SENTINEL_ - PLAY_SONG_00 == sizeof(song_table) / sizeof(song_table[0]),
+    "PLAY_SONG keycode range and song_table must stay in sync");
+
+// clang-format off
+enum tap_dance_codes {
+    DANCE_0,
+    DANCE_1,
+    DANCE_2,
+    DANCE_3,
+    DANCE_4,
+    DANCE_5,
+    DANCE_6,
+    DANCE_7,
+    DANCE_8,
+    DANCE_9,
+    TD_L00,
+    TD_L01,
+    TD_L02,
+    TD_L03,
+    TD_L04,
+    TD_L05,
+    TD_L06,
+    TD_L07,
+    TD_L08,
+    TD_L09,
+    TD_L10,
+    TD_L11,
+    TD_L12,
+    TD_L13,
+    TD_L14,
+    TD_L15,
+    TD_L16,
+    TD_L17,
+    TD_L18,
+    TD_L19,
+    TD_L20,
+    TD_LLIST
+};
+// clang-format on
+
+enum layer_names { _WIN_BASE, _MAC_BASE, _WIN_SYM, _MAC_SYM, _NUMPAD, _GREEK_W, _GREEK_M, _ACCENT, _A_ACUTE, _A_CARON, _A_CEDILLA, _A_CIRCUMFLEX, _A_DIAERESIS, _A_GRAVE, _A_RING_ABOVE, _A_STROKE, _A_TILDE, _J1, _J2, _QWERTY, _LMAPS };
+
+/*
+ * Generated code: this comment and the 172 lines following it were generated by
+ * Keymap.getKeymap in qmk-tools
+ */
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // clang-format off
+    [_WIN_BASE] = LAYOUT_moonlander(
+        KC_ESCAPE,     TD(DANCE_0),   TD(DANCE_1),   TD(DANCE_2),   TD(DANCE_3),   TD(DANCE_4),   KC_EQUAL,                     EN_DASH_W,     TD(DANCE_5),   TD(DANCE_6),   TD(DANCE_7),   TD(DANCE_8),   TD(DANCE_9),   TG(_MAC_BASE),
+        KC_GRAVE,      KC_Q,          KC_W,          KC_F,          KC_P,          KC_B,          KC_BSLS,                      EM_DASH_W,     KC_J,          KC_L,          KC_U,          KC_Y,          KC_SCLN,       KC_MINUS,
+        KC_TAB,        KC_A,          KC_R,          KC_S,          KC_T,          KC_G,          KC_LBRC,                      KC_RBRC,       KC_M,          KC_N,          KC_E,          KC_I,          KC_O,          KC_QUOTE,
+        KC_LSFT,       KC_Z,          KC_X,          KC_C,          KC_D,          KC_V,                                                       KC_K,          KC_H,          KC_COMMA,      KC_DOT,        KC_UP,         KC_SLASH,
+        KC_LCTL,       CW_TOGG,       LGUI(KC_PSCR), TG(_NUMPAD),   MO(_WIN_SYM),                 KC_LGUI,                      KC_CAPS,                      LGUI(KC_DOT),  KC_RCTL,       KC_LEFT,       KC_DOWN,       KC_RIGHT,
+                                                                    KC_ENTER,      KC_LALT,       MO(_ACCENT),                  KC_DELETE,     KC_BSPC,       KC_SPACE
+    ),
+    [_MAC_BASE] = LAYOUT_moonlander(
+        _______,              _______,              _______,              _______,              _______,              _______,              _______,                                    LALT(KC_MINUS),       _______,              _______,              _______,              _______,              _______,              _______,
+        _______,              _______,              _______,              _______,              _______,              _______,              _______,                                    LALT(LSFT(KC_MINUS)), _______,              _______,              _______,              _______,              _______,              _______,
+        _______,              _______,              _______,              _______,              _______,              _______,              _______,                                    _______,              _______,              _______,              _______,              _______,              _______,              _______,
+        _______,              _______,              _______,              _______,              _______,              _______,                                                                                _______,              _______,              _______,              _______,              _______,              _______,
+        _______,              _______,              LGUI(LSFT(KC_3)),     _______,              MO(_MAC_SYM),                               _______,                                    _______,                                    LGUI(LCTL(KC_SPACE)), _______,              _______,              _______,              _______,
+                                                                                                _______,              _______,              NOT_EQUAL_TO_M,                             _______,              _______,              _______
+    ),
+    [_WIN_SYM] = LAYOUT_moonlander(
+        INV_EXLM_W,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_W,                    FRAC_1_4_W,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        SUP_1_W,        SUP_2_W,        SUP_3_W,        SUP_N_W,        PI_W,           BULLET_W,                       FRAC_1_2_W,     KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
+        NOT_SIGN_W,     AE_W,           OE_W,           SHARP_S_W,      TM_SIGN_W,      C_CIRC_W,       R_CIRC_W,                       FRAC_3_4_W,     MICRO_W,        UP_ARROW_W,     DDAGGER_W,      INFINITY_W,     PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,     DEGREE_SIGN_W,                                                  LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
+        TG(_GREEK_W),   LR_ARROW_W,     UD_ARROW_W,     _______,        _______,                        NOTE_8TH_W,                     NOTES_8TH_W,                    SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,
+                                                                        CENT_SIGN_W,    POUND_SIGN_W,   YEN_SIGN_W,                     FULL_BLOCK_W,   LT_OR_EQ_W,     GT_OR_EQ_W
+    ),
+    [_MAC_SYM] = LAYOUT_moonlander(
+        INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_M,                    FRAC_1_4_M,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
+        GRAVE_P,        SUP_1_M,        SUP_2_M,        SUP_3_M,        SUP_N_M,        PI_M,           BULLET_M,                       FRAC_1_2_M,     KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
+        NOT_SIGN_M,     AE_M,           OE_M,           SHARP_S_M,      TM_SIGN_M,      C_CIRC_M,       R_CIRC_M,                       FRAC_3_4_M,     MICRO_M,        UP_ARROW_M,     DDAGGER_M,      INFINITY_M,     PAREN_P,        QUOTE_P,
+        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,     DEGREE_SIGN_M,                                                  LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
+        TG(_GREEK_M),   LR_ARROW_M,     UD_ARROW_M,     _______,        _______,                        NOTE_8TH_M,                     NOTES_8TH_M,                    SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,
+                                                                        CENT_SIGN_M,    POUND_SIGN_M,   YEN_SIGN_M,                     FULL_BLOCK_M,   LT_OR_EQ_M,     GT_OR_EQ_M
+    ),
+    [_NUMPAD] = LAYOUT_moonlander(
+        QK_RBT,             QK_BOOT,            PRINT_VER,          XXXXXXX,            XXXXXXX,            XXXXXXX,            DT_UP,                                  XXXXXXX,            XXXXXXX,            KC_NUM_LOCK,        KC_PSLS,            KC_PAST,            KC_PMNS,            TG(_QWERTY),
+        XXXXXXX,            XXXXXXX,            XXXXXXX,            KC_BRID,            KC_BRIU,            XXXXXXX,            DT_PRNT,                                XXXXXXX,            XXXXXXX,            KC_P7,              KC_P8,              KC_P9,              KC_PPLS,            XXXXXXX,
+        TG(_J1),            XXXXXXX,            KC_MUTE,            KC_VOLD,            KC_VOLU,            XXXXXXX,            DT_DOWN,                                XXXXXXX,            XXXXXXX,            KC_P4,              KC_P5,              KC_P6,              KC_PPLS,            XXXXXXX,
+        TG(_J2),            TOGGLE_LAYER_COLOR, RGB_TOG,            RGB_MOD,            MOON_LED_LEVEL,     TG(_LMAPS),                                                                     XXXXXXX,            KC_P1,              KC_P2,              KC_P3,              KC_PENT,            XXXXXXX,
+        AU_TOGG,            MU_TOGG,            MU_NEXT,            _______,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                KC_P0,              KC_P0,              KC_PDOT,            KC_PENT,            XXXXXXX,
+                                                                                        _______,            XXXXXXX,            XXXXXXX,                                _______,            _______,            _______
+    ),
+    [_GREEK_W] = LAYOUT_moonlander(
+        KC_ESCAPE,    KC_1,         KC_2,         KC_3,         KC_4,         KC_5,         KC_EQUAL,                   EN_DASH_W,    KC_6,         KC_7,         KC_8,         KC_9,         KC_0,         XXXXXXX,
+        KC_GRAVE,     XXXXXXX,      XXXXXXX,      PHI_W,        PI_W,         XXXXXXX,      KC_BSLS,                    EM_DASH_W,    XXXXXXX,      XXXXXXX,      THETA_W,      XXXXXXX,      KC_SCLN,      KC_MINUS,
+        KC_TAB,       ALPHA_W,      XXXXXXX,      SIGMA_W,      TAU_W,        GAMMA_W,      KC_LBRC,                    KC_RBRC,      MU_W,         XXXXXXX,      EPSILON_W,    XXXXXXX,      XXXXXXX,      KC_QUOTE,
+        KC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      DELTA_W,      OMEGA_W,                                                XXXXXXX,      XXXXXXX,      KC_COMMA,     KC_DOT,       KC_UP,        KC_SLASH,
+        TG(_GREEK_W), CW_TOGG,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    KC_CAPS,                    LGUI(KC_DOT), XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,
+                                                                KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE
+    ),
+    [_GREEK_M] = LAYOUT_moonlander(
+        KC_ESCAPE,            KC_1,                 KC_2,                 KC_3,                 KC_4,                 KC_5,                 KC_EQUAL,                                   LALT(KC_MINUS),       KC_6,                 KC_7,                 KC_8,                 KC_9,                 KC_0,                 XXXXXXX,
+        KC_GRAVE,             XXXXXXX,              FINAL_SIGMA_M,        PHI_M,                PI_M,                 BETA_M,               KC_BSLS,                                    LALT(LSFT(KC_MINUS)), XI_M,                 LAMBDA_M,             THETA_M,              UPSILON_M,            KC_SCLN,              KC_MINUS,
+        KC_TAB,               ALPHA_M,              RHO_M,                SIGMA_M,              TAU_M,                GAMMA_M,              KC_LBRC,                                    KC_RBRC,              MU_M,                 NU_M,                 EPSILON_M,            IOTA_M,               OMICRON_M,            KC_QUOTE,
+        KC_LSFT,              ZETA_M,               CHI_M,                PSI_M,                DELTA_M,              OMEGA_M,                                                                                KAPPA_M,              ETA_M,                KC_COMMA,             KC_DOT,               KC_UP,                KC_SLASH,
+        TG(_GREEK_M),         CW_TOGG,              XXXXXXX,              XXXXXXX,              XXXXXXX,                                    XXXXXXX,                                    KC_CAPS,                                    LGUI(LCTL(KC_SPACE)), XXXXXXX,              KC_LEFT,              KC_DOWN,              KC_RIGHT,
+                                                                                                KC_ENTER,             XXXXXXX,              XXXXXXX,                                    KC_DELETE,            KC_BSPC,              KC_SPACE
+    ),
+    [_ACCENT] = LAYOUT_moonlander(
+        XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            OSL(_A_CIRCUMFLEX), XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,
+        OSL(_A_GRAVE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_DIAERESIS),  XXXXXXX,
+        OSL(_A_TILDE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_RING_ABOVE), OSL(_A_ACUTE),
+        XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_CARON),                                                                  XXXXXXX,            XXXXXXX,            OSL(_A_CEDILLA),    XXXXXXX,            XXXXXXX,            OSL(_A_STROKE),
+        XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,
+                                                                                        XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX
+    ),
+    [_A_ACUTE] = LAYOUT_moonlander(
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_U_W, ACUTE_Y_W, XXXXXXX,   XXXXXXX,
+        XXXXXXX,   ACUTE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_E_W, ACUTE_I_W, ACUTE_O_W, XXXXXXX,
+        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+    ),
+    [_A_CARON] = LAYOUT_moonlander(
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   CARON_S_W, XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        KC_LSFT,   CARON_Z_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+    ),
+    [_A_CEDILLA] = LAYOUT_moonlander(
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        KC_LSFT,     XXXXXXX,     XXXXXXX,     CEDILLA_C_W, XXXXXXX,     XXXXXXX,                                            XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,                  XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+                                                            XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX
+    ),
+    [_A_CIRCUMFLEX] = LAYOUT_moonlander(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_U_W, XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        CIRCUMFLEX_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_E_W, CIRCUMFLEX_I_W, CIRCUMFLEX_O_W, XXXXXXX,
+        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+                                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX
+    ),
+    [_A_DIAERESIS] = LAYOUT_moonlander(
+        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
+        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_U_W, DIAERESIS_Y_W, XXXXXXX,       XXXXXXX,
+        XXXXXXX,       DIAERESIS_A_W, XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_E_W, DIAERESIS_I_W, DIAERESIS_O_W, XXXXXXX,
+        KC_LSFT,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                                                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
+        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,                      XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
+                                                                    XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX
+    ),
+    [_A_GRAVE] = LAYOUT_moonlander(
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_U_W, XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   GRAVE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_E_W, GRAVE_I_W, GRAVE_O_W, XXXXXXX,
+        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+    ),
+    [_A_RING_ABOVE] = LAYOUT_moonlander(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        RING_ABOVE_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+                                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX
+    ),
+    [_A_STROKE] = LAYOUT_moonlander(
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    STROKE_O_W, XXXXXXX,
+        KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,                XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+                                                        XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX
+    ),
+    [_A_TILDE] = LAYOUT_moonlander(
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   TILDE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   TILDE_N_W, XXXXXXX,   XXXXXXX,   TILDE_O_W, XXXXXXX,
+        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+    ),
+    [_J1] = LAYOUT_moonlander(
+        PLAY_SONG_00, PLAY_SONG_01, PLAY_SONG_02, PLAY_SONG_03, PLAY_SONG_04, PLAY_SONG_05, PLAY_SONG_06,               PLAY_SONG_07, PLAY_SONG_08, PLAY_SONG_09, PLAY_SONG_10, PLAY_SONG_11, PLAY_SONG_12, PLAY_SONG_13,
+        PLAY_SONG_14, PLAY_SONG_15, PLAY_SONG_16, PLAY_SONG_17, PLAY_SONG_18, PLAY_SONG_19, PLAY_SONG_20,               PLAY_SONG_21, PLAY_SONG_22, PLAY_SONG_23, PLAY_SONG_24, PLAY_SONG_25, PLAY_SONG_26, PLAY_SONG_27,
+        _______,      PLAY_SONG_28, PLAY_SONG_29, PLAY_SONG_30, PLAY_SONG_31, PLAY_SONG_32, PLAY_SONG_33,               PLAY_SONG_34, PLAY_SONG_35, PLAY_SONG_36, PLAY_SONG_37, PLAY_SONG_38, PLAY_SONG_39, PLAY_SONG_40,
+        XXXXXXX,      PLAY_SONG_41, PLAY_SONG_42, PLAY_SONG_43, PLAY_SONG_44, PLAY_SONG_45,                                           PLAY_SONG_46, PLAY_SONG_47, PLAY_SONG_48, PLAY_SONG_49, PLAY_SONG_50, PLAY_SONG_51,
+        PLAY_SONG_52, PLAY_SONG_53, PLAY_SONG_54, PLAY_SONG_55, PLAY_SONG_56,               PLAY_JT,                    PLAY_ZELDA,                 PLAY_SONG_57, PLAY_SONG_58, PLAY_SONG_59, PLAY_SONG_60, PLAY_SONG_61,
+                                                                XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX
+    ),
+    [_J2] = LAYOUT_moonlander(
+        PLAY_SONG_62, PLAY_SONG_63, PLAY_SONG_64, PLAY_SONG_65, PLAY_SONG_66, PLAY_SONG_67, PLAY_SONG_68,               PLAY_SONG_69, PLAY_SONG_70, PLAY_SONG_71, PLAY_SONG_72, PLAY_SONG_73, PLAY_SONG_74, PLAY_SONG_75,
+        PLAY_SONG_76, PLAY_SONG_77, PLAY_SONG_78, PLAY_SONG_79, XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        _______,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    PLAY_JT,                    PLAY_ZELDA,                 XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                                                                XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX
+    ),
+    [_QWERTY] = LAYOUT_moonlander(
+        KC_ESCAPE, KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_EQUAL,             XXXXXXX,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______,
+        KC_GRAVE,  KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,      KC_BSLS,              XXXXXXX,   KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_MINUS,
+        KC_TAB,    KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_LBRC,              KC_RBRC,   KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOTE,
+        KC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,                                       KC_N,      KC_M,      KC_COMMA,  KC_DOT,    KC_UP,     KC_SLASH,
+        KC_LCTL,   CW_TOGG,   XXXXXXX,   XXXXXXX,   XXXXXXX,              KC_LGUI,              KC_CAPS,              XXXXXXX,   KC_RCTL,   KC_LEFT,   KC_DOWN,   KC_RIGHT,
+                                                    KC_ENTER,  KC_LALT,   XXXXXXX,              KC_DELETE, KC_BSPC,   KC_SPACE
+    ),
+    [_LMAPS] = LAYOUT_moonlander(
+        TD(TD_L00),   TD(TD_L01),   TD(TD_L02),   TD(TD_L03),   TD(TD_L04),   TD(TD_L05),   XXXXXXX,                    XXXXXXX,      TD(TD_L06),   TD(TD_L07),   TD(TD_L08),   TD(TD_L09),   XXXXXXX,      XXXXXXX,
+        TD(TD_L10),   TD(TD_L11),   TD(TD_L12),   TD(TD_L13),   TD(TD_L14),   TD(TD_L15),   XXXXXXX,                    XXXXXXX,      TD(TD_L16),   TD(TD_L17),   TD(TD_L18),   TD(TD_L19),   XXXXXXX,      XXXXXXX,
+        TD(TD_L20),   XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      _______,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_UP,        XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    TD(TD_LLIST),               XXXXXXX,                    XXXXXXX,      XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,
+                                                                KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE
+    )
+    // clang-format on
+};
+
+extern rgb_config_t rgb_matrix_config;
+
+#define NUM_LEDS 6
+// period for LED_BLINK_FAST blinking (smaller value implies faster)
+#define LED_BLINK_FAST_PERIOD_MS 300
+
+// LED mode values defined in led_logic.h: LED_OFF, LED_ON, LED_BLINK_SLOW, LED_BLINK_FAST
+static uint8_t led_blink_state[NUM_LEDS] = {0};
+
+#ifdef START_UP_SONGS_BY_LAYER
+float start_up_songs_by_layer_array[][16][2] = START_UP_SONGS_BY_LAYER;
+#endif
+
+void set_single_active_layer_with_sound(uint8_t layer_num) {
+#if defined(AUDIO_ENABLE) && defined(START_UP_SONGS_BY_LAYER)
+    PLAY_SONG(start_up_songs_by_layer_array[layer_num]);
+#endif
+    layer_state_t layer_state = (layer_state_t)(1 << layer_num);
+    // default_layer_set(layer_state);
+    layer_state_set(layer_state);
+}
+
+static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
+    static uint8_t phase = 0;
+    phase                = (phase + 1) % 8;
+
+    STATUS_LED_1(led_on_at_phase_inner(led_blink_state[0], phase));
+    STATUS_LED_2(led_on_at_phase_inner(led_blink_state[1], phase));
+    STATUS_LED_3(led_on_at_phase_inner(led_blink_state[2], phase));
+    STATUS_LED_4(led_on_at_phase_inner(led_blink_state[3], phase));
+    STATUS_LED_5(led_on_at_phase_inner(led_blink_state[4], phase));
+    STATUS_LED_6(led_on_at_phase_inner(led_blink_state[5], phase));
+
+    return LED_BLINK_FAST_PERIOD_MS / 2;
+}
+
+static uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
+    switch (detected_host_os()) {
+        case OS_UNSURE:
+            break;
+        case OS_MACOS:
+        case OS_IOS:
+            set_single_active_layer_with_sound(_MAC_BASE);
+            break;
+        default: // OS_WINDOWS, OS_LINUX
+            set_single_active_layer_with_sound(_WIN_BASE);
+            break;
+    }
+    return 0;
+}
+
+void keyboard_post_init_user(void) {
+    rgb_matrix_enable();
+
+    // to take control of the Moonlander's LEDs
+    keyboard_config.led_level = false;
+
+    defer_exec(1, led_blink_callback, NULL);
+
+    // if _default_ layer is changed and we want it changed (back) to _WIN_BASE (i.e., lowest level), run:
+    // set_single_persistent_default_layer(_WIN_BASE);
+
+    defer_exec(500, get_host_os, NULL);
+}
+
+/*
+ledmap per-layer order (column 1, ..., C7, thumb-key group (of 3 keys) 1, pentagonal key 1, ...)
+C1 (5) 1–5
+C2 (5) 6–10
+C3 (5) 11–15
+C4 (5) 16–20
+C5 (5) 21–25
+C6 (4) 26–29
+C7 (3) 30–32
+T1 (3) 33–35
+P1 (1) 36
+C14 (5) 37–41
+C13 (5) 42–46
+C12 (5) 47–51
+C11 (5) 52–56
+C10 (5) 57–61
+C9 (4) 62–65
+C8 (3) 66–68
+T2 (3) 69–71
+P2 (1) 72
+*/
+/*
+ * Generated code: this comment and the 45 lines following it were generated by
+ * Ledmap.getLedmap in qmk-tools
+ */
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    // clang-format off
+    [_WIN_BASE] = {{HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_GREEN}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_GREEN}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_SFG_ORANGE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
+
+    [_MAC_BASE] = {{HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_PACIFIC_BLUE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}},
+
+    [_WIN_SYM] = {{HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_ORANGE}, {HSV_GRAY40}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GRAY40}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_PRINCE_PURP}},
+
+    [_MAC_SYM] = {{HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_RED}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_ORANGE}, {HSV_GRAY40}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GRAY40}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_PRINCE_PURP}},
+
+    [_NUMPAD] = {{HSV_MAROON}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_BLUE}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_WHITE}, {HSV_OFF}, {HSV_RED}, {HSV_ALLIGATOR}, {HSV_BLUE}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_MAROON}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_OFF}, {HSV_DARK_GRAY}, {HSV_GREEN50}, {HSV_ALLIGATOR}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GREEN}, {HSV_VERMILION}, {HSV_VERM75}, {HSV_VERM50}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_GRAY40}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}},
+
+    [_GREEK_W] = {{HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_GREEN}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_BLUE}, {HSV_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_YELLOW}, {HSV_PACIFIC_BLUE}, {HSV_BLUE}, {HSV_PRINCE_PURP}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}, {HSV_PACIFIC_BLUE}},
+
+    [_GREEK_M] = {{HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_OFF}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}},
+
+    [_ACCENT] = {{HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_ACUTE] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_CARON] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_CEDILLA] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_CIRCUMFLEX] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_DIAERESIS] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_GRAVE] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_RING_ABOVE] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_STROKE] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_A_TILDE] = {{HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_BLUE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}},
+
+    [_J1] = {{HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_GREEN}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}},
+
+    [_J2] = {{HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}},
+
+    [_QWERTY] = {{HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_CARDINAL}, {HSV_CARDINAL}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_CARDINAL}, {HSV_OFF}, {HSV_CARDINAL}, {HSV_GREEN}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_YELLOW}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_CARDINAL}, {HSV_RED}, {HSV_RED}, {HSV_WHITE}, {HSV_RED}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_OFF}, {HSV_OFF}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_RED}},
+
+    [_LMAPS] = {{HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_OFF}}
+    // clang-format on
+};
+
+void set_layer_color(int layer) {
+    for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+        HSV hsv = {.h = pgm_read_byte(&ledmap[layer][i][0]), .s = pgm_read_byte(&ledmap[layer][i][1]), .v = pgm_read_byte(&ledmap[layer][i][2])};
+        if (!hsv.h && !hsv.s && !hsv.v) {
+            rgb_matrix_set_color(i, RGB_BLACK);
+        } else {
+            RGB   rgb = hsv_to_rgb(hsv);
+            float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            rgb_matrix_set_color(i, (uint8_t)(f * rgb.r), (uint8_t)(f * rgb.g), (uint8_t)(f * rgb.b));
+        }
+    }
+}
+
+bool rgb_matrix_indicators_user(void) {
+#ifdef COMMUNITY_MODULE_ORYX_ENABLE
+    if (!rawhid_state.rgb_control && !keyboard_config.disable_layer_led) {
+#else
+    if (!keyboard_config.disable_layer_led) {
+#endif
+        set_layer_color(get_highest_layer(layer_state));
+        return false; // prevent further processing from overriding our colors
+    }
+
+    return true; // let rawhid/disable_layer_led path continue normally
+}
+
+#define MAC_OPT(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
+#define WIN_ALT2(a, b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
+#define WIN_ALT3(a, b, c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
+#define WIN_ALT4(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
+#define GET_MACRO(_1, _2, _3, _4, MACRO_NAME, ...) MACRO_NAME
+#define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
+
+// clang-format off
+#define WITHOUT_MODS(...)                      \
+    do {                                       \
+        const uint8_t saved_mods = get_mods(); \
+        clear_mods();                          \
+        {__VA_ARGS__}                          \
+        set_mods(saved_mods);                  \
+    } while (0)
+// clang-format on
+
+// Shift + Backspace = Delete
+const key_override_t shift_backspace_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+    &shift_backspace_override,
+};
+
+// #define USB_LED_CAPS_LOCK 1
+
+bool is_caps_lock_on(void) {
+    // return host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK);
+    return host_keyboard_led_state().caps_lock;
+}
+
+bool is_shift_pressed(void) {
+    return get_mods() & MOD_MASK_SHIFT;
+}
+
+bool should_capitalize(void) {
+    return is_caps_lock_on() || is_caps_word_on() || is_shift_pressed();
+}
+
+static void update_caps_indicator(void) {
+    if (is_caps_lock_on()) {
+        led_blink_state[0] = LED_ON;
+    } else if (is_caps_word_on()) {
+        led_blink_state[0] = LED_BLINK_FAST;
+    } else {
+        led_blink_state[0] = LED_OFF;
+    }
+}
+
+bool led_update_user(led_t led_state) {
+    update_caps_indicator();
+
+    return true;
+}
+
+void caps_word_set_user(bool active) {
+    update_caps_indicator();
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    uint8_t current_layer = get_highest_layer(state);
+    for (int iLed = 5; iLed >= 1; --iLed) {
+        if ((current_layer & (1 << (5 - iLed))) == 0) {
+            led_blink_state[iLed] = LED_OFF;
+        } else {
+            led_blink_state[iLed] = LED_ON;
+        }
+    }
+
+    return state;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case PLAY_ZELDA:
+            if (record->event.pressed) {
+                PLAY_SONG(zelda_uncover_secret);
+            }
+            return false;
+
+        case PLAY_JT:
+            if (record->event.pressed) {
+                PLAY_SONG(johnnys_theme);
+            }
+            return false;
+
+        case PLAY_SONG_00 ... PLAY_SONG_SENTINEL_ - 1:
+            if (record->event.pressed) {
+                const song_entry_t *s = &song_table[keycode - PLAY_SONG_00];
+                audio_play_melody(s->notes, s->note_count, false);
+            }
+            return false;
+
+        case PAREN_P:
+            if (record->event.pressed) {
+                SEND_STRING("()" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case BRACKET_P:
+            if (record->event.pressed) {
+                SEND_STRING("[]" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case BRACE_P:
+            if (record->event.pressed) {
+                SEND_STRING("{}" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case QUOTE_P:
+            if (record->event.pressed) {
+                if (is_shift_pressed()) {
+                    SEND_STRING("\"\"" SS_TAP(X_LEFT));
+                } else {
+                    SEND_STRING("''" SS_TAP(X_LEFT));
+                }
+            }
+            return false;
+
+        case GRAVE_P:
+            if (record->event.pressed) {
+                SEND_STRING("``" SS_TAP(X_LEFT));
+            }
+            return false;
+
+        case RGB_SLD:
+#ifdef COMMUNITY_MODULE_ORYX_ENABLE
+            if (rawhid_state.rgb_control) {
+                return false;
+            }
+#endif
+            if (record->event.pressed) {
+                rgblight_mode(1);
+            }
+            return false;
+
+        case PRINT_VER:
+            if (record->event.pressed) {
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+            }
+            return false;
+
+        /*
+         * Generated code: this comment and the 1189 lines following it were generated by
+         * ProcessRecordUserUnicodeCases.getWithHeader in qmk-tools
+         */
+        case ACUTE_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_3););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_5);
+                }
+            }
+            return false;
+
+        case ACUTE_E_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_1););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_3);
+                }
+            }
+            return false;
+
+        case ACUTE_I_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_5););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_7);
+                }
+            }
+            return false;
+
+        case ACUTE_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_1););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_3);
+                }
+            }
+            return false;
+
+        case ACUTE_U_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_8););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_0);
+                }
+            }
+            return false;
+
+        case ACUTE_Y_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_1););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_3);
+                }
+            }
+            return false;
+
+        case CARON_S_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_8););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_4);
+                }
+            }
+            return false;
+
+        case CARON_Z_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_2););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_8);
+                }
+            }
+            return false;
+
+        case CEDILLA_C_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_9););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_1);
+                }
+            }
+            return false;
+
+        case CIRCUMFLEX_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_4););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_6);
+                }
+            }
+            return false;
+
+        case CIRCUMFLEX_E_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_2););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_4);
+                }
+            }
+            return false;
+
+        case CIRCUMFLEX_I_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_6););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_8);
+                }
+            }
+            return false;
+
+        case CIRCUMFLEX_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_2););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_4);
+                }
+            }
+            return false;
+
+        case CIRCUMFLEX_U_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_9););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_1);
+                }
+            }
+            return false;
+
+        case DIAERESIS_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_6););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_8);
+                }
+            }
+            return false;
+
+        case DIAERESIS_E_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_3););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_5);
+                }
+            }
+            return false;
+
+        case DIAERESIS_I_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_7););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_9);
+                }
+            }
+            return false;
+
+        case DIAERESIS_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_4););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_6);
+                }
+            }
+            return false;
+
+        case DIAERESIS_U_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_0););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_2);
+                }
+            }
+            return false;
+
+        case DIAERESIS_Y_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_9););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_5, X_KP_5);
+                }
+            }
+            return false;
+
+        case GRAVE_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_2););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_4);
+                }
+            }
+            return false;
+
+        case GRAVE_E_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_0););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_2);
+                }
+            }
+            return false;
+
+        case GRAVE_I_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_4););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_6);
+                }
+            }
+            return false;
+
+        case GRAVE_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_0););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_2);
+                }
+            }
+            return false;
+
+        case GRAVE_U_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_7););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_9);
+                }
+            }
+            return false;
+
+        case RING_ABOVE_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_7););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_9);
+                }
+            }
+            return false;
+
+        case STROKE_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_6););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_8);
+                }
+            }
+            return false;
+
+        case TILDE_A_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_5););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_7);
+                }
+            }
+            return false;
+
+        case TILDE_N_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_0, X_KP_9););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_1);
+                }
+            }
+            return false;
+
+        case TILDE_O_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_3););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_5);
+                }
+            }
+            return false;
+
+        case ALPHA_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_2, X_KP_4);
+                }
+            }
+            return false;
+
+        case GAMMA_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_2, X_KP_6););
+                }
+            }
+            return false;
+
+        case DELTA_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_3, X_KP_5);
+                }
+            }
+            return false;
+
+        case EPSILON_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_3, X_KP_8);
+                }
+            }
+            return false;
+
+        case THETA_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_3););
+                }
+            }
+            return false;
+
+        case MU_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_3, X_KP_0);
+                }
+            }
+            return false;
+
+        case PI_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_2, X_KP_7);
+                }
+            }
+            return false;
+
+        case SIGMA_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_2, X_KP_8););
+                } else {
+                    WIN_ALT(X_KP_2, X_KP_2, X_KP_9);
+                }
+            }
+            return false;
+
+        case TAU_W:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    WIN_ALT(X_KP_2, X_KP_3, X_KP_1);
+                }
+            }
+            return false;
+
+        case PHI_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_2););
+                } else {
+                    WIN_ALT(X_KP_2, X_KP_3, X_KP_7);
+                }
+            }
+            return false;
+
+        case OMEGA_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_2, X_KP_3, X_KP_4););
+                }
+            }
+            return false;
+
+        case C_CIRC_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_9);
+            }
+            return false;
+
+        case R_CIRC_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_4);
+            }
+            return false;
+
+        case MULT_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_1, X_KP_5);
+            }
+            return false;
+
+        case DIV_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_4, X_KP_7);
+            }
+            return false;
+
+        case DDAGGER_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_5);
+            }
+            return false;
+
+        case SECTION_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_7);
+            }
+            return false;
+
+        case PILCROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_2);
+            }
+            return false;
+
+        case SUP_1_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_5);
+            }
+            return false;
+
+        case SUP_3_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_9);
+            }
+            return false;
+
+        case AE_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_8););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_2, X_KP_3, X_KP_0);
+                }
+            }
+            return false;
+
+        case OE_W:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_0););
+                } else {
+                    WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_6);
+                }
+            }
+            return false;
+
+        case SHARP_S_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_2, X_KP_2, X_KP_3);
+            }
+            return false;
+
+        case CENT_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_2);
+            }
+            return false;
+
+        case POUND_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_3);
+            }
+            return false;
+
+        case YEN_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_5);
+            }
+            return false;
+
+        case MICRO_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_1);
+            }
+            return false;
+
+        case NOT_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_2);
+            }
+            return false;
+
+        case BULLET_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_4, X_KP_9);
+            }
+            return false;
+
+        case ALMOST_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_7);
+            }
+            return false;
+
+        case NOTE_8TH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_3);
+            }
+            return false;
+
+        case NOTES_8TH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_4);
+            }
+            return false;
+
+        case LR_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_9);
+            }
+            return false;
+
+        case UD_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_1, X_KP_8);
+            }
+            return false;
+
+        case LT_OR_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_3);
+            }
+            return false;
+
+        case GT_OR_EQ_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4, X_KP_2);
+            }
+            return false;
+
+        case EM_DASH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_1);
+            }
+            return false;
+
+        case EN_DASH_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_0);
+            }
+            return false;
+
+        case DAGGER_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_3, X_KP_4);
+            }
+            return false;
+
+        case DEGREE_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_6);
+            }
+            return false;
+
+        case DOWN_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5);
+            }
+            return false;
+
+        case FRAC_1_2_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_9);
+            }
+            return false;
+
+        case FRAC_1_4_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_8);
+            }
+            return false;
+
+        case FRAC_3_4_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_0);
+            }
+            return false;
+
+        case FULL_BLOCK_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_1, X_KP_9);
+            }
+            return false;
+
+        case INFINITY_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_3, X_KP_6);
+            }
+            return false;
+
+        case INV_EXLM_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_6, X_KP_1);
+            }
+            return false;
+
+        case INV_QUES_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_9, X_KP_1);
+            }
+            return false;
+
+        case LEFT_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_7);
+            }
+            return false;
+
+        case MIDDLE_DOT_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_8, X_KP_3);
+            }
+            return false;
+
+        case PLUS_MINUS_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_7, X_KP_7);
+            }
+            return false;
+
+        case RIGHT_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_6);
+            }
+            return false;
+
+        case SUP_2_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_3);
+            }
+            return false;
+
+        case SUP_N_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_5, X_KP_2);
+            }
+            return false;
+
+        case TM_SIGN_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_0, X_KP_1, X_KP_5, X_KP_3);
+            }
+            return false;
+
+        case UP_ARROW_W:
+            if (record->event.pressed) {
+                WIN_ALT(X_KP_2, X_KP_4);
+            }
+            return false;
+
+        case ALPHA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_1););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_1);
+                }
+            }
+            return false;
+
+        case BETA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_2););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_2);
+                }
+            }
+            return false;
+
+        case GAMMA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_3););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_3);
+                }
+            }
+            return false;
+
+        case DELTA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_4););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_4);
+                }
+            }
+            return false;
+
+        case EPSILON_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_5););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_5);
+                }
+            }
+            return false;
+
+        case ZETA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_6););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_6);
+                }
+            }
+            return false;
+
+        case ETA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_7););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_7);
+                }
+            }
+            return false;
+
+        case THETA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_8););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_8);
+                }
+            }
+            return false;
+
+        case IOTA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_9););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_9);
+                }
+            }
+            return false;
+
+        case KAPPA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_A););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_A);
+                }
+            }
+            return false;
+
+        case LAMBDA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_B););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_B);
+                }
+            }
+            return false;
+
+        case MU_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_C););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_C);
+                }
+            }
+            return false;
+
+        case NU_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_D););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_D);
+                }
+            }
+            return false;
+
+        case XI_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_E););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_E);
+                }
+            }
+            return false;
+
+        case OMICRON_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_9, X_F););
+                } else {
+                    MAC_OPT(X_0, X_3, X_B, X_F);
+                }
+            }
+            return false;
+
+        case PI_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_0););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_0);
+                }
+            }
+            return false;
+
+        case RHO_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_1););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_1);
+                }
+            }
+            return false;
+
+        case SIGMA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_3););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_3);
+                }
+            }
+            return false;
+
+        case TAU_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_4););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_4);
+                }
+            }
+            return false;
+
+        case UPSILON_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_5););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_5);
+                }
+            }
+            return false;
+
+        case PHI_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_6););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_6);
+                }
+            }
+            return false;
+
+        case CHI_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_7););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_7);
+                }
+            }
+            return false;
+
+        case PSI_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_8););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_8);
+                }
+            }
+            return false;
+
+        case OMEGA_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_3, X_A, X_9););
+                } else {
+                    MAC_OPT(X_0, X_3, X_C, X_9);
+                }
+            }
+            return false;
+
+        case FINAL_SIGMA_M:
+            if (record->event.pressed) {
+                if (!should_capitalize()) {
+                    MAC_OPT(X_0, X_3, X_C, X_2);
+                }
+            }
+            return false;
+
+        case C_CIRC_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_9);
+            }
+            return false;
+
+        case R_CIRC_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_E);
+            }
+            return false;
+
+        case MULT_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_D, X_7);
+            }
+            return false;
+
+        case DIV_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_F, X_7);
+            }
+            return false;
+
+        case DDAGGER_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_1);
+            }
+            return false;
+
+        case SECTION_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_7);
+            }
+            return false;
+
+        case PILCROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_6);
+            }
+            return false;
+
+        case SUP_1_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_9);
+            }
+            return false;
+
+        case SUP_3_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_3);
+            }
+            return false;
+
+        case AE_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_0, X_C, X_6););
+                } else {
+                    MAC_OPT(X_0, X_0, X_E, X_6);
+                }
+            }
+            return false;
+
+        case OE_M:
+            if (record->event.pressed) {
+                if (should_capitalize()) {
+                    WITHOUT_MODS(MAC_OPT(X_0, X_1, X_5, X_2););
+                } else {
+                    MAC_OPT(X_0, X_1, X_5, X_3);
+                }
+            }
+            return false;
+
+        case SHARP_S_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_D, X_F);
+            }
+            return false;
+
+        case CENT_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_2);
+            }
+            return false;
+
+        case POUND_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_3);
+            }
+            return false;
+
+        case YEN_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_5);
+            }
+            return false;
+
+        case MICRO_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_5);
+            }
+            return false;
+
+        case NOT_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_C);
+            }
+            return false;
+
+        case BULLET_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_2);
+            }
+            return false;
+
+        case ALMOST_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_4, X_8);
+            }
+            return false;
+
+        case NOTE_8TH_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_6, X_6, X_A);
+            }
+            return false;
+
+        case NOTES_8TH_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_6, X_6, X_B);
+            }
+            return false;
+
+        case LR_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_4);
+            }
+            return false;
+
+        case UD_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_5);
+            }
+            return false;
+
+        case LT_OR_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_4);
+            }
+            return false;
+
+        case GT_OR_EQ_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_5);
+            }
+            return false;
+
+        case NOT_EQUAL_TO_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_6, X_0);
+            }
+            return false;
+
+        case DAGGER_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_2, X_0);
+            }
+            return false;
+
+        case DEGREE_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_0);
+            }
+            return false;
+
+        case DOWN_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_3);
+            }
+            return false;
+
+        case FRAC_1_2_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_D);
+            }
+            return false;
+
+        case FRAC_1_4_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_C);
+            }
+            return false;
+
+        case FRAC_3_4_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_E);
+            }
+            return false;
+
+        case FULL_BLOCK_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_5, X_8, X_8);
+            }
+            return false;
+
+        case INFINITY_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_2, X_1, X_E);
+            }
+            return false;
+
+        case INV_EXLM_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_A, X_1);
+            }
+            return false;
+
+        case INV_QUES_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_F);
+            }
+            return false;
+
+        case LEFT_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_0);
+            }
+            return false;
+
+        case MIDDLE_DOT_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_7);
+            }
+            return false;
+
+        case PLUS_MINUS_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_1);
+            }
+            return false;
+
+        case RIGHT_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_2);
+            }
+            return false;
+
+        case SUP_2_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_0, X_0, X_B, X_2);
+            }
+            return false;
+
+        case SUP_N_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_0, X_7, X_F);
+            }
+            return false;
+
+        case TM_SIGN_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_2, X_2);
+            }
+            return false;
+
+        case UP_ARROW_M:
+            if (record->event.pressed) {
+                MAC_OPT(X_2, X_1, X_9, X_1);
+            }
+            return false;
+    }
+
+    return true;
+}
+
+// Forward declarations for functions defined in dance.c (use tap_dance_state_t from QMK_KEYBOARD_H)
+// clang-format off
+void on_dance_0(tap_dance_state_t *, void *); void dance_0_finished(tap_dance_state_t *, void *); void dance_0_reset(tap_dance_state_t *, void *);
+void on_dance_1(tap_dance_state_t *, void *); void dance_1_finished(tap_dance_state_t *, void *); void dance_1_reset(tap_dance_state_t *, void *);
+void on_dance_2(tap_dance_state_t *, void *); void dance_2_finished(tap_dance_state_t *, void *); void dance_2_reset(tap_dance_state_t *, void *);
+void on_dance_3(tap_dance_state_t *, void *); void dance_3_finished(tap_dance_state_t *, void *); void dance_3_reset(tap_dance_state_t *, void *);
+void on_dance_4(tap_dance_state_t *, void *); void dance_4_finished(tap_dance_state_t *, void *); void dance_4_reset(tap_dance_state_t *, void *);
+void on_dance_5(tap_dance_state_t *, void *); void dance_5_finished(tap_dance_state_t *, void *); void dance_5_reset(tap_dance_state_t *, void *);
+void on_dance_6(tap_dance_state_t *, void *); void dance_6_finished(tap_dance_state_t *, void *); void dance_6_reset(tap_dance_state_t *, void *);
+void on_dance_7(tap_dance_state_t *, void *); void dance_7_finished(tap_dance_state_t *, void *); void dance_7_reset(tap_dance_state_t *, void *);
+void on_dance_8(tap_dance_state_t *, void *); void dance_8_finished(tap_dance_state_t *, void *); void dance_8_reset(tap_dance_state_t *, void *);
+void on_dance_9(tap_dance_state_t *, void *); void dance_9_finished(tap_dance_state_t *, void *); void dance_9_reset(tap_dance_state_t *, void *);
+// clang-format on
+
+/*
+ * Generated code: this comment and the 219 lines following it were generated by
+ * LmapTapDances.getLmapTapDances in qmk-tools
+ */
+// clang-format off
+void dance_l00(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "KC_ESCAPE,     TD(DANCE_0),   TD(DANCE_1),   TD(DANCE_2),   TD(DANCE_3),   TD(DANCE_4),   KC_EQUAL,                     EN_DASH_W,     TD(DANCE_5),   TD(DANCE_6),   TD(DANCE_7),   TD(DANCE_8),   TD(DANCE_9),   TG(_MAC_BASE),\nKC_GRAVE,      KC_Q,          KC_W,          KC_F,          KC_P,          KC_B,          KC_BSLS,                      EM_DASH_W,     KC_J,          KC_L,          KC_U,          KC_Y,          KC_SCLN,       KC_MINUS,\nKC_TAB,        KC_A,          KC_R,          KC_S,          KC_T,          KC_G,          KC_LBRC,                      KC_RBRC,       KC_M,          KC_N,          KC_E,          KC_I,          KC_O,          KC_QUOTE,\nKC_LSFT,       KC_Z,          KC_X,          KC_C,          KC_D,          KC_V,                                                       KC_K,          KC_H,          KC_COMMA,      KC_DOT,        KC_UP,         KC_SLASH,\nKC_LCTL,       CW_TOGG,       LGUI(KC_PSCR), TG(_NUMPAD),   MO(_WIN_SYM),                 KC_LGUI,                      KC_CAPS,                      LGUI(KC_DOT),  KC_RCTL,       KC_LEFT,       KC_DOWN,       KC_RIGHT,\n                                                            KC_ENTER,      KC_LALT,       MO(_ACCENT),                  KC_DELETE,     KC_BSPC,       KC_SPACE\n"
+        );
+    } else {
+        SEND_STRING("_WIN_BASE");
+    }
+}
+
+void dance_l01(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "_______,              _______,              _______,              _______,              _______,              _______,              _______,                                    LALT(KC_MINUS),       _______,              _______,              _______,              _______,              _______,              _______,\n_______,              _______,              _______,              _______,              _______,              _______,              _______,                                    LALT(LSFT(KC_MINUS)), _______,              _______,              _______,              _______,              _______,              _______,\n_______,              _______,              _______,              _______,              _______,              _______,              _______,                                    _______,              _______,              _______,              _______,              _______,              _______,              _______,\n_______,              _______,              _______,              _______,              _______,              _______,                                                                                _______,              _______,              _______,              _______,              _______,              _______,\n_______,              _______,              LGUI(LSFT(KC_3)),     _______,              MO(_MAC_SYM),                               _______,                                    _______,                                    LGUI(LCTL(KC_SPACE)), _______,              _______,              _______,              _______,\n                                                                                        _______,              _______,              NOT_EQUAL_TO_M,                             _______,              _______,              _______\n"
+        );
+    } else {
+        SEND_STRING("_MAC_BASE");
+    }
+}
+
+void dance_l02(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "INV_EXLM_W,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_W,                    FRAC_1_4_W,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,\nGRAVE_P,        SUP_1_W,        SUP_2_W,        SUP_3_W,        SUP_N_W,        PI_W,           BULLET_W,                       FRAC_1_2_W,     KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,\nNOT_SIGN_W,     AE_W,           OE_W,           SHARP_S_W,      TM_SIGN_W,      C_CIRC_W,       R_CIRC_W,                       FRAC_3_4_W,     MICRO_W,        UP_ARROW_W,     DDAGGER_W,      INFINITY_W,     PAREN_P,        QUOTE_P,\n_______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,     DEGREE_SIGN_W,                                                  LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,\nTG(_GREEK_W),   LR_ARROW_W,     UD_ARROW_W,     _______,        _______,                        NOTE_8TH_W,                     NOTES_8TH_W,                    SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,\n                                                                CENT_SIGN_W,    POUND_SIGN_W,   YEN_SIGN_W,                     FULL_BLOCK_W,   LT_OR_EQ_W,     GT_OR_EQ_W\n"
+        );
+    } else {
+        SEND_STRING("_WIN_SYM");
+    }
+}
+
+void dance_l03(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_M,                    FRAC_1_4_M,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,\nGRAVE_P,        SUP_1_M,        SUP_2_M,        SUP_3_M,        SUP_N_M,        PI_M,           BULLET_M,                       FRAC_1_2_M,     KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,\nNOT_SIGN_M,     AE_M,           OE_M,           SHARP_S_M,      TM_SIGN_M,      C_CIRC_M,       R_CIRC_M,                       FRAC_3_4_M,     MICRO_M,        UP_ARROW_M,     DDAGGER_M,      INFINITY_M,     PAREN_P,        QUOTE_P,\n_______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,     DEGREE_SIGN_M,                                                  LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,\nTG(_GREEK_M),   LR_ARROW_M,     UD_ARROW_M,     _______,        _______,                        NOTE_8TH_M,                     NOTES_8TH_M,                    SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,\n                                                                CENT_SIGN_M,    POUND_SIGN_M,   YEN_SIGN_M,                     FULL_BLOCK_M,   LT_OR_EQ_M,     GT_OR_EQ_M\n"
+        );
+    } else {
+        SEND_STRING("_MAC_SYM");
+    }
+}
+
+void dance_l04(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "QK_RBT,             QK_BOOT,            PRINT_VER,          XXXXXXX,            XXXXXXX,            XXXXXXX,            DT_UP,                                  XXXXXXX,            XXXXXXX,            KC_NUM_LOCK,        KC_PSLS,            KC_PAST,            KC_PMNS,            TG(_QWERTY),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            KC_BRID,            KC_BRIU,            XXXXXXX,            DT_PRNT,                                XXXXXXX,            XXXXXXX,            KC_P7,              KC_P8,              KC_P9,              KC_PPLS,            XXXXXXX,\nTG(_J1),            XXXXXXX,            KC_MUTE,            KC_VOLD,            KC_VOLU,            XXXXXXX,            DT_DOWN,                                XXXXXXX,            XXXXXXX,            KC_P4,              KC_P5,              KC_P6,              KC_PPLS,            XXXXXXX,\nTG(_J2),            TOGGLE_LAYER_COLOR, RGB_TOG,            RGB_MOD,            MOON_LED_LEVEL,     TG(_LMAPS),                                                                     XXXXXXX,            KC_P1,              KC_P2,              KC_P3,              KC_PENT,            XXXXXXX,\nAU_TOGG,            MU_TOGG,            MU_NEXT,            _______,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                KC_P0,              KC_P0,              KC_PDOT,            KC_PENT,            XXXXXXX,\n                                                                                _______,            XXXXXXX,            XXXXXXX,                                _______,            _______,            _______\n"
+        );
+    } else {
+        SEND_STRING("_NUMPAD");
+    }
+}
+
+void dance_l05(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "KC_ESCAPE,    KC_1,         KC_2,         KC_3,         KC_4,         KC_5,         KC_EQUAL,                   EN_DASH_W,    KC_6,         KC_7,         KC_8,         KC_9,         KC_0,         XXXXXXX,\nKC_GRAVE,     XXXXXXX,      XXXXXXX,      PHI_W,        PI_W,         XXXXXXX,      KC_BSLS,                    EM_DASH_W,    XXXXXXX,      XXXXXXX,      THETA_W,      XXXXXXX,      KC_SCLN,      KC_MINUS,\nKC_TAB,       ALPHA_W,      XXXXXXX,      SIGMA_W,      TAU_W,        GAMMA_W,      KC_LBRC,                    KC_RBRC,      MU_W,         XXXXXXX,      EPSILON_W,    XXXXXXX,      XXXXXXX,      KC_QUOTE,\nKC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      DELTA_W,      OMEGA_W,                                                XXXXXXX,      XXXXXXX,      KC_COMMA,     KC_DOT,       KC_UP,        KC_SLASH,\nTG(_GREEK_W), CW_TOGG,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    KC_CAPS,                    LGUI(KC_DOT), XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,\n                                                        KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE\n"
+        );
+    } else {
+        SEND_STRING("_GREEK_W");
+    }
+}
+
+void dance_l06(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "KC_ESCAPE,            KC_1,                 KC_2,                 KC_3,                 KC_4,                 KC_5,                 KC_EQUAL,                                   LALT(KC_MINUS),       KC_6,                 KC_7,                 KC_8,                 KC_9,                 KC_0,                 XXXXXXX,\nKC_GRAVE,             XXXXXXX,              FINAL_SIGMA_M,        PHI_M,                PI_M,                 BETA_M,               KC_BSLS,                                    LALT(LSFT(KC_MINUS)), XI_M,                 LAMBDA_M,             THETA_M,              UPSILON_M,            KC_SCLN,              KC_MINUS,\nKC_TAB,               ALPHA_M,              RHO_M,                SIGMA_M,              TAU_M,                GAMMA_M,              KC_LBRC,                                    KC_RBRC,              MU_M,                 NU_M,                 EPSILON_M,            IOTA_M,               OMICRON_M,            KC_QUOTE,\nKC_LSFT,              ZETA_M,               CHI_M,                PSI_M,                DELTA_M,              OMEGA_M,                                                                                KAPPA_M,              ETA_M,                KC_COMMA,             KC_DOT,               KC_UP,                KC_SLASH,\nTG(_GREEK_M),         CW_TOGG,              XXXXXXX,              XXXXXXX,              XXXXXXX,                                    XXXXXXX,                                    KC_CAPS,                                    LGUI(LCTL(KC_SPACE)), XXXXXXX,              KC_LEFT,              KC_DOWN,              KC_RIGHT,\n                                                                                        KC_ENTER,             XXXXXXX,              XXXXXXX,                                    KC_DELETE,            KC_BSPC,              KC_SPACE\n"
+        );
+    } else {
+        SEND_STRING("_GREEK_M");
+    }
+}
+
+void dance_l07(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            OSL(_A_CIRCUMFLEX), XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,\nOSL(_A_GRAVE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_DIAERESIS),  XXXXXXX,\nOSL(_A_TILDE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_RING_ABOVE), OSL(_A_ACUTE),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_CARON),                                                                  XXXXXXX,            XXXXXXX,            OSL(_A_CEDILLA),    XXXXXXX,            XXXXXXX,            OSL(_A_STROKE),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,\n                                                                                XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_ACCENT");
+    }
+}
+
+void dance_l08(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_U_W, ACUTE_Y_W, XXXXXXX,   XXXXXXX,\nXXXXXXX,   ACUTE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_E_W, ACUTE_I_W, ACUTE_O_W, XXXXXXX,\nKC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\n                                            XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_ACUTE");
+    }
+}
+
+void dance_l09(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   CARON_S_W, XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nKC_LSFT,   CARON_Z_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\n                                            XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_CARON");
+    }
+}
+
+void dance_l10(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nXXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nXXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nKC_LSFT,     XXXXXXX,     XXXXXXX,     CEDILLA_C_W, XXXXXXX,     XXXXXXX,                                            XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nXXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,                  XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\n                                                    XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_CEDILLA");
+    }
+}
+
+void dance_l11(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_U_W, XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        CIRCUMFLEX_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_E_W, CIRCUMFLEX_I_W, CIRCUMFLEX_O_W, XXXXXXX,\nKC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\n                                                                XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_CIRCUMFLEX");
+    }
+}
+
+void dance_l12(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,\nXXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_U_W, DIAERESIS_Y_W, XXXXXXX,       XXXXXXX,\nXXXXXXX,       DIAERESIS_A_W, XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_E_W, DIAERESIS_I_W, DIAERESIS_O_W, XXXXXXX,\nKC_LSFT,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                                                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,\nXXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,                      XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,\n                                                            XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_DIAERESIS");
+    }
+}
+
+void dance_l13(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_U_W, XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   GRAVE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_E_W, GRAVE_I_W, GRAVE_O_W, XXXXXXX,\nKC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\n                                            XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_GRAVE");
+    }
+}
+
+void dance_l14(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        RING_ABOVE_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nKC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\nXXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,\n                                                                XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_RING_ABOVE");
+    }
+}
+
+void dance_l15(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,\nXXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,\nXXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    STROKE_O_W, XXXXXXX,\nKC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,\nXXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,                XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,\n                                                XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_STROKE");
+    }
+}
+
+void dance_l16(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   TILDE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   TILDE_N_W, XXXXXXX,   XXXXXXX,   TILDE_O_W, XXXXXXX,\nKC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\n                                            XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_A_TILDE");
+    }
+}
+
+void dance_l17(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "PLAY_SONG_00, PLAY_SONG_01, PLAY_SONG_02, PLAY_SONG_03, PLAY_SONG_04, PLAY_SONG_05, PLAY_SONG_06,               PLAY_SONG_07, PLAY_SONG_08, PLAY_SONG_09, PLAY_SONG_10, PLAY_SONG_11, PLAY_SONG_12, PLAY_SONG_13,\nPLAY_SONG_14, PLAY_SONG_15, PLAY_SONG_16, PLAY_SONG_17, PLAY_SONG_18, PLAY_SONG_19, PLAY_SONG_20,               PLAY_SONG_21, PLAY_SONG_22, PLAY_SONG_23, PLAY_SONG_24, PLAY_SONG_25, PLAY_SONG_26, PLAY_SONG_27,\n_______,      PLAY_SONG_28, PLAY_SONG_29, PLAY_SONG_30, PLAY_SONG_31, PLAY_SONG_32, PLAY_SONG_33,               PLAY_SONG_34, PLAY_SONG_35, PLAY_SONG_36, PLAY_SONG_37, PLAY_SONG_38, PLAY_SONG_39, PLAY_SONG_40,\nXXXXXXX,      PLAY_SONG_41, PLAY_SONG_42, PLAY_SONG_43, PLAY_SONG_44, PLAY_SONG_45,                                           PLAY_SONG_46, PLAY_SONG_47, PLAY_SONG_48, PLAY_SONG_49, PLAY_SONG_50, PLAY_SONG_51,\nPLAY_SONG_52, PLAY_SONG_53, PLAY_SONG_54, PLAY_SONG_55, PLAY_SONG_56,               PLAY_JT,                    PLAY_ZELDA,                 PLAY_SONG_57, PLAY_SONG_58, PLAY_SONG_59, PLAY_SONG_60, PLAY_SONG_61,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_J1");
+    }
+}
+
+void dance_l18(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "PLAY_SONG_62, PLAY_SONG_63, PLAY_SONG_64, PLAY_SONG_65, PLAY_SONG_66, PLAY_SONG_67, PLAY_SONG_68,               PLAY_SONG_69, PLAY_SONG_70, PLAY_SONG_71, PLAY_SONG_72, PLAY_SONG_73, PLAY_SONG_74, PLAY_SONG_75,\nPLAY_SONG_76, PLAY_SONG_77, PLAY_SONG_78, PLAY_SONG_79, XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n_______,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    PLAY_JT,                    PLAY_ZELDA,                 XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
+        );
+    } else {
+        SEND_STRING("_J2");
+    }
+}
+
+void dance_l19(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "KC_ESCAPE, KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_EQUAL,             XXXXXXX,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      _______,\nKC_GRAVE,  KC_Q,      KC_W,      KC_E,      KC_R,      KC_T,      KC_BSLS,              XXXXXXX,   KC_Y,      KC_U,      KC_I,      KC_O,      KC_P,      KC_MINUS,\nKC_TAB,    KC_A,      KC_S,      KC_D,      KC_F,      KC_G,      KC_LBRC,              KC_RBRC,   KC_H,      KC_J,      KC_K,      KC_L,      KC_SCLN,   KC_QUOTE,\nKC_LSFT,   KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,                                       KC_N,      KC_M,      KC_COMMA,  KC_DOT,    KC_UP,     KC_SLASH,\nKC_LCTL,   CW_TOGG,   XXXXXXX,   XXXXXXX,   XXXXXXX,              KC_LGUI,              KC_CAPS,              XXXXXXX,   KC_RCTL,   KC_LEFT,   KC_DOWN,   KC_RIGHT,\n                                            KC_ENTER,  KC_LALT,   XXXXXXX,              KC_DELETE, KC_BSPC,   KC_SPACE\n"
+        );
+    } else {
+        SEND_STRING("_QWERTY");
+    }
+}
+
+void dance_l20(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "TD(TD_L00),   TD(TD_L01),   TD(TD_L02),   TD(TD_L03),   TD(TD_L04),   TD(TD_L05),   XXXXXXX,                    XXXXXXX,      TD(TD_L06),   TD(TD_L07),   TD(TD_L08),   TD(TD_L09),   XXXXXXX,      XXXXXXX,\nTD(TD_L10),   TD(TD_L11),   TD(TD_L12),   TD(TD_L13),   TD(TD_L14),   TD(TD_L15),   XXXXXXX,                    XXXXXXX,      TD(TD_L16),   TD(TD_L17),   TD(TD_L18),   TD(TD_L19),   XXXXXXX,      XXXXXXX,\nTD(TD_L20),   XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      _______,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_UP,        XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    TD(TD_LLIST),               XXXXXXX,                    XXXXXXX,      XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,\n                                                        KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE\n"        );
+    } else {
+        SEND_STRING("_LMAPS");
+    }
+}
+
+void dance_llist(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
+            "0 _WIN_BASE\n1 _MAC_BASE\n2 _WIN_SYM\n3 _MAC_SYM\n4 _NUMPAD\n5 _GREEK_W\n6 _GREEK_M\n7 _ACCENT\n8 _A_ACUTE\n9 _A_CARON\n10 _A_CEDILLA\n11 _A_CIRCUMFLEX\n12 _A_DIAERESIS\n13 _A_GRAVE\n14 _A_RING_ABOVE\n15 _A_STROKE\n16 _A_TILDE\n17 _J1\n18 _J2\n19 _QWERTY\n20 _LMAPS"
+        );
+    } else {
+        SEND_STRING("21");
+    }
+}
+
+// clang-format on
+tap_dance_action_t tap_dance_actions[] = {
+    // clang-format off
+    [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
+    [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
+    [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
+    [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
+    [DANCE_4] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
+    [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
+    [DANCE_6] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
+    [DANCE_7] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_7, dance_7_finished, dance_7_reset),
+    [DANCE_8] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_8, dance_8_finished, dance_8_reset),
+    [DANCE_9] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_9, dance_9_finished, dance_9_reset),
+    [TD_L00] = ACTION_TAP_DANCE_FN(dance_l00),
+    [TD_L01] = ACTION_TAP_DANCE_FN(dance_l01),
+    [TD_L02] = ACTION_TAP_DANCE_FN(dance_l02),
+    [TD_L03] = ACTION_TAP_DANCE_FN(dance_l03),
+    [TD_L04] = ACTION_TAP_DANCE_FN(dance_l04),
+    [TD_L05] = ACTION_TAP_DANCE_FN(dance_l05),
+    [TD_L06] = ACTION_TAP_DANCE_FN(dance_l06),
+    [TD_L07] = ACTION_TAP_DANCE_FN(dance_l07),
+    [TD_L08] = ACTION_TAP_DANCE_FN(dance_l08),
+    [TD_L09] = ACTION_TAP_DANCE_FN(dance_l09),
+    [TD_L10] = ACTION_TAP_DANCE_FN(dance_l10),
+    [TD_L11] = ACTION_TAP_DANCE_FN(dance_l11),
+    [TD_L12] = ACTION_TAP_DANCE_FN(dance_l12),
+    [TD_L13] = ACTION_TAP_DANCE_FN(dance_l13),
+    [TD_L14] = ACTION_TAP_DANCE_FN(dance_l14),
+    [TD_L15] = ACTION_TAP_DANCE_FN(dance_l15),
+    [TD_L16] = ACTION_TAP_DANCE_FN(dance_l16),
+    [TD_L17] = ACTION_TAP_DANCE_FN(dance_l17),
+    [TD_L18] = ACTION_TAP_DANCE_FN(dance_l18),
+    [TD_L19] = ACTION_TAP_DANCE_FN(dance_l19),
+    [TD_L20] = ACTION_TAP_DANCE_FN(dance_l20),
+    [TD_LLIST] = ACTION_TAP_DANCE_FN(dance_llist)
+    // clang-format on
+};

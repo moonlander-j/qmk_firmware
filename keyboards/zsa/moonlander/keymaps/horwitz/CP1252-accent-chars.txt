@@ -1,0 +1,79 @@
+ÁÉÍÓÚÝáéíóúýŠŽšžÇçÂÊÎÔÛâêîôûÄËÏÖÜŸäëïöüÿÀÈÌÒÙàèìòùÅåØøÃÑÕãñõ
+
+ ACUTE (AEIOUY)
+Á	193	&Aacute;	Latin capital letter A with acute
+É	201	&Eacute;	Latin capital letter E with acute
+Í	205	&Iacute;	Latin capital letter I with acute
+Ó	211	&Oacute;	Latin capital letter O with acute
+Ú	218	&Uacute;	Latin capital letter U with acute
+Ý	221	&Yacute;	Latin capital letter Y with acute
+á	225	&aacute;	Latin small letter a with acute
+é	233	&eacute;	Latin small letter e with acute
+í	237	&iacute;	Latin small letter i with acute
+ó	243	&oacute;	Latin small letter o with acute
+ú	250	&uacute;	Latin small letter u with acute
+ý	253	&yacute;	Latin small letter y with acute
+
+ CARON (SZ)
+Š	138	&Scaron;	Latin capital letter S with caron
+Ž	142	&Zcaron;	Latin capital letter Z with caron
+š	154	&scaron;	Latin small letter s with caron
+ž	158	&zcaron;	Latin small letter z with caron
+
+ CEDILLA (C)
+Ç	199	&Ccedil;	Latin capital letter C with cedilla
+ç	231	&ccedil;	Latin small letter c with cedilla
+
+ CIRCUMFLEX (AEIOU)
+Â	194	&Acirc;	Latin capital letter A with circumflex
+Ê	202	&Ecirc;	Latin capital letter E with circumflex
+Î	206	&Icirc;	Latin capital letter I with circumflex
+Ô	212	&Ocirc;	Latin capital letter O with circumflex
+Û	219	&Ucirc;	Latin capital letter U with circumflex
+â	226	&acirc;	Latin small letter a with circumflex
+ê	234	&ecirc;	Latin small letter e with circumflex
+î	238	&icirc;	Latin small letter i with circumflex
+ô	244	&ocirc;	Latin small letter o with circumflex
+û	251	&ucirc;	Latin small letter u with circumflex
+
+  DIAERESIS (AEIOUY)
+Ä	196	&Auml;	Latin capital letter A with diaeresis
+Ë	203	&Euml;	Latin capital letter E with diaeresis
+Ï	207	&Iuml;	Latin capital letter I with diaeresis
+Ö	214	&Ouml;	Latin capital letter O with diaeresis
+Ü	220	&Uuml;	Latin capital letter U with diaeresis
+Ÿ	159	&Yuml;	Latin capital letter Y with diaeresis
+ä	228	&auml;	Latin small letter a with diaeresis
+ë	235	&euml;	Latin small letter e with diaeresis
+ï	239	&iuml;	Latin small letter i with diaeresis
+ö	246	&ouml;	Latin small letter o with diaeresis
+ü	252	&uuml;	Latin small letter u with diaeresis
+ÿ	255	&yuml;	Latin small letter y with diaeresis
+
+ GRAVE (AEIOU)
+À	192	&Agrave;	Latin capital letter A with grave
+È	200	&Egrave;	Latin capital letter E with grave
+Ì	204	&Igrave;	Latin capital letter I with grave
+Ò	210	&Ograve;	Latin capital letter O with grave
+Ù	217	&Ugrave;	Latin capital letter U with grave
+à	224	&agrave;	Latin small letter a with grave
+è	232	&egrave;	Latin small letter e with grave
+ì	236	&igrave;	Latin small letter i with grave
+ò	242	&ograve;	Latin small letter o with grave
+ù	249	&ugrave;	Latin small letter u with grave
+
+ RING RING_ABOVE (A)
+Å	197	&Aring;	Latin capital letter A with ring above
+å	229	&aring;	Latin small letter a with ring above
+
+ STROKE (O)
+Ø	216	&Oslash;	Latin capital letter O with stroke
+ø	248	&oslash;	Latin small letter o with stroke
+
+ TILDE (ANO)
+Ã	195	&Atilde;	Latin capital letter A with tilde
+Ñ	209	&Ntilde;	Latin capital letter N with tilde
+Õ	213	&Otilde;	Latin capital letter O with tilde
+ã	227	&atilde;	Latin small letter a with tilde
+ñ	241	&ntilde;	Latin small letter n with tilde
+õ	245	&otilde;	Latin small letter o with tilde

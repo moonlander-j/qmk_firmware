@@ -35,5 +35,5 @@ private:
 
 template<typename... Ts>
 inline testing::Matcher<report_keyboard_t&> KeyboardReport(Ts... keys) {
-    return testing::MakeMatcher(new KeyboardReportMatcher(std::vector<uint8_t>({keys...})));
+    return testing::MakeMatcher(new KeyboardReportMatcher(std::vector<uint8_t>({static_cast<uint8_t>(keys)...})));
 }

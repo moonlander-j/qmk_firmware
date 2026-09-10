@@ -1,0 +1,8 @@
+{
+    "keyboard": "zsa/moonlander/reva",
+    "keymap": "horwitz",
+    "layout": "LAYOUT_moonlander",
+    "modules": [
+        "zsa/defaults"
+    ]
+}
