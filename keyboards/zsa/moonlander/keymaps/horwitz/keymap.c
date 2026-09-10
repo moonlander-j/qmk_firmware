@@ -759,10 +759,8 @@ static uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
     return LED_BLINK_FAST_PERIOD_MS / 2;
 }
 
-static uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
-    switch (detected_host_os()) {
-        case OS_UNSURE:
-            break;
+bool process_detected_host_os_user(os_variant_t os) {
+    switch (os) {
         case OS_MACOS:
         case OS_IOS:
             set_single_active_layer_with_sound(_MAC_BASE);
@@ -771,7 +769,7 @@ static uint32_t get_host_os(uint32_t trigger_time, void *cb_arg) {
             set_single_active_layer_with_sound(_WIN_BASE);
             break;
     }
-    return 0;
+    return true;
 }
 
 void keyboard_post_init_user(void) {
@@ -784,8 +782,6 @@ void keyboard_post_init_user(void) {
 
     // if _default_ layer is changed and we want it changed (back) to _WIN_BASE (i.e., lowest level), run:
     // set_single_persistent_default_layer(_WIN_BASE);
-
-    defer_exec(500, get_host_os, NULL);
 }
 
 /*
