@@ -113,6 +113,8 @@ __pycache__
 !/keyboards/ergodox_ez
 !/keyboards/voyager
 /keyboards/**/keymaps/*
+!/keyboards/**/keymaps/horwitz
+!/keyboards/**/keymaps/horwitz/**
 # clangd
 compile_commands.json
 .clangd/
