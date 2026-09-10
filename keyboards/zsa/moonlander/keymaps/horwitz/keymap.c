@@ -984,8 +984,7 @@ void caps_word_set_user(bool active) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t current_layer = get_highest_layer(state);
     for (int i_led = LED_IDX_LAYER_BASE; i_led < NUM_LEDS; ++i_led) {
-        int bit = i_led - LED_IDX_LAYER_BASE;
-        led_blink_state[i_led] = (current_layer & (1 << bit)) ? LED_ON : LED_OFF;
+        led_blink_state[i_led] = layer_led_mode(current_layer, i_led);
     }
 
     return state;
