@@ -43,42 +43,18 @@ static void dance_i_reset(tap_dance_state_t *state, void *user_data, int i) {
     dance_state[i].step = 0;
 }
 
-void on_dance_0(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 0); }
-void dance_0_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 0); }
-void dance_0_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 0); }
+#define DEFINE_DANCE(n) \
+    void on_dance_##n(tap_dance_state_t *s, void *d)         { on_dance_i(s, d, n); } \
+    void dance_##n##_finished(tap_dance_state_t *s, void *d) { dance_i_finished(s, d, n); } \
+    void dance_##n##_reset(tap_dance_state_t *s, void *d)    { dance_i_reset(s, d, n); }
 
-void on_dance_1(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 1); }
-void dance_1_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 1); }
-void dance_1_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 1); }
-
-void on_dance_2(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 2); }
-void dance_2_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 2); }
-void dance_2_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 2); }
-
-void on_dance_3(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 3); }
-void dance_3_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 3); }
-void dance_3_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 3); }
-
-void on_dance_4(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 4); }
-void dance_4_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 4); }
-void dance_4_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 4); }
-
-void on_dance_5(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 5); }
-void dance_5_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 5); }
-void dance_5_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 5); }
-
-void on_dance_6(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 6); }
-void dance_6_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 6); }
-void dance_6_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 6); }
-
-void on_dance_7(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 7); }
-void dance_7_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 7); }
-void dance_7_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 7); }
-
-void on_dance_8(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 8); }
-void dance_8_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 8); }
-void dance_8_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 8); }
-
-void on_dance_9(tap_dance_state_t *state, void *user_data) { on_dance_i(state, user_data, 9); }
-void dance_9_finished(tap_dance_state_t *state, void *user_data) { dance_i_finished(state, user_data, 9); }
-void dance_9_reset(tap_dance_state_t *state, void *user_data) { dance_i_reset(state, user_data, 9); }
+DEFINE_DANCE(0)
+DEFINE_DANCE(1)
+DEFINE_DANCE(2)
+DEFINE_DANCE(3)
+DEFINE_DANCE(4)
+DEFINE_DANCE(5)
+DEFINE_DANCE(6)
+DEFINE_DANCE(7)
+DEFINE_DANCE(8)
+DEFINE_DANCE(9)
