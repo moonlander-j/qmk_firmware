@@ -15,7 +15,7 @@
 #define HSV_SFG_ORANGE    12, 226, 254 // #FE5C1D (original: #FE5A1D)
 #define HSV_MUDDY_WATERS  21, 132, 185 // #B98959 (original: #B98959)
 #define HSV_ALLIGATOR     36, 255, 135 // #877200 (original: #877100)
-#define HSV_ZELDA_CART    43,  90,  87 // #575738 (TODO update color)
+#define HSV_ZELDA_CART    32, 189, 212 // #D4AF37 (metallic gold; approximate--not clear what to use for exact cartridge color)
 #define HSV_OLIVE         43, 255, 128 // #7E8000 (original: #808000)
 //#define HSV_LIGHT_GREEN   85, 101, 238 // #90EE90
 //#define HSV_MINT_GREEN    85, 101, 251 // #98FB98 (original: #98FB98)
