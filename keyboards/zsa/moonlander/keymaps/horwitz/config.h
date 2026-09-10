@@ -24,5 +24,3 @@
 #    define STARTUP_SONG SONG(T__NOTE(_REST)) // silent: QMK requires STARTUP_SONG; per-layer songs are played via process_detected_host_os_user
 #endif
 
-#define START_UP_SONGS_BY_LAYER \
-    { SONG(MARIO_THEME), SONG(ZELDA_UNCOVER_SECRET) }

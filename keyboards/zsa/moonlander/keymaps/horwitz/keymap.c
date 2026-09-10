@@ -758,26 +758,27 @@ extern rgb_config_t rgb_matrix_config;
 // LED mode values defined in led_logic.h: LED_OFF, LED_ON, LED_BLINK_SLOW, LED_BLINK_FAST
 static uint8_t led_blink_state[NUM_LEDS] = {0};
 
-#ifdef START_UP_SONGS_BY_LAYER
-float start_up_songs_by_layer_array[][16][2] = START_UP_SONGS_BY_LAYER;
-#    define START_UP_SONGS_COUNT (sizeof(start_up_songs_by_layer_array) / sizeof(start_up_songs_by_layer_array[0]))
-_Static_assert(START_UP_SONGS_COUNT <= LAYER_COUNT, "start_up_songs_by_layer_array has more entries than there are layers");
-#endif
+static const song_entry_t start_up_songs_by_layer[] = {
+    SONG_ENTRY(mario_theme),          // _WIN_BASE
+    SONG_ENTRY(zelda_uncover_secret), // _MAC_BASE
+};
+#define START_UP_SONGS_COUNT (sizeof(start_up_songs_by_layer) / sizeof(start_up_songs_by_layer[0]))
+_Static_assert(START_UP_SONGS_COUNT <= LAYER_COUNT, "start_up_songs_by_layer has more entries than there are layers");
 
-// NB: returns (without layer change) is layer has no song (in start_up_songs_by_layer_array)--even if layer exists
+// returns without layer change if layer_num is invalid or has no startup song
+// NB: returns (without layer change) if layer has no song (in start_up_songs_by_layer_array)--even if layer exists
 void set_single_active_layer_with_sound(uint8_t layer_num) {
     if (layer_num >= LAYER_COUNT) {
         uprintf("set_single_active_layer_with_sound: layer_num %u >= LAYER_COUNT\n", layer_num);
         return;
     }
-#ifdef START_UP_SONGS_BY_LAYER
     if (layer_num >= START_UP_SONGS_COUNT) {
         uprintf("set_single_active_layer_with_sound: layer_num %u has no startup song\n", layer_num);
         return;
     }
-#endif
-#if defined(AUDIO_ENABLE) && defined(START_UP_SONGS_BY_LAYER)
-    PLAY_SONG(start_up_songs_by_layer_array[layer_num]);
+#ifdef AUDIO_ENABLE
+    const song_entry_t *s = &start_up_songs_by_layer[layer_num];
+    audio_play_melody(s->notes, s->note_count, false);
 #endif
     layer_state_t layer_state = (layer_state_t)(1 << layer_num);
     // default_layer_set(layer_state);
