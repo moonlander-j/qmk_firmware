@@ -272,6 +272,10 @@ typedef struct {
     uint8_t  reserved2 : 1;
 } PACKED report_digitizer_touchpad_t;
 
+// _Static_assert is C11-only; map it to the C++11 keyword when compiled as C++.
+#ifdef __cplusplus
+#    define _Static_assert static_assert
+#endif
 _Static_assert(sizeof(digitizer_touchpad_finger_t) == 6,
                "digitizer_touchpad_finger_t must be 6 bytes");
 _Static_assert(sizeof(report_digitizer_touchpad_t) == 16,
