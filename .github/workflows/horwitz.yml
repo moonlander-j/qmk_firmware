@@ -7,11 +7,6 @@ on:
   push:
     branches:
       - 'horwitz*'
-    paths:
-      - 'keyboards/zsa/moonlander/**'
-      - 'modules/zsa/defaults/**'
-      - 'tests/horwitz/**'
-      - '.github/workflows/horwitz.yml'
   pull_request:
     paths:
       - 'keyboards/zsa/moonlander/**'

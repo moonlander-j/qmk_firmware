@@ -116,6 +116,9 @@ compile_commands.json
 .clangd/
 .cache/
 
+# make dependency files (generated in repo root by bear)
+*.d
+
 # VIA(L) files that don't belong in QMK repo
 via*.json
 /keyboards/**/keymaps/via/*
