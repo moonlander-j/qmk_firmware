@@ -566,6 +566,7 @@ enum layer_names {
     _J2,
     _QWERTY,
     _LMAPS,
+    LAYER_COUNT,  // not a real layer, just used to count enum size (must be kept last)
 };
 
 /*
@@ -759,9 +760,22 @@ static uint8_t led_blink_state[NUM_LEDS] = {0};
 
 #ifdef START_UP_SONGS_BY_LAYER
 float start_up_songs_by_layer_array[][16][2] = START_UP_SONGS_BY_LAYER;
+#    define START_UP_SONGS_COUNT (sizeof(start_up_songs_by_layer_array) / sizeof(start_up_songs_by_layer_array[0]))
+_Static_assert(START_UP_SONGS_COUNT <= LAYER_COUNT, "start_up_songs_by_layer_array has more entries than there are layers");
 #endif
 
+// NB: returns (without layer change) is layer has no song (in start_up_songs_by_layer_array)--even if layer exists
 void set_single_active_layer_with_sound(uint8_t layer_num) {
+    if (layer_num >= LAYER_COUNT) {
+        uprintf("set_single_active_layer_with_sound: layer_num %u >= LAYER_COUNT\n", layer_num);
+        return;
+    }
+#ifdef START_UP_SONGS_BY_LAYER
+    if (layer_num >= START_UP_SONGS_COUNT) {
+        uprintf("set_single_active_layer_with_sound: layer_num %u has no startup song\n", layer_num);
+        return;
+    }
+#endif
 #if defined(AUDIO_ENABLE) && defined(START_UP_SONGS_BY_LAYER)
     PLAY_SONG(start_up_songs_by_layer_array[layer_num]);
 #endif
