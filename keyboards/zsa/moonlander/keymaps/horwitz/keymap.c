@@ -769,11 +769,15 @@ _Static_assert(START_UP_SONGS_COUNT <= LAYER_COUNT, "start_up_songs_by_layer has
 // NB: returns (without layer change) if layer has no song (in start_up_songs_by_layer_array)--even if layer exists
 void set_single_active_layer_with_sound(uint8_t layer_num) {
     if (layer_num >= LAYER_COUNT) {
+#ifdef CONSOLE_ENABLE
         uprintf("set_single_active_layer_with_sound: layer_num %u >= LAYER_COUNT\n", layer_num);
+#endif
         return;
     }
     if (layer_num >= START_UP_SONGS_COUNT) {
+#ifdef CONSOLE_ENABLE
         uprintf("set_single_active_layer_with_sound: layer_num %u has no startup song\n", layer_num);
+#endif
         return;
     }
 #ifdef AUDIO_ENABLE
