@@ -13,10 +13,10 @@
 ### 1. Fix qmk Python dependencies
 
 ```sh
-/opt/homebrew/Cellar/qmk/1.1.8/libexec/bin/python -m pip install -r requirements.txt
+$(brew --prefix qmk)/libexec/bin/python -m pip install -r requirements.txt
 ```
 
-(Run from the repo root. If the qmk version has changed, adjust the path accordingly.)
+(Run from the repo root.)
 
 ### 2. Install the VS Code `code` CLI
 
