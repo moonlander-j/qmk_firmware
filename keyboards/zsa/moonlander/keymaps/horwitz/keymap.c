@@ -926,6 +926,8 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 #define MAC_OPT(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
+// Windows Alt+numpad codes: hold Alt, type decimal Unicode on numpad, release.
+// Works natively on Windows; no WinCompose needed.
 #define WIN_ALT2(a, b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
 #define WIN_ALT3(a, b, c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
 #define WIN_ALT4(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
@@ -933,6 +935,7 @@ bool rgb_matrix_indicators_user(void) {
 #define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
 
 // clang-format off
+// Temporarily clears held modifiers (e.g., Shift) before sending, then restores them.
 #define WITHOUT_MODS(...)                      \
     do {                                       \
         const uint8_t saved_mods = get_mods(); \
