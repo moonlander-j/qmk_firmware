@@ -8,6 +8,7 @@
 #include "colors.h"
 #include "dance.h"
 #include "led_logic.h"
+#include "char_map.h"
 // #include "keymap_german.h"
 // #include "keymap_nordic.h"
 // #include "keymap_french.h"
@@ -871,25 +872,6 @@ bool rgb_matrix_indicators_user(void) {
     return true; // let rawhid/disable_layer_led path continue normally
 }
 
-#define MAC_OPT(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)));
-// Windows Alt+numpad codes: hold Alt, type decimal Unicode on numpad, release.
-// Works natively on Windows; no WinCompose needed.
-#define WIN_ALT2(a, b) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b)))
-#define WIN_ALT3(a, b, c) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c)))
-#define WIN_ALT4(a, b, c, d) SEND_STRING(SS_LALT(SS_TAP(a) SS_TAP(b) SS_TAP(c) SS_TAP(d)))
-#define GET_MACRO(_1, _2, _3, _4, MACRO_NAME, ...) MACRO_NAME
-#define WIN_ALT(...) GET_MACRO(__VA_ARGS__, WIN_ALT4, WIN_ALT3, WIN_ALT2)(__VA_ARGS__)
-
-// clang-format off
-// Temporarily clears held modifiers (e.g., Shift) before sending, then restores them.
-#define WITHOUT_MODS(...)                      \
-    do {                                       \
-        const uint8_t saved_mods = get_mods(); \
-        clear_mods();                          \
-        {__VA_ARGS__}                          \
-        set_mods(saved_mods);                  \
-    } while (0)
-// clang-format on
 
 // Shift + Backspace = Delete
 const key_override_t shift_backspace_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
