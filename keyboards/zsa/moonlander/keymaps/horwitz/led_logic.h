@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define NUM_LEDS 6  // 1 caps indicator (LED_IDX_CAPS) and 5 layer-indicator LEDs
+
 // clang-format off
 enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
 // clang-format on

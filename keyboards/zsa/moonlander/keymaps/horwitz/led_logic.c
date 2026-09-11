@@ -10,9 +10,9 @@ uint8_t caps_led_mode(bool caps_lock, bool caps_word) {
     return LED_OFF;
 }
 
-// led_index 1-5: LED 5 tracks layer bit 0, LED 4 tracks bit 1, ..., LED 1 tracks bit 4.
+// led_index 1-(NUM_LEDS-1): LED (NUM_LEDS-1) tracks layer bit 0, ..., LED 1 tracks bit (NUM_LEDS-2).
 uint8_t layer_led_mode(uint8_t layer, int led_index) {
-    return (layer & (1 << (5 - led_index))) ? LED_ON : LED_OFF;
+    return (layer & (1 << (NUM_LEDS - 1 - led_index))) ? LED_ON : LED_OFF;
 }
 
 // pattern[mode] encodes which of the 8 phases have the LED on as individual bits.

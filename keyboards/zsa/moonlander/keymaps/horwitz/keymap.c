@@ -748,7 +748,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 extern rgb_config_t rgb_matrix_config;
 
-#define NUM_LEDS 6
+// NUM_LEDS defined in led_logic.h
 // period for LED_BLINK_FAST blinking (smaller value implies faster)
 #define LED_BLINK_FAST_PERIOD_MS 300
 
