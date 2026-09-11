@@ -1,0 +1,26 @@
+#pragma once
+#include <stdbool.h>
+#include <stdint.h>
+
+#define MAX_SEQ_LEN 4
+
+typedef struct {
+    uint8_t keys[MAX_SEQ_LEN];
+    uint8_t count;  // 0 = no sequence for this OS/case
+} os_specific_sequence_t;
+
+// Expands to a zero-count os_specific_sequence_t initializer (no sequence available).
+#define NO_SEQUENCE \
+    { {0}, 0 }
+
+typedef struct {
+    uint16_t               kc;
+    bool                   is_cased;
+    os_specific_sequence_t win_lower;
+    os_specific_sequence_t win_upper;  // count = 0 when no uppercase variant exists
+    os_specific_sequence_t mac_lower;
+    os_specific_sequence_t mac_upper;  // count = 0 when no uppercase variant exists
+} char_map_entry_t;
+
+extern const char_map_entry_t char_map[];
+extern const uint8_t          CHAR_MAP_COUNT;
