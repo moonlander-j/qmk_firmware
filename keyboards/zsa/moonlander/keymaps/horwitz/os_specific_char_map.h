@@ -20,7 +20,7 @@ typedef struct {
     os_specific_sequence_t win_upper;  // count = 0 when no uppercase variant exists
     os_specific_sequence_t mac_lower;
     os_specific_sequence_t mac_upper;  // count = 0 when no uppercase variant exists
-} char_map_entry_t;
+} os_specific_char_map_entry_t;
 
-extern const char_map_entry_t char_map[];
-extern const uint8_t          CHAR_MAP_COUNT;
+extern const os_specific_char_map_entry_t os_specific_char_map[];
+extern const uint8_t                      OS_SPECIFIC_CHAR_MAP_COUNT;

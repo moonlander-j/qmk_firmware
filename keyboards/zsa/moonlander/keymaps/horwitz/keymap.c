@@ -8,7 +8,7 @@
 #include "colors.h"
 #include "dance.h"
 #include "led_logic.h"
-#include "char_map.h"
+#include "os_specific_char_map.h"
 // #include "keymap_german.h"
 // #include "keymap_nordic.h"
 // #include "keymap_french.h"
