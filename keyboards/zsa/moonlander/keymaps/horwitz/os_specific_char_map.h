@@ -24,3 +24,11 @@ typedef struct {
 
 extern const os_specific_char_map_entry_t os_specific_char_map[];
 extern const uint8_t                      OS_SPECIFIC_CHAR_MAP_COUNT;
+
+// TODO handle this better
+// First and last custom_keycodes enum values that appear in os_specific_char_map[].
+// All char-map keycodes must form a contiguous block in the enum between these two
+// values (no non-char-map keycodes in between), so the bounds check in handle_os_char
+// produces no false positives.
+#define OS_SPECIFIC_CHAR_MAP_KC_MIN ACUTE_A
+#define OS_SPECIFIC_CHAR_MAP_KC_MAX UP_ARROW

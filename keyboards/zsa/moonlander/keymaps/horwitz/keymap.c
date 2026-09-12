@@ -81,27 +81,114 @@
 
 enum custom_keycodes {
     RGB_SLD = ZSA_SAFE_RANGE,
-    EN_DASH,
+    // os_specific_char_map keycodes—contiguous block, order matches os_specific_char_map[]
+    // accents
+    ACUTE_A,
+    ACUTE_E,
+    ACUTE_I,
+    ACUTE_O,
+    ACUTE_U,
+    ACUTE_Y,
+    CARON_S,
+    CARON_Z,
+    CEDILLA_C,
+    CIRCUMFLEX_A,
+    CIRCUMFLEX_E,
+    CIRCUMFLEX_I,
+    CIRCUMFLEX_O,
+    CIRCUMFLEX_U,
+    DIAERESIS_A,
+    DIAERESIS_E,
+    DIAERESIS_I,
+    DIAERESIS_O,
+    DIAERESIS_U,
+    DIAERESIS_Y,
+    GRAVE_A,
+    GRAVE_E,
+    GRAVE_I,
+    GRAVE_O,
+    GRAVE_U,
+    RING_ABOVE_A,
+    STROKE_O,
+    TILDE_A,
+    TILDE_N,
+    TILDE_O,
+    // Greek
+    ALPHA,
+    BETA,
+    GAMMA,
+    DELTA,
+    EPSILON,
+    ZETA,
+    ETA,
+    THETA,
+    IOTA,
+    KAPPA,
+    LAMBDA,
+    MU,
+    NU,
+    XI,
+    OMICRON,
+    PI,
+    RHO,
+    SIGMA,
+    TAU,
+    UPSILON,
+    PHI,
+    CHI,
+    PSI,
+    OMEGA,
+    FINAL_SIGMA,
+    // symbols
+    C_CIRC,
+    R_CIRC,
+    MULT_SIGN,
+    DIV_SIGN,
+    DDAGGER,
+    SECTION_SIGN,
+    PILCROW,
+    SUP_1,
+    SUP_3,
+    AE,
+    OE,
+    SHARP_S,
+    CENT_SIGN,
+    POUND_SIGN,
+    YEN_SIGN,
+    MICRO,
+    NOT_SIGN,
+    BULLET,
+    ALMOST_EQ,
+    NOTE_8TH,
+    NOTES_8TH,
+    LR_ARROW,
+    UD_ARROW,
+    LT_OR_EQ,
+    GT_OR_EQ,
     EM_DASH,
+    EN_DASH,
+    NOT_EQUAL_TO,
+    DAGGER,
+    DEGREE_SIGN,
+    DOWN_ARROW,
+    FRAC_1_2,
+    FRAC_1_4,
+    FRAC_3_4,
+    FULL_BLOCK,
+    INFINITY,
     INV_EXLM,
+    INV_QUES,
+    LEFT_ARROW,
+    MIDDLE_DOT,
+    // PI_W,  // π was originally on the Win symbol layer before being moved to the Greek layer
+    // PI_M,  // π was originally a separate Mac entry; consolidated into PI
+    PLUS_MINUS,
+    RIGHT_ARROW,
     SUP_2,
     SUP_N,
-    DEGREE_SIGN,
-    FULL_BLOCK,
-    FRAC_1_4,
-    FRAC_1_2,
-    FRAC_3_4,
     TM_SIGN,
-    DAGGER,
-    PLUS_MINUS,
     UP_ARROW,
-    INFINITY,
-    LEFT_ARROW,
-    DOWN_ARROW,
-    RIGHT_ARROW,
-    MIDDLE_DOT,
-    INV_QUES,
-    NOT_EQUAL_TO,
+    // end of os_specific_char_map keycodes
     PLAY_ZELDA,
     PLAY_JT,
     PLAY_SONG_00,
@@ -190,88 +277,6 @@ enum custom_keycodes {
     BRACE_P,
     QUOTE_P,
     GRAVE_P,
-    ACUTE_A,
-    ACUTE_E,
-    ACUTE_I,
-    ACUTE_O,
-    ACUTE_U,
-    ACUTE_Y,
-    CARON_S,
-    CARON_Z,
-    CEDILLA_C,
-    CIRCUMFLEX_A,
-    CIRCUMFLEX_E,
-    CIRCUMFLEX_I,
-    CIRCUMFLEX_O,
-    CIRCUMFLEX_U,
-    DIAERESIS_A,
-    DIAERESIS_E,
-    DIAERESIS_I,
-    DIAERESIS_O,
-    DIAERESIS_U,
-    DIAERESIS_Y,
-    GRAVE_A,
-    GRAVE_E,
-    GRAVE_I,
-    GRAVE_O,
-    GRAVE_U,
-    RING_ABOVE_A,
-    STROKE_O,
-    TILDE_A,
-    TILDE_N,
-    TILDE_O,
-    C_CIRC,
-    R_CIRC,
-    MULT_SIGN,
-    DIV_SIGN,
-    DDAGGER,
-    SECTION_SIGN,
-    PILCROW,
-    SUP_1,
-    SUP_3,
-    AE,
-    OE,
-    SHARP_S,
-    CENT_SIGN,
-    POUND_SIGN,
-    YEN_SIGN,
-    MICRO,
-    NOT_SIGN,
-    BULLET,
-    ALMOST_EQ,
-    // PI_W,
-    NOTE_8TH,
-    NOTES_8TH,
-    LR_ARROW,
-    UD_ARROW,
-    LT_OR_EQ,
-    GT_OR_EQ,
-    ALPHA,
-    BETA,
-    GAMMA,
-    DELTA,
-    EPSILON,
-    ZETA,
-    ETA,
-    THETA,
-    IOTA,
-    KAPPA,
-    LAMBDA,
-    MU,
-    NU,
-    XI,
-    OMICRON,
-    // PI_M,
-    PI,
-    RHO,
-    SIGMA,
-    TAU,
-    UPSILON,
-    PHI,
-    CHI,
-    PSI,
-    OMEGA,
-    FINAL_SIGMA,
     PRINT_VER
 };
 
@@ -894,6 +899,45 @@ bool is_shift_pressed(void) {
 
 bool should_capitalize(void) {
     return should_capitalize_inner(is_caps_lock_on(), is_caps_word_on(), is_shift_pressed());
+}
+
+static bool is_mac_os(void) {
+    return get_highest_layer(default_layer_state) == _MAC_BASE;
+}
+
+static void send_os_specific_sequence(const os_specific_sequence_t *seq) {
+    register_mods(MOD_LALT);
+    for (uint8_t i = 0; i < seq->count; i++) tap_code(seq->keys[i]);
+    unregister_mods(MOD_LALT);
+}
+
+static bool handle_os_char(uint16_t keycode, keyrecord_t *record) {
+    // Bounds check avoids the scan for the common case (non-char-map keycodes).
+    // The linear scan is O(OS_SPECIFIC_CHAR_MAP_COUNT) ≈ 100 ns; the Alt/Option
+    // sequences that follow take tens of ms, so this is negligible.
+    if (keycode < OS_SPECIFIC_CHAR_MAP_KC_MIN || keycode > OS_SPECIFIC_CHAR_MAP_KC_MAX) return true;
+    for (uint8_t i = 0; i < OS_SPECIFIC_CHAR_MAP_COUNT; i++) {
+        if (os_specific_char_map[i].kc == keycode) {
+            if (!record->event.pressed) return false;
+            bool is_mac = is_mac_os();
+            const os_specific_sequence_t *lower = is_mac ? &os_specific_char_map[i].mac_lower : &os_specific_char_map[i].win_lower;
+            const os_specific_sequence_t *upper = is_mac ? &os_specific_char_map[i].mac_upper : &os_specific_char_map[i].win_upper;
+            if (lower->count == 0 && upper->count == 0) return true;
+            // should_capitalize() checks caps lock, caps word, and shift state
+            bool capitalize = os_specific_char_map[i].is_cased && upper->count > 0 && should_capitalize();
+            const os_specific_sequence_t *seq = capitalize ? upper : lower;
+            if (capitalize) {
+                uint8_t saved = get_mods();
+                clear_mods();
+                send_os_specific_sequence(seq);
+                set_mods(saved);
+            } else {
+                send_os_specific_sequence(seq);
+            }
+            return false;
+        }
+    }
+    return true;
 }
 
 static void update_caps_indicator(void) {
