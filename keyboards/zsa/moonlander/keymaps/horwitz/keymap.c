@@ -528,8 +528,8 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
     [_WIN_BASE] = LAYOUT_moonlander(
-        KC_ESCAPE,     TD(DANCE_0),   TD(DANCE_1),   TD(DANCE_2),   TD(DANCE_3),   TD(DANCE_4),   KC_EQUAL,                     EN_DASH_W,     TD(DANCE_5),   TD(DANCE_6),   TD(DANCE_7),   TD(DANCE_8),   TD(DANCE_9),   TG(_MAC_BASE),
-        KC_GRAVE,      KC_Q,          KC_W,          KC_F,          KC_P,          KC_B,          KC_BSLS,                      EM_DASH_W,     KC_J,          KC_L,          KC_U,          KC_Y,          KC_SCLN,       KC_MINUS,
+        KC_ESCAPE,     TD(DANCE_0),   TD(DANCE_1),   TD(DANCE_2),   TD(DANCE_3),   TD(DANCE_4),   KC_EQUAL,                     EN_DASH,       TD(DANCE_5),   TD(DANCE_6),   TD(DANCE_7),   TD(DANCE_8),   TD(DANCE_9),   TG(_MAC_BASE),
+        KC_GRAVE,      KC_Q,          KC_W,          KC_F,          KC_P,          KC_B,          KC_BSLS,                      EM_DASH,       KC_J,          KC_L,          KC_U,          KC_Y,          KC_SCLN,       KC_MINUS,
         KC_TAB,        KC_A,          KC_R,          KC_S,          KC_T,          KC_G,          KC_LBRC,                      KC_RBRC,       KC_M,          KC_N,          KC_E,          KC_I,          KC_O,          KC_QUOTE,
         KC_LSFT,       KC_Z,          KC_X,          KC_C,          KC_D,          KC_V,                                                       KC_K,          KC_H,          KC_COMMA,      KC_DOT,        KC_UP,         KC_SLASH,
         KC_LCTL,       CW_TOGG,       LGUI(KC_PSCR), TG(_NUMPAD),   MO(_WIN_SYM),                 KC_LGUI,                      KC_CAPS,                      LGUI(KC_DOT),  KC_RCTL,       KC_LEFT,       KC_DOWN,       KC_RIGHT,
@@ -541,23 +541,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,              _______,              _______,              _______,              _______,              _______,              _______,                                    _______,              _______,              _______,              _______,              _______,              _______,              _______,
         _______,              _______,              _______,              _______,              _______,              _______,                                                                                _______,              _______,              _______,              _______,              _______,              _______,
         _______,              _______,              LGUI(LSFT(KC_3)),     _______,              MO(_MAC_SYM),                               _______,                                    _______,                                    LGUI(LCTL(KC_SPACE)), _______,              _______,              _______,              _______,
-                                                                                                _______,              _______,              NOT_EQUAL_TO_M,                             _______,              _______,              _______
+                                                                                                _______,              _______,              NOT_EQUAL_TO,                               _______,              _______,              _______
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
-        INV_EXLM_W,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_W,                    FRAC_1_4_W,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        SUP_1_W,        SUP_2_W,        SUP_3_W,        SUP_N_W,        PI_W,           BULLET_W,                       FRAC_1_2_W,     KC_F11,         KC_F12,         DAGGER_W,       BRACE_P,        BRACKET_P,      PLUS_MINUS_W,
-        NOT_SIGN_W,     AE_W,           OE_W,           SHARP_S_W,      TM_SIGN_W,      C_CIRC_W,       R_CIRC_W,                       FRAC_3_4_W,     MICRO_W,        UP_ARROW_W,     DDAGGER_W,      INFINITY_W,     PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_W,    DIV_SIGN_W,     DEGREE_SIGN_W,                                                  LEFT_ARROW_W,   DOWN_ARROW_W,   RIGHT_ARROW_W,  MIDDLE_DOT_W,   KC_PGUP,        INV_QUES_W,
-        TG(_GREEK_W),   LR_ARROW_W,     UD_ARROW_W,     _______,        _______,                        NOTE_8TH_W,                     NOTES_8TH_W,                    SECTION_SIGN_W, PILCROW_W,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        CENT_SIGN_W,    POUND_SIGN_W,   YEN_SIGN_W,                     FULL_BLOCK_W,   LT_OR_EQ_W,     GT_OR_EQ_W
+        INV_EXLM,     KC_F1,        KC_F2,        KC_F3,        KC_F4,        KC_F5,        ALMOST_EQ,                  FRAC_1_4,     KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,       PLAY_ZELDA,
+        GRAVE_P,      SUP_1,        SUP_2,        SUP_3,        SUP_N,        PI,           BULLET,                     FRAC_1_2,     KC_F11,       KC_F12,       DAGGER,       BRACE_P,      BRACKET_P,    PLUS_MINUS,
+        NOT_SIGN,     AE,           OE,           SHARP_S,      TM_SIGN,      C_CIRC,       R_CIRC,                     FRAC_3_4,     MICRO,        UP_ARROW,     DDAGGER,      INFINITY,     PAREN_P,      QUOTE_P,
+        _______,      KC_PLUS,      KC_MINUS,     MULT_SIGN,    DIV_SIGN,     DEGREE_SIGN,                                            LEFT_ARROW,   DOWN_ARROW,   RIGHT_ARROW,  MIDDLE_DOT,   KC_PGUP,      INV_QUES,
+        TG(_GREEK_W), LR_ARROW,     UD_ARROW,     _______,      _______,                    NOTE_8TH,                   NOTES_8TH,                  SECTION_SIGN, PILCROW,      KC_HOME,      KC_PGDN,      KC_END,
+                                                                CENT_SIGN,    POUND_SIGN,   YEN_SIGN,                   FULL_BLOCK,   LT_OR_EQ,     GT_OR_EQ
     ),
     [_MAC_SYM] = LAYOUT_moonlander(
-        INV_EXLM_M,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          ALMOST_EQ_M,                    FRAC_1_4_M,     KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         PLAY_ZELDA,
-        GRAVE_P,        SUP_1_M,        SUP_2_M,        SUP_3_M,        SUP_N_M,        PI_M,           BULLET_M,                       FRAC_1_2_M,     KC_F11,         KC_F12,         DAGGER_M,       BRACE_P,        BRACKET_P,      PLUS_MINUS_M,
-        NOT_SIGN_M,     AE_M,           OE_M,           SHARP_S_M,      TM_SIGN_M,      C_CIRC_M,       R_CIRC_M,                       FRAC_3_4_M,     MICRO_M,        UP_ARROW_M,     DDAGGER_M,      INFINITY_M,     PAREN_P,        QUOTE_P,
-        _______,        KC_PLUS,        KC_MINUS,       MULT_SIGN_M,    DIV_SIGN_M,     DEGREE_SIGN_M,                                                  LEFT_ARROW_M,   DOWN_ARROW_M,   RIGHT_ARROW_M,  MIDDLE_DOT_M,   KC_PGUP,        INV_QUES_M,
-        TG(_GREEK_M),   LR_ARROW_M,     UD_ARROW_M,     _______,        _______,                        NOTE_8TH_M,                     NOTES_8TH_M,                    SECTION_SIGN_M, PILCROW_M,      KC_HOME,        KC_PGDN,        KC_END,
-                                                                        CENT_SIGN_M,    POUND_SIGN_M,   YEN_SIGN_M,                     FULL_BLOCK_M,   LT_OR_EQ_M,     GT_OR_EQ_M
+        INV_EXLM,     KC_F1,        KC_F2,        KC_F3,        KC_F4,        KC_F5,        ALMOST_EQ,                  FRAC_1_4,     KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,       PLAY_ZELDA,
+        GRAVE_P,      SUP_1,        SUP_2,        SUP_3,        SUP_N,        PI,           BULLET,                     FRAC_1_2,     KC_F11,       KC_F12,       DAGGER,       BRACE_P,      BRACKET_P,    PLUS_MINUS,
+        NOT_SIGN,     AE,           OE,           SHARP_S,      TM_SIGN,      C_CIRC,       R_CIRC,                     FRAC_3_4,     MICRO,        UP_ARROW,     DDAGGER,      INFINITY,     PAREN_P,      QUOTE_P,
+        _______,      KC_PLUS,      KC_MINUS,     MULT_SIGN,    DIV_SIGN,     DEGREE_SIGN,                                            LEFT_ARROW,   DOWN_ARROW,   RIGHT_ARROW,  MIDDLE_DOT,   KC_PGUP,      INV_QUES,
+        TG(_GREEK_M), LR_ARROW,     UD_ARROW,     _______,      _______,                    NOTE_8TH,                   NOTES_8TH,                  SECTION_SIGN, PILCROW,      KC_HOME,      KC_PGDN,      KC_END,
+                                                                CENT_SIGN,    POUND_SIGN,   YEN_SIGN,                   FULL_BLOCK,   LT_OR_EQ,     GT_OR_EQ
     ),
     [_NUMPAD] = LAYOUT_moonlander(
         QK_RBT,             QK_BOOT,            PRINT_VER,          XXXXXXX,            XXXXXXX,            XXXXXXX,            DT_UP,                                  XXXXXXX,            XXXXXXX,            KC_NUM_LOCK,        KC_PSLS,            KC_PAST,            KC_PMNS,            TG(_QWERTY),
@@ -568,18 +568,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                         _______,            XXXXXXX,            XXXXXXX,                                _______,            _______,            _______
     ),
     [_GREEK_W] = LAYOUT_moonlander(
-        KC_ESCAPE,    KC_1,         KC_2,         KC_3,         KC_4,         KC_5,         KC_EQUAL,                   EN_DASH_W,    KC_6,         KC_7,         KC_8,         KC_9,         KC_0,         XXXXXXX,
-        KC_GRAVE,     XXXXXXX,      XXXXXXX,      PHI_W,        PI_W,         XXXXXXX,      KC_BSLS,                    EM_DASH_W,    XXXXXXX,      XXXXXXX,      THETA_W,      XXXXXXX,      KC_SCLN,      KC_MINUS,
-        KC_TAB,       ALPHA_W,      XXXXXXX,      SIGMA_W,      TAU_W,        GAMMA_W,      KC_LBRC,                    KC_RBRC,      MU_W,         XXXXXXX,      EPSILON_W,    XXXXXXX,      XXXXXXX,      KC_QUOTE,
-        KC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      DELTA_W,      OMEGA_W,                                                XXXXXXX,      XXXXXXX,      KC_COMMA,     KC_DOT,       KC_UP,        KC_SLASH,
+        KC_ESCAPE,    KC_1,         KC_2,         KC_3,         KC_4,         KC_5,         KC_EQUAL,                   EN_DASH,      KC_6,         KC_7,         KC_8,         KC_9,         KC_0,         XXXXXXX,
+        KC_GRAVE,     XXXXXXX,      XXXXXXX,      PHI,          PI,           XXXXXXX,      KC_BSLS,                    EM_DASH,      XXXXXXX,      XXXXXXX,      THETA,        XXXXXXX,      KC_SCLN,      KC_MINUS,
+        KC_TAB,       ALPHA,        XXXXXXX,      SIGMA,        TAU,          GAMMA,        KC_LBRC,                    KC_RBRC,      MU,           XXXXXXX,      EPSILON,      XXXXXXX,      XXXXXXX,      KC_QUOTE,
+        KC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      DELTA,        OMEGA,                                                  XXXXXXX,      XXXXXXX,      KC_COMMA,     KC_DOT,       KC_UP,        KC_SLASH,
         TG(_GREEK_W), CW_TOGG,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    KC_CAPS,                    LGUI(KC_DOT), XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,
                                                                 KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE
     ),
     [_GREEK_M] = LAYOUT_moonlander(
         KC_ESCAPE,            KC_1,                 KC_2,                 KC_3,                 KC_4,                 KC_5,                 KC_EQUAL,                                   LALT(KC_MINUS),       KC_6,                 KC_7,                 KC_8,                 KC_9,                 KC_0,                 XXXXXXX,
-        KC_GRAVE,             XXXXXXX,              FINAL_SIGMA_M,        PHI_M,                PI_M,                 BETA_M,               KC_BSLS,                                    LALT(LSFT(KC_MINUS)), XI_M,                 LAMBDA_M,             THETA_M,              UPSILON_M,            KC_SCLN,              KC_MINUS,
-        KC_TAB,               ALPHA_M,              RHO_M,                SIGMA_M,              TAU_M,                GAMMA_M,              KC_LBRC,                                    KC_RBRC,              MU_M,                 NU_M,                 EPSILON_M,            IOTA_M,               OMICRON_M,            KC_QUOTE,
-        KC_LSFT,              ZETA_M,               CHI_M,                PSI_M,                DELTA_M,              OMEGA_M,                                                                                KAPPA_M,              ETA_M,                KC_COMMA,             KC_DOT,               KC_UP,                KC_SLASH,
+        KC_GRAVE,             XXXXXXX,              FINAL_SIGMA,          PHI,                  PI,                   BETA,                 KC_BSLS,                                    LALT(LSFT(KC_MINUS)), XI,                   LAMBDA,               THETA,                UPSILON,              KC_SCLN,              KC_MINUS,
+        KC_TAB,               ALPHA,                RHO,                  SIGMA,                TAU,                  GAMMA,                KC_LBRC,                                    KC_RBRC,              MU,                   NU,                   EPSILON,              IOTA,                 OMICRON,              KC_QUOTE,
+        KC_LSFT,              ZETA,                 CHI,                  PSI,                  DELTA,                OMEGA,                                                                                  KAPPA,                ETA,                  KC_COMMA,             KC_DOT,               KC_UP,                KC_SLASH,
         TG(_GREEK_M),         CW_TOGG,              XXXXXXX,              XXXXXXX,              XXXXXXX,                                    XXXXXXX,                                    KC_CAPS,                                    LGUI(LCTL(KC_SPACE)), XXXXXXX,              KC_LEFT,              KC_DOWN,              KC_RIGHT,
                                                                                                 KC_ENTER,             XXXXXXX,              XXXXXXX,                                    KC_DELETE,            KC_BSPC,              KC_SPACE
     ),
@@ -592,76 +592,76 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                         XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX
     ),
     [_A_ACUTE] = LAYOUT_moonlander(
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_U_W, ACUTE_Y_W, XXXXXXX,   XXXXXXX,
-        XXXXXXX,   ACUTE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   ACUTE_E_W, ACUTE_I_W, ACUTE_O_W, XXXXXXX,
-        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, ACUTE_U, ACUTE_Y, XXXXXXX, XXXXXXX,
+        XXXXXXX, ACUTE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, ACUTE_E, ACUTE_I, ACUTE_O, XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_A_CARON] = LAYOUT_moonlander(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, CARON_S, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_LSFT, CARON_Z, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX
+    ),
+    [_A_CEDILLA] = LAYOUT_moonlander(
         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   CARON_S_W, XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        KC_LSFT,   CARON_Z_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+        KC_LSFT,   XXXXXXX,   XXXXXXX,   CEDILLA_C, XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
         XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
                                                     XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
     ),
-    [_A_CEDILLA] = LAYOUT_moonlander(
+    [_A_CIRCUMFLEX] = LAYOUT_moonlander(
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      CIRCUMFLEX_U, XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      CIRCUMFLEX_A, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      CIRCUMFLEX_E, CIRCUMFLEX_I, CIRCUMFLEX_O, XXXXXXX,
+        KC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                                                                XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX
+    ),
+    [_A_DIAERESIS] = LAYOUT_moonlander(
         XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
-        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
-        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
-        KC_LSFT,     XXXXXXX,     XXXXXXX,     CEDILLA_C_W, XXXXXXX,     XXXXXXX,                                            XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     DIAERESIS_U, DIAERESIS_Y, XXXXXXX,     XXXXXXX,
+        XXXXXXX,     DIAERESIS_A, XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     DIAERESIS_E, DIAERESIS_I, DIAERESIS_O, XXXXXXX,
+        KC_LSFT,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                                            XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
         XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,                  XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
                                                             XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX
     ),
-    [_A_CIRCUMFLEX] = LAYOUT_moonlander(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_U_W, XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        CIRCUMFLEX_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        CIRCUMFLEX_E_W, CIRCUMFLEX_I_W, CIRCUMFLEX_O_W, XXXXXXX,
-        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-                                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX
-    ),
-    [_A_DIAERESIS] = LAYOUT_moonlander(
-        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
-        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_U_W, DIAERESIS_Y_W, XXXXXXX,       XXXXXXX,
-        XXXXXXX,       DIAERESIS_A_W, XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       DIAERESIS_E_W, DIAERESIS_I_W, DIAERESIS_O_W, XXXXXXX,
-        KC_LSFT,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                                                    XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
-        XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,                      XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,       XXXXXXX,
-                                                                    XXXXXXX,       XXXXXXX,       XXXXXXX,                      XXXXXXX,       XXXXXXX,       XXXXXXX
-    ),
     [_A_GRAVE] = LAYOUT_moonlander(
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_U_W, XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   GRAVE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   GRAVE_E_W, GRAVE_I_W, GRAVE_O_W, XXXXXXX,
-        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, GRAVE_U, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, GRAVE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, GRAVE_E, GRAVE_I, GRAVE_O, XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_A_RING_ABOVE] = LAYOUT_moonlander(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        RING_ABOVE_A_W, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        KC_LSFT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,                        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-                                                                        XXXXXXX,        XXXXXXX,        XXXXXXX,                        XXXXXXX,        XXXXXXX,        XXXXXXX
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      RING_ABOVE_A, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        KC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                                                                XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX
     ),
     [_A_STROKE] = LAYOUT_moonlander(
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    STROKE_O_W, XXXXXXX,
-        KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,                XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
-                                                        XXXXXXX,    XXXXXXX,    XXXXXXX,                XXXXXXX,    XXXXXXX,    XXXXXXX
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  STROKE_O, XXXXXXX,
+        KC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+                                                XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX
     ),
     [_A_TILDE] = LAYOUT_moonlander(
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   TILDE_A_W, XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   TILDE_N_W, XXXXXXX,   XXXXXXX,   TILDE_O_W, XXXXXXX,
-        KC_LSFT,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-        XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-                                                    XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, TILDE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, TILDE_N, XXXXXXX, XXXXXXX, TILDE_O, XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_J1] = LAYOUT_moonlander(
         PLAY_SONG_00, PLAY_SONG_01, PLAY_SONG_02, PLAY_SONG_03, PLAY_SONG_04, PLAY_SONG_05, PLAY_SONG_06,               PLAY_SONG_07, PLAY_SONG_08, PLAY_SONG_09, PLAY_SONG_10, PLAY_SONG_11, PLAY_SONG_12, PLAY_SONG_13,
