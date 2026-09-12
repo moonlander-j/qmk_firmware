@@ -1,4 +1,5 @@
 #include "os_specific_char_map.h"
+#include "custom_keycodes.h"
 #include QMK_KEYBOARD_H
 
 /*
