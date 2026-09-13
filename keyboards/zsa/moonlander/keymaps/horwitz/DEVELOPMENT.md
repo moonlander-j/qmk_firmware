@@ -86,6 +86,27 @@ make zsa/moonlander/reva:horwitz:flash
 
 The flash will complete automatically and the keyboard will reboot.
 
+## Generated code
+
+Several files (or sections of files) are produced by
+[qmk-tools](https://github.com/jhmail/qmk-tools) and pasted in by hand.
+A generated-code header comment marks each block and names the generator method.
+
+| generated block                | target file                                              | generator method                                            |
+|--------------------------------|----------------------------------------------------------|-------------------------------------------------------------|
+| `os_specific_char_map[]` array | `os_specific_char_map.c`                                 | `ProcessRecordUserUnicodeCases.toStringWithHeader()`        |
+| char-map enum values           | `custom_keycodes.h` (between `RGB_SLD` and `PLAY_ZELDA`) | `ProcessRecordUserUnicodeCases.toCustomKeycodesEnumBlock()` |
+| `keymaps[]` array              | `keymap.c`                                               | `Keymap.getKeymap()`                                        |
+| `ledmap[]` array               | `keymap.c`                                               | `Ledmap.getLedmap()`                                        |
+
+The array and its enum values are always generated together from the same data
+file (`process-record-user-unicode-raw-data.txt`), so they stay in sync.
+
+**When to regenerate:** any time a char-map keycode is added, removed, or
+reordered — i.e., when `process-record-user-unicode-raw-data.txt` changes.
+Run `main()` in `KeyboardForTesting.kt` (or `./gradlew test` to verify), then
+paste both outputs in the same commit.
+
 ## Unit tests
 
 Tests live in `tests/horwitz/` and cover the pure-logic functions in `dance_step.c`
