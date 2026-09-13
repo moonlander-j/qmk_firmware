@@ -698,6 +698,13 @@ bool is_shift_pressed(void) {
     return get_mods() & MOD_MASK_SHIFT;
 }
 
+/*
+ * should_capitalize() is true iff shift is pressed, CAPS WORD is active, or CAPS LOCK is active.
+ *
+ * NB: CAPS LOCK and CAPS WORD therefore shift all char-map keycodes by default. To make a specific
+ * character ignore CAPS LOCK/CAPS WORD (responding only to shift), replace should_capitalize() with
+ * is_shift_pressed() at that character's call site.
+ */
 bool should_capitalize(void) {
     return should_capitalize_inner(is_caps_lock_on(), is_caps_word_on(), is_shift_pressed());
 }
