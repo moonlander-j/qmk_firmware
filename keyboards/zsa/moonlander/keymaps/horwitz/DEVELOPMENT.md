@@ -98,6 +98,7 @@ A generated-code header comment marks each block and names the generator method.
 | char-map enum values           | `custom_keycodes.h` (between `RGB_SLD` and `PLAY_ZELDA`) | `ProcessRecordUserUnicodeCases.toCustomKeycodesEnumBlock()` |
 | `keymaps[]` array              | `keymap.c`                                               | `Keymap.getKeymap()`                                        |
 | `ledmap[]` array               | `keymap.c`                                               | `Ledmap.getLedmap()`                                        |
+| `_LMAPS` tap-dance methods     | `keymap.c`                                               | `LmapTapDances.getLmapTapDances()`                          |
 
 The array and its enum values are always generated together from the same data
 file (`process-record-user-unicode-raw-data.txt`), so they stay in sync.
