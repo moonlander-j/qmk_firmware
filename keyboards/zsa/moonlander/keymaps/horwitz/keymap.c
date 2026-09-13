@@ -297,28 +297,35 @@ enum tap_dance_codes {
 };
 // clang-format on
 
+// single source of truth for layer order; enum below and dance_llist both expand this macro (keeping layer indices in
+// sync)
+#define FOR_EACH_LAYER(X) \
+    X(_WIN_BASE)      \
+    X(_MAC_BASE)      \
+    X(_WIN_SYM)       \
+    X(_MAC_SYM)       \
+    X(_NUMPAD)        \
+    X(_GREEK_W)       \
+    X(_GREEK_M)       \
+    X(_ACCENT)        \
+    X(_A_ACUTE)       \
+    X(_A_CARON)       \
+    X(_A_CEDILLA)     \
+    X(_A_CIRCUMFLEX)  \
+    X(_A_DIAERESIS)   \
+    X(_A_GRAVE)       \
+    X(_A_RING_ABOVE)  \
+    X(_A_STROKE)      \
+    X(_A_TILDE)       \
+    X(_J1)            \
+    X(_J2)            \
+    X(_QWERTY)        \
+    X(_LMAPS)
+
 enum layer_names {
-    _WIN_BASE,
-    _MAC_BASE,
-    _WIN_SYM,
-    _MAC_SYM,
-    _NUMPAD,
-    _GREEK_W,
-    _GREEK_M,
-    _ACCENT,
-    _A_ACUTE,
-    _A_CARON,
-    _A_CEDILLA,
-    _A_CIRCUMFLEX,
-    _A_DIAERESIS,
-    _A_GRAVE,
-    _A_RING_ABOVE,
-    _A_STROKE,
-    _A_TILDE,
-    _J1,
-    _J2,
-    _QWERTY,
-    _LMAPS,
+#define X(name) name,
+    FOR_EACH_LAYER(X)
+#undef X
     LAYER_COUNT,  // not a real layer, just used to count enum size (must be kept last)
 };
 
@@ -1079,13 +1086,25 @@ void dance_l20(tap_dance_state_t *state, void *user_data) {
     }
 }
 
+static const char * const layer_name_strs[] = {
+#define X(name) #name,
+    FOR_EACH_LAYER(X)
+#undef X
+};
+
 void dance_llist(tap_dance_state_t *state, void *user_data) {
+    char num[12]; // 10 digits + sign + null covers any int32
     if (state->count == 2) {
-        SEND_STRING(
-            "0 _WIN_BASE\n1 _MAC_BASE\n2 _WIN_SYM\n3 _MAC_SYM\n4 _NUMPAD\n5 _GREEK_W\n6 _GREEK_M\n7 _ACCENT\n8 _A_ACUTE\n9 _A_CARON\n10 _A_CEDILLA\n11 _A_CIRCUMFLEX\n12 _A_DIAERESIS\n13 _A_GRAVE\n14 _A_RING_ABOVE\n15 _A_STROKE\n16 _A_TILDE\n17 _J1\n18 _J2\n19 _QWERTY\n20 _LMAPS"
-        );
+        for (int i = 0; i < LAYER_COUNT; i++) {
+            snprintf(num, sizeof(num), "%d", i);
+            send_string(num);
+            send_string(" ");
+            send_string(layer_name_strs[i]);
+            send_string("\n");
+        }
     } else {
-        SEND_STRING("21");
+        snprintf(num, sizeof(num), "%d", (int)LAYER_COUNT);
+        send_string(num);
     }
 }
 
