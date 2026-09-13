@@ -1,5 +1,23 @@
 # Development (horwitz keymap)
 
+## Overview
+
+**Keyboard:** ZSA Moonlander reva — Colemak-DH base layout
+
+**Key features:**
+- Auto-detected OS (Windows vs. macOS) via `OS_DETECTION_ENABLE`; plays a different startup song per OS and switches between `_WIN_BASE` / `_MAC_BASE` on boot; `OS_DETECTION_SINGLE_REPORT` prevents spurious re-detection
+- Dual Unicode strategies dispatched at runtime by `handle_os_char()`: Windows uses Alt+numpad (CP1252/CP437 codes), macOS uses Option+hex (Unicode code points); 101 char-map keycodes; sequences live in a generated `os_specific_char_map[]` table in `os_specific_char_map.c`
+- ~190 custom keycodes total: 101 char-map (accented chars, Greek, symbols), 80+ song keys, and a handful of utility keys (pair-insert, version print)
+- `_WIN_SYM`/`_MAC_SYM` and `_GREEK_W`/`_GREEK_M` remain as separate layers — OS-specific LED colors make consolidation non-trivial
+- 9 accent sub-layers (`_A_ACUTE`, `_A_GRAVE`, etc.) triggered via OSL from `_ACCENT` — Windows only; macOS users use the built-in hold-and-pick popup
+- 80+ song keys across `_J1`/`_J2` layers; each references a named `static float` array in `user_song_list.h`
+- Tap-dance number row: tap = digit, hold = F-key, double-tap = repeat digit
+- `_LMAPS` layer: tap-dance keys that type out their own layer's source text (double-tap) or the layer name (single-tap) — a self-documenting reference
+- Moonlander LEDs: LED 1 = caps indicator (steady = CapsLock, fast-blink = CapsWord); LEDs 2–6 = binary display of current layer number
+- All large generated sections (keymaps, ledmap, `os_specific_char_map[]`, char-map enum values, `_LMAPS` tap-dances) come from an external [qmk-tools](https://github.com/jhmail/qmk-tools) generator
+
+**21 layers:** `_WIN_BASE`, `_MAC_BASE`, `_WIN_SYM`, `_MAC_SYM`, `_NUMPAD`, `_GREEK_W`, `_GREEK_M`, `_ACCENT`, `_A_ACUTE`, `_A_CARON`, `_A_CEDILLA`, `_A_CIRCUMFLEX`, `_A_DIAERESIS`, `_A_GRAVE`, `_A_RING_ABOVE`, `_A_STROKE`, `_A_TILDE`, `_J1`, `_J2`, `_QWERTY`, `_LMAPS`
+
 ## Prerequisites
 
 - Homebrew
