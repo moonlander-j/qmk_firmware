@@ -710,7 +710,7 @@ bool should_capitalize(void) {
 }
 
 static bool is_mac_os(void) {
-    return get_highest_layer(default_layer_state) == _MAC_BASE;
+    return layer_state_is(_MAC_BASE);
 }
 
 static void send_os_specific_sequence(const os_specific_sequence_t *seq) {
