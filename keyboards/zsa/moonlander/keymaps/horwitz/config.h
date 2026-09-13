@@ -20,6 +20,8 @@
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
+#define OS_DETECTION_SINGLE_REPORT
+
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(T__NOTE(_REST)) // silent: QMK requires STARTUP_SONG; per-layer songs are played via process_detected_host_os_user
 #endif
