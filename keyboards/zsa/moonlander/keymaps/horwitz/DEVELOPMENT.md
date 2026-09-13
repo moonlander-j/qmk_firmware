@@ -16,7 +16,7 @@
 - Moonlander LEDs: LED 1 = caps indicator (steady = CapsLock, fast-blink = CapsWord); LEDs 2–6 = binary display of current layer number
 - All large generated sections (keymaps, ledmap, `os_specific_char_map[]`, char-map enum values, `_LMAPS` tap-dances) come from an external [qmk-tools](https://github.com/jhmail/qmk-tools) generator
 
-**21 layers:** `_WIN_BASE`, `_MAC_BASE`, `_WIN_SYM`, `_MAC_SYM`, `_NUMPAD`, `_GREEK_W`, `_GREEK_M`, `_ACCENT`, `_A_ACUTE`, `_A_CARON`, `_A_CEDILLA`, `_A_CIRCUMFLEX`, `_A_DIAERESIS`, `_A_GRAVE`, `_A_RING_ABOVE`, `_A_STROKE`, `_A_TILDE`, `_J1`, `_J2`, `_QWERTY`, `_LMAPS`
+**21 layers:** `_WIN_BASE`, `_MAC_BASE`, `_WIN_SYM`, `_MAC_SYM`, `_NUMPAD`, `_GREEK_W`, `_GREEK_M`, `_ACCENT`, `_A_ACUTE`, `_A_CARON`, `_A_CEDILLA`, `_A_CIRCUMFLEX`, `_A_DIAERESIS`, `_A_GRAVE`, `_A_RING_ABOVE`, `_A_STROKE`, `_A_TILDE`, `_J1`, `_J2`, `_COLEMAK_DH`, `_LMAPS`
 
 ## Prerequisites
 
