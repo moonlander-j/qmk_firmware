@@ -531,6 +531,9 @@ extern rgb_config_t rgb_matrix_config;
 // LED mode values defined in led_logic.h: LED_OFF, LED_ON, LED_BLINK_SLOW, LED_BLINK_FAST
 static uint8_t led_blink_state[NUM_LEDS] = {0};
 
+// indexed by layer number; if more layers need songs, consider a map<layer,song> + get_song(layer) indirection instead
+_Static_assert(_WIN_BASE == 0, "start_up_songs_by_layer assumes _WIN_BASE is at index 0");
+_Static_assert(_MAC_BASE == 1, "start_up_songs_by_layer assumes _MAC_BASE is at index 1");
 static const song_entry_t start_up_songs_by_layer[] = {
     SONG_ENTRY(mario_theme),          // _WIN_BASE
     SONG_ENTRY(zelda_uncover_secret), // _MAC_BASE
