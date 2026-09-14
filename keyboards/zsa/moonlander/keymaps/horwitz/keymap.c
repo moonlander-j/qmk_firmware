@@ -302,6 +302,7 @@ enum tap_dance_codes {
 #define FOR_EACH_LAYER(X) \
     X(_WIN_BASE)      \
     X(_MAC_BASE)      \
+    X(_COLEMAK_DH)    \
     X(_WIN_SYM)       \
     X(_MAC_SYM)       \
     X(_NUMPAD)        \
@@ -319,7 +320,6 @@ enum tap_dance_codes {
     X(_A_TILDE)       \
     X(_J1)            \
     X(_J2)            \
-    X(_COLEMAK_DH)    \
     X(_LMAPS)
 
 enum layer_names {
@@ -327,6 +327,12 @@ enum layer_names {
     FOR_EACH_LAYER(X)
 #undef X
     LAYER_COUNT,  // not a real layer, just used to count enum size (must be kept last)
+};
+
+static const char * const layer_name_strs[] = {
+#define X(name) #name,
+    FOR_EACH_LAYER(X)
+#undef X
 };
 
 /*
@@ -350,6 +356,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,              _______,              _______,              _______,              _______,              _______,                                                                                _______,              _______,              _______,              _______,              _______,              _______,
         _______,              _______,              LGUI(LSFT(KC_3)),     _______,              MO(_MAC_SYM),                               _______,                                    _______,                                    LGUI(LCTL(KC_SPACE)), _______,              _______,              _______,              _______,
                                                                                                 _______,              _______,              NOT_EQUAL_TO,                               _______,              _______,              _______
+    ),
+    [_COLEMAK_DH] = LAYOUT_moonlander(
+        _______,         _______,         _______,         _______,         _______,         _______,         _______,                          _______,         _______,         _______,         _______,         _______,         _______,         TG(_COLEMAK_DH),
+        _______,         _______,         _______,         KC_F,            KC_P,            KC_B,            _______,                          _______,         KC_J,            KC_L,            KC_U,            KC_Y,            KC_SCLN,         _______,
+        _______,         _______,         KC_R,            KC_S,            KC_T,            _______,         _______,                          _______,         KC_M,            KC_N,            KC_E,            KC_I,            KC_O,            _______,
+        _______,         _______,         _______,         _______,         KC_D,            KC_V,                                                               KC_K,            KC_H,            _______,         _______,         _______,         _______,
+        _______,         _______,         _______,         _______,         _______,                          _______,                          _______,                          _______,         _______,         _______,         _______,         _______,
+                                                                            _______,         _______,         _______,                          _______,         _______,         _______
     ),
     [_WIN_SYM] = LAYOUT_moonlander(
         INV_EXLM,     KC_F1,        KC_F2,        KC_F3,        KC_F4,        KC_F5,        ALMOST_EQ,                  FRAC_1_4,     KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,       PLAY_ZELDA,
@@ -487,14 +501,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    PLAY_JT,                    PLAY_ZELDA,                 XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
                                                                 XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX
     ),
-    [_COLEMAK_DH] = LAYOUT_moonlander(
-        _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, TG(_COLEMAK_DH),
-        _______, _______, _______, KC_F,    KC_P,    KC_B,    _______,          _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
-        _______, _______, KC_R,    KC_S,    KC_T,    _______, _______,          _______, KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    _______,
-        _______, _______, _______, _______, KC_D,    KC_V,                               KC_K,    KC_H,    _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,          _______,          _______,          _______, _______, _______, _______, _______,
-                                            _______, _______, _______,          _______, _______, _______
-    ),
     [_LMAPS] = LAYOUT_moonlander(
         TD(TD_L00),   TD(TD_L01),   TD(TD_L02),   TD(TD_L03),   TD(TD_L04),   TD(TD_L05),   XXXXXXX,                    XXXXXXX,      TD(TD_L06),   TD(TD_L07),   TD(TD_L08),   TD(TD_L09),   XXXXXXX,      XXXXXXX,
         TD(TD_L10),   TD(TD_L11),   TD(TD_L12),   TD(TD_L13),   TD(TD_L14),   TD(TD_L15),   XXXXXXX,                    XXXXXXX,      TD(TD_L16),   TD(TD_L17),   TD(TD_L18),   TD(TD_L19),   XXXXXXX,      XXXXXXX,
@@ -619,6 +625,8 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
     [_MAC_BASE] = {{HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_GREEN}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_RED}, {HSV_PACIFIC_BLUE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_YELLOW}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_RED}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_WHITE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}, {HSV_SFG_ORANGE}},
 
+    [_COLEMAK_DH] = {{HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}},
+
     [_WIN_SYM] = {{HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_BLUE}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_ORANGE}, {HSV_GRAY40}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GRAY40}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_PRINCE_PURP}},
 
     [_MAC_SYM] = {{HSV_ORANGE}, {HSV_CYAN}, {HSV_ORANGE}, {HSV_RED}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_OLIVE}, {HSV_RED}, {HSV_PINK}, {HSV_WHITE}, {HSV_MAGENTA}, {HSV_GREEN}, {HSV_RED}, {HSV_PINK}, {HSV_MUDDY_WATERS}, {HSV_MAGENTA}, {HSV_OFF}, {HSV_RED}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_ORANGE}, {HSV_GRAY40}, {HSV_ORANGE}, {HSV_MUDDY_WATERS}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_MONEY_GREEN}, {HSV_PRINCE_PURP}, {HSV_ZELDA_CART}, {HSV_GRAY40}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_CYAN}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_RED}, {HSV_CYAN}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_YELLOW}, {HSV_RED}, {HSV_ORANGE}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_OLIVE}, {HSV_OLIVE}, {HSV_ORANGE}, {HSV_RED}, {HSV_RED}, {HSV_ORANGE}, {HSV_OLIVE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_BLUE}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_GRAY40}, {HSV_PRINCE_PURP}},
@@ -652,8 +660,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_J1] = {{HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_GREEN}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}},
 
     [_J2] = {{HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_PRINCE_PURP}},
-
-    [_COLEMAK_DH] = {{HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_ALLIGATOR}, {HSV_GREEN}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_YELLOW}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ALLIGATOR}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_WHITE}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}, {HSV_ZELDA_CART}},
 
     [_LMAPS] = {{HSV_WHITE}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_GREEN}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_YELLOW}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_WHITE}, {HSV_WHITE}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_OFF}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_DAVYS_GRAY}, {HSV_OFF}}
     // clang-format on
@@ -905,6 +911,16 @@ void dance_l01(tap_dance_state_t *state, void *user_data) {
 void dance_l02(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
+            "_______,         _______,         _______,         _______,         _______,         _______,         _______,                          _______,         _______,         _______,         _______,         _______,         _______,         TG(_COLEMAK_DH),\n_______,         _______,         _______,         KC_F,            KC_P,            KC_B,            _______,                          _______,         KC_J,            KC_L,            KC_U,            KC_Y,            KC_SCLN,         _______,\n_______,         _______,         KC_R,            KC_S,            KC_T,            _______,         _______,                          _______,         KC_M,            KC_N,            KC_E,            KC_I,            KC_O,            _______,\n_______,         _______,         _______,         _______,         KC_D,            KC_V,                                                               KC_K,            KC_H,            _______,         _______,         _______,         _______,\n_______,         _______,         _______,         _______,         _______,                          _______,                          _______,                          _______,         _______,         _______,         _______,         _______,\n                                                                    _______,         _______,         _______,                          _______,         _______,         _______\n"
+        );
+    } else {
+        SEND_STRING("_COLEMAK_DH");
+    }
+}
+
+void dance_l03(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        SEND_STRING(
             "INV_EXLM,     KC_F1,        KC_F2,        KC_F3,        KC_F4,        KC_F5,        ALMOST_EQ,                  FRAC_1_4,     KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,       PLAY_ZELDA,\nGRAVE_P,      SUP_1,        SUP_2,        SUP_3,        SUP_N,        PI,           BULLET,                     FRAC_1_2,     KC_F11,       KC_F12,       DAGGER,       BRACE_P,      BRACKET_P,    PLUS_MINUS,\nNOT_SIGN,     AE,           OE,           SHARP_S,      TM_SIGN,      C_CIRC,       R_CIRC,                     FRAC_3_4,     MICRO,        UP_ARROW,     DDAGGER,      INFINITY,     PAREN_P,      QUOTE_P,\n_______,      KC_PLUS,      KC_MINUS,     MULT_SIGN,    DIV_SIGN,     DEGREE_SIGN,                                            LEFT_ARROW,   DOWN_ARROW,   RIGHT_ARROW,  MIDDLE_DOT,   KC_PGUP,      INV_QUES,\nTG(_GREEK_W), LR_ARROW,     UD_ARROW,     _______,      _______,                    NOTE_8TH,                   NOTES_8TH,                  SECTION_SIGN, PILCROW,      KC_HOME,      KC_PGDN,      KC_END,\n                                                        CENT_SIGN,    POUND_SIGN,   YEN_SIGN,                   FULL_BLOCK,   LT_OR_EQ,     GT_OR_EQ\n"
         );
     } else {
@@ -912,7 +928,7 @@ void dance_l02(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l03(tap_dance_state_t *state, void *user_data) {
+void dance_l04(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "INV_EXLM,     KC_F1,        KC_F2,        KC_F3,        KC_F4,        KC_F5,        ALMOST_EQ,                  FRAC_1_4,     KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,       PLAY_ZELDA,\nGRAVE_P,      SUP_1,        SUP_2,        SUP_3,        SUP_N,        PI,           BULLET,                     FRAC_1_2,     KC_F11,       KC_F12,       DAGGER,       BRACE_P,      BRACKET_P,    PLUS_MINUS,\nNOT_SIGN,     AE,           OE,           SHARP_S,      TM_SIGN,      C_CIRC,       R_CIRC,                     FRAC_3_4,     MICRO,        UP_ARROW,     DDAGGER,      INFINITY,     PAREN_P,      QUOTE_P,\n_______,      KC_PLUS,      KC_MINUS,     MULT_SIGN,    DIV_SIGN,     DEGREE_SIGN,                                            LEFT_ARROW,   DOWN_ARROW,   RIGHT_ARROW,  MIDDLE_DOT,   KC_PGUP,      INV_QUES,\nTG(_GREEK_M), LR_ARROW,     UD_ARROW,     _______,      _______,                    NOTE_8TH,                   NOTES_8TH,                  SECTION_SIGN, PILCROW,      KC_HOME,      KC_PGDN,      KC_END,\n                                                        CENT_SIGN,    POUND_SIGN,   YEN_SIGN,                   FULL_BLOCK,   LT_OR_EQ,     GT_OR_EQ\n"
@@ -922,7 +938,7 @@ void dance_l03(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l04(tap_dance_state_t *state, void *user_data) {
+void dance_l05(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "QK_RBT,             QK_BOOT,            PRINT_VER,          XXXXXXX,            XXXXXXX,            XXXXXXX,            DT_UP,                                  XXXXXXX,            XXXXXXX,            KC_NUM_LOCK,        KC_PSLS,            KC_PAST,            KC_PMNS,            TG(_COLEMAK_DH),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            KC_BRID,            KC_BRIU,            XXXXXXX,            DT_PRNT,                                XXXXXXX,            XXXXXXX,            KC_P7,              KC_P8,              KC_P9,              KC_PPLS,            XXXXXXX,\nTG(_J1),            XXXXXXX,            KC_MUTE,            KC_VOLD,            KC_VOLU,            XXXXXXX,            DT_DOWN,                                XXXXXXX,            XXXXXXX,            KC_P4,              KC_P5,              KC_P6,              KC_PPLS,            XXXXXXX,\nTG(_J2),            TOGGLE_LAYER_COLOR, RGB_TOG,            RGB_MOD,            MOON_LED_LEVEL,     TG(_LMAPS),                                                                     XXXXXXX,            KC_P1,              KC_P2,              KC_P3,              KC_PENT,            XXXXXXX,\nAU_TOGG,            MU_TOGG,            MU_NEXT,            _______,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                KC_P0,              KC_P0,              KC_PDOT,            KC_PENT,            XXXXXXX,\n                                                                                _______,            XXXXXXX,            XXXXXXX,                                _______,            _______,            _______\n"
@@ -932,7 +948,7 @@ void dance_l04(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l05(tap_dance_state_t *state, void *user_data) {
+void dance_l06(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "KC_ESCAPE,    KC_1,         KC_2,         KC_3,         KC_4,         KC_5,         KC_EQUAL,                   EN_DASH,      KC_6,         KC_7,         KC_8,         KC_9,         KC_0,         XXXXXXX,\nKC_GRAVE,     XXXXXXX,      XXXXXXX,      PHI,          PI,           XXXXXXX,      KC_BSLS,                    EM_DASH,      XXXXXXX,      XXXXXXX,      THETA,        XXXXXXX,      KC_SCLN,      KC_MINUS,\nKC_TAB,       ALPHA,        XXXXXXX,      SIGMA,        TAU,          GAMMA,        KC_LBRC,                    KC_RBRC,      MU,           XXXXXXX,      EPSILON,      XXXXXXX,      XXXXXXX,      KC_QUOTE,\nKC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      DELTA,        OMEGA,                                                  XXXXXXX,      XXXXXXX,      KC_COMMA,     KC_DOT,       KC_UP,        KC_SLASH,\nTG(_GREEK_W), CW_TOGG,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    KC_CAPS,                    LGUI(KC_DOT), XXXXXXX,      KC_LEFT,      KC_DOWN,      KC_RIGHT,\n                                                        KC_ENTER,     XXXXXXX,      XXXXXXX,                    KC_DELETE,    KC_BSPC,      KC_SPACE\n"
@@ -942,7 +958,7 @@ void dance_l05(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l06(tap_dance_state_t *state, void *user_data) {
+void dance_l07(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "KC_ESCAPE,            KC_1,                 KC_2,                 KC_3,                 KC_4,                 KC_5,                 KC_EQUAL,                                   LALT(KC_MINUS),       KC_6,                 KC_7,                 KC_8,                 KC_9,                 KC_0,                 XXXXXXX,\nKC_GRAVE,             XXXXXXX,              FINAL_SIGMA,          PHI,                  PI,                   BETA,                 KC_BSLS,                                    LALT(LSFT(KC_MINUS)), XI,                   LAMBDA,               THETA,                UPSILON,              KC_SCLN,              KC_MINUS,\nKC_TAB,               ALPHA,                RHO,                  SIGMA,                TAU,                  GAMMA,                KC_LBRC,                                    KC_RBRC,              MU,                   NU,                   EPSILON,              IOTA,                 OMICRON,              KC_QUOTE,\nKC_LSFT,              ZETA,                 CHI,                  PSI,                  DELTA,                OMEGA,                                                                                  KAPPA,                ETA,                  KC_COMMA,             KC_DOT,               KC_UP,                KC_SLASH,\nTG(_GREEK_M),         CW_TOGG,              XXXXXXX,              XXXXXXX,              XXXXXXX,                                    XXXXXXX,                                    KC_CAPS,                                    LGUI(LCTL(KC_SPACE)), XXXXXXX,              KC_LEFT,              KC_DOWN,              KC_RIGHT,\n                                                                                        KC_ENTER,             XXXXXXX,              XXXXXXX,                                    KC_DELETE,            KC_BSPC,              KC_SPACE\n"
@@ -952,7 +968,7 @@ void dance_l06(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l07(tap_dance_state_t *state, void *user_data) {
+void dance_l08(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            OSL(_A_CIRCUMFLEX), XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,\nOSL(_A_GRAVE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_DIAERESIS),  XXXXXXX,\nOSL(_A_TILDE),      XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_RING_ABOVE), OSL(_A_ACUTE),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            OSL(_A_CARON),                                                                  XXXXXXX,            XXXXXXX,            OSL(_A_CEDILLA),    XXXXXXX,            XXXXXXX,            OSL(_A_STROKE),\nXXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,                                XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,\n                                                                                XXXXXXX,            XXXXXXX,            XXXXXXX,                                XXXXXXX,            XXXXXXX,            XXXXXXX\n"
@@ -962,7 +978,7 @@ void dance_l07(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l08(tap_dance_state_t *state, void *user_data) {
+void dance_l09(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, ACUTE_U, ACUTE_Y, XXXXXXX, XXXXXXX,\nXXXXXXX, ACUTE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, ACUTE_E, ACUTE_I, ACUTE_O, XXXXXXX,\nKC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\n                                    XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX\n"
@@ -972,7 +988,7 @@ void dance_l08(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l09(tap_dance_state_t *state, void *user_data) {
+void dance_l10(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, CARON_S, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nKC_LSFT, CARON_Z, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\n                                    XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX\n"
@@ -982,7 +998,7 @@ void dance_l09(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l10(tap_dance_state_t *state, void *user_data) {
+void dance_l11(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nKC_LSFT,   XXXXXXX,   XXXXXXX,   CEDILLA_C, XXXXXXX,   XXXXXXX,                                    XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\nXXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,              XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,\n                                            XXXXXXX,   XXXXXXX,   XXXXXXX,              XXXXXXX,   XXXXXXX,   XXXXXXX\n"
@@ -992,7 +1008,7 @@ void dance_l10(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l11(tap_dance_state_t *state, void *user_data) {
+void dance_l12(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      CIRCUMFLEX_U, XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      CIRCUMFLEX_A, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      CIRCUMFLEX_E, CIRCUMFLEX_I, CIRCUMFLEX_O, XXXXXXX,\nKC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
@@ -1002,7 +1018,7 @@ void dance_l11(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l12(tap_dance_state_t *state, void *user_data) {
+void dance_l13(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nXXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     DIAERESIS_U, DIAERESIS_Y, XXXXXXX,     XXXXXXX,\nXXXXXXX,     DIAERESIS_A, XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     DIAERESIS_E, DIAERESIS_I, DIAERESIS_O, XXXXXXX,\nKC_LSFT,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                                            XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\nXXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,                  XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,\n                                                    XXXXXXX,     XXXXXXX,     XXXXXXX,                  XXXXXXX,     XXXXXXX,     XXXXXXX\n"
@@ -1012,7 +1028,7 @@ void dance_l12(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l13(tap_dance_state_t *state, void *user_data) {
+void dance_l14(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, GRAVE_U, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, GRAVE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, GRAVE_E, GRAVE_I, GRAVE_O, XXXXXXX,\nKC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\n                                    XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX\n"
@@ -1022,7 +1038,7 @@ void dance_l13(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l14(tap_dance_state_t *state, void *user_data) {
+void dance_l15(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      RING_ABOVE_A, XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nKC_LSFT,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,                    XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
@@ -1032,7 +1048,7 @@ void dance_l14(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l15(tap_dance_state_t *state, void *user_data) {
+void dance_l16(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,\nXXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,\nXXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  STROKE_O, XXXXXXX,\nKC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,\nXXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,            XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,\n                                        XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX\n"
@@ -1042,7 +1058,7 @@ void dance_l15(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l16(tap_dance_state_t *state, void *user_data) {
+void dance_l17(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, TILDE_A, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, TILDE_N, XXXXXXX, XXXXXXX, TILDE_O, XXXXXXX,\nKC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\nXXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\n                                    XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX\n"
@@ -1052,7 +1068,7 @@ void dance_l16(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l17(tap_dance_state_t *state, void *user_data) {
+void dance_l18(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "PLAY_SONG_00, PLAY_SONG_01, PLAY_SONG_02, PLAY_SONG_03, PLAY_SONG_04, PLAY_SONG_05, PLAY_SONG_06,               PLAY_SONG_07, PLAY_SONG_08, PLAY_SONG_09, PLAY_SONG_10, PLAY_SONG_11, PLAY_SONG_12, PLAY_SONG_13,\nPLAY_SONG_14, PLAY_SONG_15, PLAY_SONG_16, PLAY_SONG_17, PLAY_SONG_18, PLAY_SONG_19, PLAY_SONG_20,               PLAY_SONG_21, PLAY_SONG_22, PLAY_SONG_23, PLAY_SONG_24, PLAY_SONG_25, PLAY_SONG_26, PLAY_SONG_27,\n_______,      PLAY_SONG_28, PLAY_SONG_29, PLAY_SONG_30, PLAY_SONG_31, PLAY_SONG_32, PLAY_SONG_33,               PLAY_SONG_34, PLAY_SONG_35, PLAY_SONG_36, PLAY_SONG_37, PLAY_SONG_38, PLAY_SONG_39, PLAY_SONG_40,\nXXXXXXX,      PLAY_SONG_41, PLAY_SONG_42, PLAY_SONG_43, PLAY_SONG_44, PLAY_SONG_45,                                           PLAY_SONG_46, PLAY_SONG_47, PLAY_SONG_48, PLAY_SONG_49, PLAY_SONG_50, PLAY_SONG_51,\nPLAY_SONG_52, PLAY_SONG_53, PLAY_SONG_54, PLAY_SONG_55, PLAY_SONG_56,               PLAY_JT,                    PLAY_ZELDA,                 PLAY_SONG_57, PLAY_SONG_58, PLAY_SONG_59, PLAY_SONG_60, PLAY_SONG_61,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
@@ -1062,23 +1078,13 @@ void dance_l17(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_l18(tap_dance_state_t *state, void *user_data) {
+void dance_l19(tap_dance_state_t *state, void *user_data) {
     if (state->count == 2) {
         SEND_STRING(
             "PLAY_SONG_62, PLAY_SONG_63, PLAY_SONG_64, PLAY_SONG_65, PLAY_SONG_66, PLAY_SONG_67, PLAY_SONG_68,               PLAY_SONG_69, PLAY_SONG_70, PLAY_SONG_71, PLAY_SONG_72, PLAY_SONG_73, PLAY_SONG_74, PLAY_SONG_75,\nPLAY_SONG_76, PLAY_SONG_77, PLAY_SONG_78, PLAY_SONG_79, XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n_______,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                                                XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\nXXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,                    PLAY_JT,                    PLAY_ZELDA,                 XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,\n                                                        XXXXXXX,      XXXXXXX,      XXXXXXX,                    XXXXXXX,      XXXXXXX,      XXXXXXX\n"
         );
     } else {
         SEND_STRING("_J2");
-    }
-}
-
-void dance_l19(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 2) {
-        SEND_STRING(
-            "_______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,\n_______, _______, _______, KC_F,    KC_P,    KC_B,    _______,          _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,\n_______, _______, KC_R,    KC_S,    KC_T,    _______, _______,          _______, KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    _______,\n_______, _______, _______, _______, KC_D,    KC_V,                               KC_K,    KC_H,    _______, _______, _______, _______,\n_______, _______, _______, _______, _______,          _______,          _______,          _______, _______, _______, _______, _______,\n                                    _______, _______, _______,          _______, _______, _______\n"
-        );
-    } else {
-        SEND_STRING("_COLEMAK_DH");
     }
 }
 
@@ -1091,12 +1097,6 @@ void dance_l20(tap_dance_state_t *state, void *user_data) {
         SEND_STRING("_LMAPS");
     }
 }
-
-static const char * const layer_name_strs[] = {
-#define X(name) #name,
-    FOR_EACH_LAYER(X)
-#undef X
-};
 
 void dance_llist(tap_dance_state_t *state, void *user_data) {
     char num[12]; // 10 digits + sign + null covers any int32
