@@ -2,6 +2,7 @@
 
 // clang-format off
 // "Uncover Secret" by Koji Kondo (from _The Legend of Zelda_)
+// https://www.ninsheetmusic.org/download/pdf/1642
 #define ZELDA_UNCOVER_SECRET \
     Q__NOTE(_G5),            \
     Q__NOTE(_FS5),           \
@@ -573,5 +574,6 @@
   JT_NOTE(_D5, 16), JT_ET(_A4, _GS4, _A4), JT_NOTE(_BF4, 16), JT_NOTE(_A4, 16), \
   JT_NOTE(_REST, 16), JT_NOTE(_CS5, 16), JT_NOTE(_D5, 32),
 
+// https://www.virtualsheetmusic.com/score/HL-465935.html
 #define JOHNNYS_THEME JT_A JT_B JT_A JT_C
 // clang-format on
